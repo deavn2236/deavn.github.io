@@ -26,3 +26,34 @@
 
 /* Small two-tone illustrations keep the academic layout light and warm. */
 .section-heading{gap:11px}.section-icon{width:28px;height:28px;opacity:1;flex:none}.hobbies-line{display:flex;align-items:center;flex-wrap:wrap;gap:9px 17px;margin-top:12px;color:#68747e;font-size:13px}.hobbies-label{font-size:12px;color:#85909a}.hobby-item{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}.hobby-icon{width:22px;height:22px;flex:none}.student-work-entry:first-child li{margin-bottom:8px}.honor-list{line-height:1.85}.honor-list li{margin-bottom:8px}@media(max-width:560px){.section-icon{width:26px;height:26px}.hobbies-line{font-size:12px;gap:8px 14px}.hobby-icon{width:20px;height:20px}.section-heading{gap:9px}}
+
+/* Media uses its intrinsic ratio. Frames may letterbox, never stretch or crop. */
+img{height:auto}
+.media{display:grid;place-items:center}
+.media>img{width:auto;height:auto;max-width:100%;max-height:100%;margin:auto;object-fit:contain}
+.media>video{position:absolute;inset:0;width:100%;height:100%;min-width:0;min-height:0;object-fit:contain}
+.project-media>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.paper-figure{display:flex;align-items:center;justify-content:center;height:150px}
+.paper-figure img{width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain}
+.section-figure .figure-expand{width:100%;display:flex;align-items:flex-start;justify-content:center}
+.section-figure img,.paper-main-figure img,.detail-gallery img{width:auto;height:auto;max-width:100%;max-height:none;margin-inline:auto;object-fit:contain}
+.profile-photo img{aspect-ratio:auto;height:auto}
+.section-video{aspect-ratio:var(--media-ratio,16/9)}
+.single .section-video{max-height:none;max-width:820px;margin-inline:auto}
+.section-video.is-portrait{max-width:320px;margin-inline:auto}
+.video-speed{position:absolute;left:10px;bottom:10px;color:#40576a;background:rgba(255,255,255,.92);border:1px solid #d8e2e9;border-radius:4px;font-size:10px;line-height:1;padding:5px 6px;pointer-events:none}
+.equipment-layout{grid-template-columns:minmax(0,560px) minmax(0,220px);gap:26px;justify-content:start;align-items:center}
+.equipment-layout .figure-main:only-child{grid-column:1/-1;width:min(100%,560px)}
+.equipment-layout .figure-main img{max-width:100%;width:auto;max-height:340px}
+.equipment-layout .figure-sensor{max-width:220px}
+.equipment-layout .figure-sensor img{max-width:100%;width:auto;max-height:180px}
+.equipment-layout figcaption{font-size:11px}
+.project-group+.project-group{margin-top:38px}
+.project-copy .project-preview-caption{padding:0;border:0;margin:0 0 10px;font-size:11px}
+.project-group-heading{display:flex;align-items:center;gap:9px;font-size:16px;font-weight:500;color:#5c6d79;margin:0 0 18px}
+.project-group-heading .section-icon{width:23px;height:23px}
+.profile{position:relative;padding-top:80px}
+.profile-ornament{position:absolute;top:23px;left:0;right:0;height:31px;overflow:hidden;pointer-events:none}
+.profile-ornament svg{width:100%;height:100%}
+@media(max-width:760px){.paper-figure{height:135px}.equipment-layout{grid-template-columns:minmax(0,1fr) 170px;gap:20px}.equipment-layout .figure-main img{max-height:300px}.equipment-layout .figure-sensor img{max-height:160px}.profile{padding-top:65px}.profile-ornament{top:15px;height:27px}}
+@media(max-width:560px){.paper-figure{height:110px}.paper-figure img{height:auto}.equipment-layout{grid-template-columns:1fr;gap:20px}.equipment-layout .figure-main:only-child{width:100%}.equipment-layout .figure-main img{max-height:290px}.equipment-layout .figure-sensor{width:180px;justify-self:center}.equipment-layout .figure-sensor img{max-height:150px}.project-group+.project-group{margin-top:30px}.project-group-heading{font-size:15px}.profile-ornament{opacity:.8}}

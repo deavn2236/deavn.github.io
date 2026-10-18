@@ -30,12 +30,18 @@
     const selected = button.dataset.projectFilter;
     filterButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
     projectCards.forEach(card => { card.hidden = selected !== 'all' && card.dataset.category !== selected; });
+    document.querySelectorAll('[data-project-group]').forEach(group => {
+      group.hidden = ![...group.querySelectorAll('.project-card')].some(card => !card.hidden);
+    });
   }));
 
   const videos = [...document.querySelectorAll('.autoplay-video')];
-  const motionReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const allowAutoplay = !motionReduced && !navigator.connection?.saveData;
   const visibleVideos = new Set();
+  const setSpeed = (video) => {
+    const rate = Number(video.dataset.playbackRate) || 1.5;
+    video.defaultPlaybackRate = rate;
+    video.playbackRate = rate;
+  };
   const loadPoster = (video) => {
     if (video.dataset.poster) {
       video.poster = video.dataset.poster;
@@ -47,6 +53,7 @@
     video.muted = true;
     video.defaultMuted = true;
     video.volume = 0;
+    setSpeed(video);
     const source = video.querySelector('source[data-src]');
     if (source) {
       source.src = source.dataset.src;
@@ -61,8 +68,10 @@
     button.setAttribute('aria-label', videoControlLabel(video));
   };
   videos.forEach(video => {
-    // Only explicit play calls below may start a download or playback.
-    video.autoplay = false;
+    // Source assignment stays lazy; every visible video starts muted at 1.5×.
+    video.autoplay = true;
+    setSpeed(video);
+    video.addEventListener('loadedmetadata', () => setSpeed(video));
     const button = video.parentElement.querySelector('[data-video-toggle]');
     button?.addEventListener('click', (event) => {
       event.preventDefault();
@@ -77,7 +86,7 @@
       }
       setControl(video);
     });
-    video.addEventListener('play', () => setControl(video));
+    video.addEventListener('play', () => { setSpeed(video); setControl(video); });
     video.addEventListener('pause', () => setControl(video));
   });
   const posterObserver = new IntersectionObserver(entries => entries.forEach(({ target: video, isIntersecting }) => {
@@ -89,7 +98,7 @@
   const observer = new IntersectionObserver(entries => entries.forEach(({ target: video, isIntersecting, intersectionRatio }) => {
     if (isIntersecting && intersectionRatio >= 0.1) {
       visibleVideos.add(video);
-      if (allowAutoplay && !video.dataset.userPaused && !document.hidden) {
+      if (!video.dataset.userPaused && !document.hidden) {
         loadVideo(video);
         video.play().catch(() => {});
       }
@@ -104,7 +113,7 @@
   });
   document.addEventListener('visibilitychange', () => videos.forEach(video => {
     if (document.hidden) video.pause();
-    else if (allowAutoplay && !video.dataset.userPaused && visibleVideos.has(video)) {
+    else if (!video.dataset.userPaused && visibleVideos.has(video)) {
       loadVideo(video);
       video.play().catch(() => {});
     }

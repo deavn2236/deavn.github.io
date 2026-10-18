@@ -33,6 +33,7 @@ for (const item of [...site.projects, ...site.papers]) {
   if (!item.title?.zh || !item.title?.en) errors.push(`Missing bilingual title: ${item.id}`);
 }
 for (const p of site.projects) {
+  if (!['primary', 'collaboration'].includes(p.group)) errors.push(`${p.id}: missing project involvement group`);
   if (!p.media?.video && !p.media?.image) errors.push(`${p.id}: no main image or video`);
   if (!p.summary?.zh || !p.summary?.en) errors.push(`${p.id}: missing bilingual summary`);
   if (!Array.isArray(p.sections) || p.sections.length < 2) errors.push(`${p.id}: add at least two documented sections`);
@@ -40,11 +41,16 @@ for (const p of site.projects) {
   checkAsset(p.media?.image, p.id);
   checkAsset(p.media?.poster, p.id);
   for (const section of p.sections || []) {
+    if (section.id === 'equipment' && (section.figures || []).filter(f => f.role === 'main').length > 1) errors.push(`${p.id}: keep one main hardware figure`);
     for (const figure of section.figures || []) {
       checkAsset(figure.src || figure.image, p.id); checkAsset(figure.video, p.id); checkAsset(figure.poster, p.id);
     }
   }
   for (const g of p.gallery || []) { checkAsset(g.src, p.id); checkAsset(g.video, p.id); checkAsset(g.poster, p.id); }
+}
+if (site.projects.some(p => p.id === 'reconav')) errors.push('ReCoNav should appear as a paper only');
+for (const id of ['wheel-legged', 'industrial-grasping', 'fruit-sorting']) {
+  if (site.projects.find(p => p.id === id)?.group !== 'collaboration') errors.push(`${id}: should be a collaborative project`);
 }
 for (const p of site.papers) {
   checkAsset(p.image, p.id); checkAsset(p.pdf, p.id);

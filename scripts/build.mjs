@@ -45,7 +45,7 @@ function page({ title, description, body, prefix = './' }) {
 
 function renderImage(src, label, prefix, { card = false, eager = false, sizes = '' } = {}) {
   const info = mediaAssets.images[src] || {};
-  const variants = card ? info.variants || [] : [];
+  const variants = card && info.variants?.length ? [...info.variants, { src, width: info.width, height: info.height }] : [];
   const selected = variants[0] || { src, ...info };
   return `<img src="${esc(prefix + selected.src)}" ${alt(label)}${selected.width ? ` width="${selected.width}" height="${selected.height}"` : ''}${variants.length ? ` srcset="${variants.map(v => `${esc(prefix + v.src)} ${v.width}w`).join(', ')}" sizes="${esc(sizes)}"` : ''} decoding="async" loading="${eager ? 'eager' : 'lazy'}"${eager ? ' fetchpriority="high"' : ''}>`;
 }
@@ -53,13 +53,14 @@ function renderImage(src, label, prefix, { card = false, eager = false, sizes = 
 function renderMedia(media = {}, prefix, className = '', eager = false, card = false) {
   const label = media.alt || b('项目演示视频', 'Project demonstration video');
   const video = card ? mediaAssets.videos[media.video]?.preview || media.video : media.video;
-  if (video) return `<div class="media ${className}"><video class="autoplay-video" ${media.poster ? `data-poster="${esc(prefix + media.poster)}"` : ''} muted autoplay loop playsinline preload="none" aria-label="${esc(tr(label))}" data-label-zh="${esc(tr(label))}" data-label-en="${esc(tr(label, 'en'))}"><source data-src="${esc(prefix + video)}" type="video/mp4"></video><button class="video-control is-paused" type="button" data-video-toggle aria-label="播放视频"><span class="pause-icon" aria-hidden="true">Ⅱ</span><span class="play-icon" aria-hidden="true">▶</span></button></div>`;
+  const info = mediaAssets.videos[video] || mediaAssets.videos[media.video] || {};
+  if (video) return `<div class="media ${className}${info.height > info.width ? ' is-portrait' : ''}"${info.width ? ` style="--media-ratio:${info.width}/${info.height}"` : ''}><video class="autoplay-video" ${info.width ? `width="${info.width}" height="${info.height}"` : ''} ${media.poster ? `data-poster="${esc(prefix + media.poster)}"` : ''} data-playback-rate="1.5" muted autoplay loop playsinline preload="none" aria-label="${esc(tr(label))}" data-label-zh="${esc(tr(label))}" data-label-en="${esc(tr(label, 'en'))}"><source data-src="${esc(prefix + video)}" type="video/mp4"></video><span class="video-speed" aria-hidden="true">1.5×</span><button class="video-control is-paused" type="button" data-video-toggle aria-label="播放视频"><span class="pause-icon" aria-hidden="true">Ⅱ</span><span class="play-icon" aria-hidden="true">▶</span></button></div>`;
   const src = media.image || media.poster;
   return src ? `<div class="media ${className}">${renderImage(src, media.alt || '', prefix, { card, eager, sizes: '(max-width:560px) calc(100vw - 40px), (max-width:760px) calc((100vw - 58px) / 2), (min-width:1400px) 527px, 507px' })}</div>` : '';
 }
 
 function projectCard(project, index, prefix = './') {
-  return `<article class="project-card" id="project-${esc(project.id)}" data-category="${esc(project.categoryKey || '')}"><div class="project-copy"><p class="project-category">${bi(project.category)}${project.year ? ` · ${esc(project.year)}` : ''}</p><h3><a href="${projectPath(project, prefix)}">${bi(project.title)}</a></h3><p class="project-summary">${bi(project.summary)}</p>${project.period || project.organization ? `<p class="project-context">${project.period ? bi(project.period) : ''}${project.period && project.organization ? ' · ' : ''}${project.organization ? bi(project.organization) : ''}</p>` : ''}<div class="project-card-footer"><a class="project-details" href="${projectPath(project, prefix)}">${bi(b('详情 →', 'Details →'))}</a></div></div>${renderMedia(project.media, prefix, 'project-media', index < 2, true)}${project.previewCaption ? `<p class="project-preview-caption">${bi(project.previewCaption)}</p>` : ''}</article>`;
+  return `<article class="project-card" id="project-${esc(project.id)}" data-category="${esc(project.categoryKey || '')}"><div class="project-copy"><p class="project-category">${bi(project.category)}${project.year ? ` · ${esc(project.year)}` : ''}</p><h3><a href="${projectPath(project, prefix)}">${bi(project.title)}</a></h3><p class="project-summary">${bi(project.summary)}</p>${project.period || project.organization ? `<p class="project-context">${project.period ? bi(project.period) : ''}${project.period && project.organization ? ' · ' : ''}${project.organization ? bi(project.organization) : ''}</p>` : ''}${project.previewCaption ? `<p class="project-preview-caption">${bi(project.previewCaption)}</p>` : ''}<div class="project-card-footer"><a class="project-details" href="${projectPath(project, prefix)}">${bi(b('详情 →', 'Details →'))}</a></div></div>${renderMedia(project.media, prefix, 'project-media', index < 2, true)}</article>`;
 }
 
 function paperLinks(paper, prefix = './', overview = true) {
@@ -75,8 +76,13 @@ function renderHome() {
   const education = site.educationDescription;
   const personalInfo = site.personalInfo.map(item => `<div><dt>${bi(item.label)}</dt><dd>${bi(item.value)}</dd></div>`).join('');
   const studentWork = site.studentWork.map(item => `<article class="student-work-entry"><div class="student-work-header"><div><h3>${bi(item.institution)}</h3><p class="student-work-role">${bi(item.role)}</p></div><span class="student-work-period">${bi(item.period)}</span></div><ul>${item.points.map(point => `<li>${bi(point)}</li>`).join('')}</ul></article>`).join('');
+  const projectGroups = [
+    { id: 'primary', label: b('主要研发', 'Research & Development'), icon: 'layers' },
+    { id: 'collaboration', label: b('参与项目', 'Collaborative Projects'), icon: 'users' }
+  ].map(group => `<div class="project-group" data-project-group="${group.id}"><h3 class="project-group-heading">${renderIcon(group.icon)}${bi(group.label)}</h3><div class="project-grid">${site.projects.filter(p => p.group === group.id).map((p,i) => projectCard(p,i)).join('')}</div></div>`).join('');
   return `<div class="home wrap">
     <section class="profile" id="intro">
+      <div class="profile-ornament" aria-hidden="true"><svg viewBox="0 0 1040 42" fill="none" preserveAspectRatio="xMidYMid slice"><path d="M0 22h142l16-12h150l17 18h204l18-15h175l20 14h298" stroke="#d9e4ec"/><path d="M0 30h98l20-12h160l19 17h240l20-15h158l17 15h308" stroke="#e9dccc" stroke-dasharray="3 5"/><circle cx="159" cy="10" r="4" fill="#90bbcb"/><circle cx="325" cy="28" r="4" fill="#e4b48c"/><circle cx="547" cy="13" r="4" fill="#b5aace"/><circle cx="742" cy="27" r="4" fill="#a2c7b8"/><rect x="861" y="9" width="24" height="23" rx="7" fill="#eef5f6"/><path d="M869 20h9m-9 4h9m-6-9v12" stroke="#88afb8" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       <div class="profile-layout">
         <div class="profile-copy">
           <div class="profile-heading"><div class="profile-name-row"><h1>${bi(site.name)}</h1><p class="profile-affiliation">${bi(site.location)}</p></div><p class="profile-role">${bi(site.role)}</p></div>
@@ -89,7 +95,7 @@ function renderHome() {
       </div>
     </section>
     <section class="home-section" id="publications">${sectionHeading('publication', b('论文成果', 'Publications'))}<div class="paper-list">${site.papers.map(p => paperCard(p)).join('')}</div></section>
-    <section class="home-section" id="work"><div class="section-title-row">${sectionHeading('robot', b('机器人项目', 'Robotics Projects'))}<div class="project-filters" role="group" aria-label="Filter projects">${filters}</div></div><div class="project-grid">${site.projects.map((p, i) => projectCard(p, i)).join('')}</div></section>
+    <section class="home-section" id="work"><div class="section-title-row">${sectionHeading('robot', b('机器人项目', 'Robotics Projects'))}<div class="project-filters" role="group" aria-label="Filter projects">${filters}</div></div>${projectGroups}</section>
     <section class="home-section" id="student-work">${sectionHeading('users', b('学生工作', 'Student Leadership & Service'))}<div class="student-work-list">${studentWork}</div></section>
     <section class="home-section" id="honors">${sectionHeading('award', b('荣誉奖励', 'Selected Honors'))}<ul class="honor-list">${site.honors.map(item => `<li>${bi(item)}</li>`).join('')}</ul></section>
     <section class="home-section contact-section" id="contact">${sectionHeading('mail', b('联系', 'Contact'))}<p>${bi(b('欢迎就具身导航与操作、多模态理解、计算机视觉进行交流。', 'I welcome conversations about embodied navigation and manipulation, multimodal understanding, and computer vision.'))}</p><p class="contact-details"><a href="tel:${esc(site.phone)}">${bi(b('电话：', 'Phone: '))}${esc(site.phone)}</a><a href="mailto:${esc(site.email)}">${bi(b('邮箱：', 'Email: '))}${esc(site.email)}</a></p></section>
@@ -106,7 +112,8 @@ function renderRankings(item) {
 
 function renderFigure(figure, prefix) {
   const label = figure.caption || figure.alt || b('系统演示', 'System demonstration');
-  return `<figure class="section-figure">${figure.video ? renderMedia({ video: figure.video, poster: figure.poster, alt: label }, prefix, 'section-video') : `<a class="figure-expand" href="${esc(prefix + (figure.src || figure.image))}" target="_blank" rel="noopener noreferrer" aria-label="查看大图" data-aria-zh="查看大图" data-aria-en="Open full-size image">${renderImage(figure.src || figure.image, label, prefix)}</a>`}<figcaption>${bi(label)}</figcaption></figure>`;
+  const sizes = figure.role === 'sensor' ? '(max-width:560px) 180px, 220px' : figure.role === 'main' ? '(max-width:560px) calc(100vw - 40px), 560px' : '(max-width:760px) calc(100vw - 40px), 960px';
+  return `<figure class="section-figure${figure.role ? ` figure-${esc(figure.role)}` : ''}">${figure.video ? renderMedia({ video: figure.video, poster: figure.poster, alt: label }, prefix, 'section-video') : `<a class="figure-expand" href="${esc(prefix + (figure.src || figure.image))}" target="_blank" rel="noopener noreferrer" aria-label="查看大图" data-aria-zh="查看大图" data-aria-en="Open full-size image">${renderImage(figure.src || figure.image, label, prefix, { card: true, sizes })}</a>`}<figcaption>${bi(label)}</figcaption></figure>`;
 }
 
 function renderTable(table) {
@@ -115,7 +122,7 @@ function renderTable(table) {
 
 function renderSection(section, prefix, index) {
   const icon = ({ task: 'info', equipment: 'robot', system: 'layers', method: 'layers', demo: 'robot', experiments: 'chart', results: 'chart', contributions: 'publication' })[section.id] || 'publication';
-  return `<section class="detail-section" id="${esc(section.id || `section-${index}`)}">${sectionHeading(icon, section.title || section.heading)}${(section.paragraphs || []).map(p => `<p>${bi(p)}</p>`).join('')}${section.points?.length ? `<ul>${section.points.map(p => `<li>${bi(p)}</li>`).join('')}</ul>` : ''}${section.flow?.length ? `<ol class="system-flow">${section.flow.map(step => `<li>${bi(step)}</li>`).join('')}</ol>` : ''}${section.metrics?.length ? `<div class="paper-results-grid">${section.metrics.map(r => `<div class="paper-result"><strong>${esc(r.value)}</strong><span>${bi(r.label)}</span></div>`).join('')}</div>` : ''}${section.table ? renderTable(section.table) : ''}${(section.tables || []).map(renderTable).join('')}${section.figures?.length ? `<div class="section-figures ${section.figures.length === 1 || section.id === 'method' ? 'single' : ''}">${section.figures.map(f => renderFigure(f,prefix)).join('')}</div>` : ''}${section.source ? `<p class="media-source"><a href="${esc(section.source.url)}" target="_blank" rel="noopener noreferrer">${bi(section.source.label)}</a></p>` : ''}</section>`;
+  return `<section class="detail-section" id="${esc(section.id || `section-${index}`)}">${sectionHeading(icon, section.title || section.heading)}${(section.paragraphs || []).map(p => `<p>${bi(p)}</p>`).join('')}${section.points?.length ? `<ul>${section.points.map(p => `<li>${bi(p)}</li>`).join('')}</ul>` : ''}${section.flow?.length ? `<ol class="system-flow">${section.flow.map(step => `<li>${bi(step)}</li>`).join('')}</ol>` : ''}${section.metrics?.length ? `<div class="paper-results-grid">${section.metrics.map(r => `<div class="paper-result"><strong>${esc(r.value)}</strong><span>${bi(r.label)}</span></div>`).join('')}</div>` : ''}${section.table ? renderTable(section.table) : ''}${(section.tables || []).map(renderTable).join('')}${section.figures?.length ? `<div class="section-figures ${section.id === 'equipment' ? 'equipment-layout' : section.figures.length === 1 || section.id === 'method' ? 'single' : ''}">${section.figures.map(f => renderFigure(f,prefix)).join('')}</div>` : ''}${section.source ? `<p class="media-source"><a href="${esc(section.source.url)}" target="_blank" rel="noopener noreferrer">${bi(section.source.label)}</a></p>` : ''}</section>`;
 }
 
 function renderContents(sections) {

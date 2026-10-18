@@ -1,4 +1,4 @@
-// Public bilingual content.
+// Public bilingual paper content.
 export const papers = [
   {
     "id": "kangaroo-paper",
@@ -465,7 +465,7 @@ export const papers = [
   {
     "id": "reconav-paper",
     "title": {
-      "zh": "ReCoNav：参考图像与语言修正的组合实例导航",
+      "zh": "ReCoNav: Composed Instance Navigation",
       "en": "ReCoNav: Composed Instance Navigation"
     },
     "authors": "Wendong Guo",
