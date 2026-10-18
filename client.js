@@ -11,6 +11,8 @@
     document.querySelectorAll('[data-set-lang]').forEach(button => {
       button.setAttribute('aria-pressed', String(button.dataset.setLang === lang));
     });
+    document.querySelectorAll('[data-title-zh]').forEach(item => { item.title = item.dataset[lang === 'zh' ? 'titleZh' : 'titleEn']; });
+    document.querySelectorAll('[data-aria-zh]').forEach(item => { item.setAttribute('aria-label', item.dataset[lang === 'zh' ? 'ariaZh' : 'ariaEn']); });
     document.querySelectorAll('[data-alt-zh]').forEach(img => {
       img.alt = img.dataset[lang === 'zh' ? 'altZh' : 'altEn'];
     });
