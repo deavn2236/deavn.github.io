@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { site } from '../content/site.mjs';
@@ -8,6 +9,7 @@ import { figureInfo, figureRows, figureWidth } from './figure-layout.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 // This repository publishes its root. Rebuild generated pages in place; preserve Git and assets.
 const out = root;
+const assetVersions = Object.fromEntries([['styles','styles.css'],['client','client.js']].map(([key,file]) => [key, createHash('sha256').update(fs.readFileSync(path.join(root,'src',file))).digest('hex').slice(0,10)]));
 
 const esc = (v = '') => String(v).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
 const tr = (v, lang = 'zh') => typeof v === 'object' && v !== null ? (v[lang] || v.zh || v.en || '') : (v || '');
@@ -41,7 +43,7 @@ function renderHeader(prefix) {
 function page({ title, description, body, prefix = './' }) {
   const zhTitle = `${tr(title)} · ${tr(site.name)}`;
   const enTitle = `${tr(title, 'en')} · ${tr(site.name, 'en')}`;
-  return `<!doctype html><html lang="zh-CN" data-lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>${esc(zhTitle)}</title><meta name="description" content="${esc(tr(description))}"><meta property="og:title" content="${esc(zhTitle)}"><meta property="og:description" content="${esc(tr(description))}"><script>try{if(sessionStorage.getItem('academic-language-v2')==='en'){document.documentElement.dataset.lang='en';document.documentElement.lang='en'}}catch{}</script><link rel="icon" href="${prefix}favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="${prefix}styles.css"><script defer src="${prefix}client.js"></script></head><body data-title-zh="${esc(zhTitle)}" data-title-en="${esc(enTitle)}"><a class="skip-link" href="#main">${bi(b('跳至正文', 'Skip to content'))}</a>${renderHeader(prefix)}<main id="main">${body}</main><footer class="footer wrap"><span>© ${new Date().getFullYear()} ${bi(site.name)}</span><a href="${esc(site.repository)}" target="_blank" rel="noopener noreferrer">GitHub</a><a href="#top">${bi(b('返回顶部 ↑', 'Back to top ↑'))}</a></footer></body></html>`;
+  return `<!doctype html><html lang="zh-CN" data-lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>${esc(zhTitle)}</title><meta name="description" content="${esc(tr(description))}"><meta property="og:title" content="${esc(zhTitle)}"><meta property="og:description" content="${esc(tr(description))}"><script>try{if(sessionStorage.getItem('academic-language-v2')==='en'){document.documentElement.dataset.lang='en';document.documentElement.lang='en'}}catch{}</script><link rel="icon" href="${prefix}favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="${prefix}styles.css?v=${assetVersions.styles}"><script defer src="${prefix}client.js?v=${assetVersions.client}"></script></head><body data-title-zh="${esc(zhTitle)}" data-title-en="${esc(enTitle)}"><a class="skip-link" href="#main">${bi(b('跳至正文', 'Skip to content'))}</a>${renderHeader(prefix)}<main id="main">${body}</main><footer class="footer wrap"><span>© ${new Date().getFullYear()} ${bi(site.name)}</span><a href="${esc(site.repository)}" target="_blank" rel="noopener noreferrer">GitHub</a><a href="#top">${bi(b('返回顶部 ↑', 'Back to top ↑'))}</a></footer></body></html>`;
 }
 
 function renderImage(src, label, prefix, { card = false, eager = false, sizes = '' } = {}) {
