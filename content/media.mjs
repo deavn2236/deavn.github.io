@@ -1,4 +1,4 @@
-// Generated intrinsic dimensions and compact previews.
+// Intrinsic dimensions and optimized local previews.
 export const media = {
   "images": {
     "assets/papers/bmanet-framework.thumb-480.webp": {
@@ -767,25 +767,6 @@ export const media = {
         }
       ]
     },
-    "assets/projects/agva/ppt/summary-image40.webp": {
-      "width": 338,
-      "height": 552
-    },
-    "assets/projects/agva/ppt/summary-image41.thumb-480.webp": {
-      "width": 480,
-      "height": 402
-    },
-    "assets/projects/agva/ppt/summary-image41.webp": {
-      "width": 794,
-      "height": 665,
-      "variants": [
-        {
-          "src": "assets/projects/agva/ppt/summary-image41.thumb-480.webp",
-          "width": 480,
-          "height": 402
-        }
-      ]
-    },
     "assets/projects/agva/ppt/summary-image42.thumb-480.webp": {
       "width": 480,
       "height": 640
@@ -999,10 +980,6 @@ export const media = {
     "assets/projects/aloha/ppt-37.poster.webp": {
       "width": 640,
       "height": 360
-    },
-    "assets/projects/aloha/ppt-47.poster.webp": {
-      "width": 568,
-      "height": 320
     },
     "assets/projects/fruit-sorting/perception.thumb-480.webp": {
       "width": 480,
@@ -1308,45 +1285,6 @@ export const media = {
       "width": 337,
       "height": 600
     },
-    "assets/projects/library-robot/ppt/summary-image49.thumb-480.webp": {
-      "width": 480,
-      "height": 354
-    },
-    "assets/projects/library-robot/ppt/summary-image49.webp": {
-      "width": 615,
-      "height": 453,
-      "variants": [
-        {
-          "src": "assets/projects/library-robot/ppt/summary-image49.thumb-480.webp",
-          "width": 480,
-          "height": 354
-        }
-      ]
-    },
-    "assets/projects/library-robot/ppt/summary-image50.thumb-480.webp": {
-      "width": 480,
-      "height": 640
-    },
-    "assets/projects/library-robot/ppt/summary-image50.thumb-960.webp": {
-      "width": 960,
-      "height": 1280
-    },
-    "assets/projects/library-robot/ppt/summary-image50.webp": {
-      "width": 1200,
-      "height": 1600,
-      "variants": [
-        {
-          "src": "assets/projects/library-robot/ppt/summary-image50.thumb-480.webp",
-          "width": 480,
-          "height": 640
-        },
-        {
-          "src": "assets/projects/library-robot/ppt/summary-image50.thumb-960.webp",
-          "width": 960,
-          "height": 1280
-        }
-      ]
-    },
     "assets/projects/library-robot/ppt/summary-image55.thumb-480.webp": {
       "width": 480,
       "height": 476
@@ -1392,30 +1330,6 @@ export const media = {
           "src": "assets/projects/library-robot/ppt/summary-image66.thumb-960.webp",
           "width": 960,
           "height": 545
-        }
-      ]
-    },
-    "assets/projects/library-robot/ppt/summary-image70.thumb-480.webp": {
-      "width": 480,
-      "height": 148
-    },
-    "assets/projects/library-robot/ppt/summary-image70.thumb-960.webp": {
-      "width": 960,
-      "height": 296
-    },
-    "assets/projects/library-robot/ppt/summary-image70.webp": {
-      "width": 1007,
-      "height": 311,
-      "variants": [
-        {
-          "src": "assets/projects/library-robot/ppt/summary-image70.thumb-480.webp",
-          "width": 480,
-          "height": 148
-        },
-        {
-          "src": "assets/projects/library-robot/ppt/summary-image70.thumb-960.webp",
-          "width": 960,
-          "height": 296
         }
       ]
     },
@@ -2159,7 +2073,7 @@ export const media = {
       "preview": "assets/projects/agva/demo.preview.mp4"
     },
     "assets/projects/agva/demo.preview.mp4": {
-      "duration": 10.0,
+      "duration": 10,
       "width": 152,
       "height": 270,
       "bytes": 81100
@@ -2180,7 +2094,8 @@ export const media = {
       "duration": 23.44,
       "width": 304,
       "height": 540,
-      "bytes": 356088
+      "bytes": 356088,
+      "preview": "assets/projects/agva/workbench.preview.mp4"
     },
     "assets/projects/aloha/demo.mp4": {
       "duration": 29.78,
@@ -2190,7 +2105,7 @@ export const media = {
       "preview": "assets/projects/aloha/demo.preview.mp4"
     },
     "assets/projects/aloha/demo.preview.mp4": {
-      "duration": 10.0,
+      "duration": 10,
       "width": 480,
       "height": 270,
       "bytes": 140829
@@ -2221,13 +2136,13 @@ export const media = {
       "preview": "assets/projects/aloha/ppt-32.preview.mp4"
     },
     "assets/projects/aloha/ppt-32.preview.mp4": {
-      "duration": 10.0,
+      "duration": 10,
       "width": 478,
       "height": 270,
       "bytes": 135664
     },
     "assets/projects/aloha/ppt-33.mp4": {
-      "duration": 22.0,
+      "duration": 22,
       "width": 720,
       "height": 406,
       "bytes": 377959
@@ -2250,12 +2165,6 @@ export const media = {
       "height": 406,
       "bytes": 315621
     },
-    "assets/projects/aloha/ppt-47.mp4": {
-      "duration": 69.22,
-      "width": 568,
-      "height": 320,
-      "bytes": 1226218
-    },
     "assets/projects/fruit-sorting/demo.mp4": {
       "duration": 23.28,
       "width": 720,
@@ -2264,7 +2173,7 @@ export const media = {
       "preview": "assets/projects/fruit-sorting/demo.preview.mp4"
     },
     "assets/projects/fruit-sorting/demo.preview.mp4": {
-      "duration": 10.0,
+      "duration": 10,
       "width": 480,
       "height": 270,
       "bytes": 197417
@@ -2277,7 +2186,7 @@ export const media = {
       "preview": "assets/projects/image-goal/demo.preview.mp4"
     },
     "assets/projects/image-goal/demo.preview.mp4": {
-      "duration": 10.0,
+      "duration": 10,
       "width": 480,
       "height": 270,
       "bytes": 107953
@@ -2319,7 +2228,7 @@ export const media = {
       "bytes": 1005487
     },
     "assets/projects/image-goal/web-fail_predict_flownav.mp4": {
-      "duration": 33.0,
+      "duration": 33,
       "width": 720,
       "height": 406,
       "bytes": 527225
@@ -2332,13 +2241,13 @@ export const media = {
       "preview": "assets/projects/image-goal/web-indoor_1.preview.mp4"
     },
     "assets/projects/image-goal/web-indoor_1.preview.mp4": {
-      "duration": 10.0,
+      "duration": 10,
       "width": 478,
       "height": 270,
       "bytes": 190216
     },
     "assets/projects/image-goal/web-indoor_2.mp4": {
-      "duration": 24.0,
+      "duration": 24,
       "width": 720,
       "height": 406,
       "bytes": 789574
@@ -2374,14 +2283,14 @@ export const media = {
       "bytes": 2059126
     },
     "assets/projects/industrial-grasping/demo.mp4": {
-      "duration": 19.0,
+      "duration": 19,
       "width": 640,
       "height": 368,
       "bytes": 653390,
       "preview": "assets/projects/industrial-grasping/demo.preview.mp4"
     },
     "assets/projects/industrial-grasping/demo.preview.mp4": {
-      "duration": 10.0,
+      "duration": 10,
       "width": 470,
       "height": 270,
       "bytes": 227808
@@ -2424,20 +2333,20 @@ export const media = {
       "preview": "assets/projects/kangaroo/demo.preview.mp4"
     },
     "assets/projects/kangaroo/demo.preview.mp4": {
-      "duration": 10.0,
+      "duration": 10,
       "width": 480,
       "height": 270,
       "bytes": 136027
     },
     "assets/projects/kangaroo/indoor.mp4": {
-      "duration": 90.0,
+      "duration": 90,
       "width": 720,
       "height": 406,
       "bytes": 3816596,
       "preview": "assets/projects/kangaroo/indoor.preview.mp4"
     },
     "assets/projects/kangaroo/indoor.preview.mp4": {
-      "duration": 10.0,
+      "duration": 10,
       "width": 478,
       "height": 270,
       "bytes": 198577
@@ -2462,7 +2371,7 @@ export const media = {
       "preview": "assets/projects/library-robot/demo.preview.mp4"
     },
     "assets/projects/library-robot/demo.preview.mp4": {
-      "duration": 10.0,
+      "duration": 10,
       "width": 152,
       "height": 270,
       "bytes": 59221
@@ -2505,7 +2414,7 @@ export const media = {
       "preview": "assets/projects/lidar-3d/demo.preview.mp4"
     },
     "assets/projects/lidar-3d/demo.preview.mp4": {
-      "duration": 10.0,
+      "duration": 10,
       "width": 480,
       "height": 270,
       "bytes": 135410
@@ -2524,13 +2433,13 @@ export const media = {
       "preview": "assets/projects/lidar-3d/ppt-26.preview.mp4"
     },
     "assets/projects/lidar-3d/ppt-26.preview.mp4": {
-      "duration": 10.0,
+      "duration": 10,
       "width": 480,
       "height": 270,
       "bytes": 124077
     },
     "assets/projects/lidar-3d/ppt-27.mp4": {
-      "duration": 59.0,
+      "duration": 59,
       "width": 720,
       "height": 406,
       "bytes": 1758745
@@ -2543,26 +2452,26 @@ export const media = {
       "preview": "assets/projects/patrol-inspection/demo.preview.mp4"
     },
     "assets/projects/patrol-inspection/demo.preview.mp4": {
-      "duration": 10.0,
+      "duration": 10,
       "width": 152,
       "height": 270,
       "bytes": 88832
     },
     "assets/projects/rtk-navigation/demo.mp4": {
-      "duration": 30.0,
+      "duration": 30,
       "width": 720,
       "height": 404,
       "bytes": 778392,
       "preview": "assets/projects/rtk-navigation/demo.preview.mp4"
     },
     "assets/projects/rtk-navigation/demo.preview.mp4": {
-      "duration": 10.0,
+      "duration": 10,
       "width": 480,
       "height": 270,
       "bytes": 137650
     },
     "assets/projects/rtk-navigation/ppt-22.mp4": {
-      "duration": 57.0,
+      "duration": 57,
       "width": 306,
       "height": 540,
       "bytes": 2454249
@@ -2581,7 +2490,7 @@ export const media = {
       "preview": "assets/projects/shuttlecock-grasping/demo.preview.mp4"
     },
     "assets/projects/shuttlecock-grasping/demo.preview.mp4": {
-      "duration": 10.0,
+      "duration": 10,
       "width": 152,
       "height": 270,
       "bytes": 68038
@@ -2600,7 +2509,7 @@ export const media = {
       "preview": "assets/projects/sports-robot/demo.preview.mp4"
     },
     "assets/projects/sports-robot/demo.preview.mp4": {
-      "duration": 10.0,
+      "duration": 10,
       "width": 478,
       "height": 270,
       "bytes": 149172
@@ -2640,8 +2549,13 @@ export const media = {
     "assets/projects/chess-grasping/demo.preview.mp4": {
       "width": 480,
       "height": 360,
-      "duration": 10.0,
+      "duration": 10,
       "bytes": 113215
+    },
+    "assets/projects/agva/workbench.preview.mp4": {
+      "width": 270,
+      "height": 480,
+      "duration": 10
     }
   }
 };

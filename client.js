@@ -53,9 +53,14 @@
     video.muted = true;
     video.defaultMuted = true;
     video.volume = 0;
+    video.playsInline = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    video.setAttribute('muted', '');
     setSpeed(video);
     const source = video.querySelector('source[data-src]');
     if (source) {
+      video.preload = 'metadata';
       source.src = source.dataset.src;
       source.removeAttribute('data-src');
       video.load();
@@ -67,18 +72,36 @@
     button.classList.toggle('is-paused', video.paused);
     button.setAttribute('aria-label', videoControlLabel(video));
   };
+  const pendingPlay = new WeakSet();
+  const tryAutoplay = (video) => {
+    if (document.hidden || video.dataset.userPaused || !visibleVideos.has(video) || pendingPlay.has(video)) return;
+    loadVideo(video);
+    if (!video.paused) return;
+    pendingPlay.add(video);
+    const request = video.play();
+    if (!request?.then) { pendingPlay.delete(video); return; }
+    request.then(() => { delete video.dataset.autoplayBlocked; }).catch(() => {
+      video.dataset.autoplayBlocked = 'true';
+    }).finally(() => { pendingPlay.delete(video); setControl(video); });
+  };
   videos.forEach(video => {
     // Source assignment stays lazy; every visible video starts muted at 1.5×.
     video.autoplay = true;
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
     setSpeed(video);
     video.addEventListener('loadedmetadata', () => setSpeed(video));
+    // Safari/Android can defer playback until the lazy source becomes playable.
+    video.addEventListener('loadeddata', () => tryAutoplay(video));
+    video.addEventListener('canplay', () => tryAutoplay(video));
     const button = video.parentElement.querySelector('[data-video-toggle]');
     button?.addEventListener('click', (event) => {
       event.preventDefault();
       event.stopPropagation();
       if (video.paused) {
         loadVideo(video);
-        video.dataset.userPaused = '';
+        delete video.dataset.userPaused;
         video.play().catch(() => setControl(video));
       } else {
         video.dataset.userPaused = 'true';
@@ -96,17 +119,16 @@
     }
   }), { rootMargin: '200px 0px', threshold: 0 });
   const observer = new IntersectionObserver(entries => entries.forEach(({ target: video, isIntersecting, intersectionRatio }) => {
-    if (isIntersecting && intersectionRatio >= 0.1) {
+    if (isIntersecting && intersectionRatio >= 0.01) {
       visibleVideos.add(video);
       if (!video.dataset.userPaused && !document.hidden) {
-        loadVideo(video);
-        video.play().catch(() => {});
+        tryAutoplay(video);
       }
     } else {
       visibleVideos.delete(video);
       video.pause();
     }
-  }), { rootMargin: '0px', threshold: [0, 0.1] });
+  }), { rootMargin: '0px', threshold: [0, 0.01] });
   videos.forEach(video => {
     posterObserver.observe(video);
     observer.observe(video);
@@ -114,8 +136,16 @@
   document.addEventListener('visibilitychange', () => videos.forEach(video => {
     if (document.hidden) video.pause();
     else if (!video.dataset.userPaused && visibleVideos.has(video)) {
-      loadVideo(video);
-      video.play().catch(() => {});
+      tryAutoplay(video);
     }
   }));
+  window.addEventListener('pageshow', () => visibleVideos.forEach(tryAutoplay));
+  window.addEventListener('focus', () => visibleVideos.forEach(tryAutoplay));
+  // A browser's power/data-saving policy may require a gesture. Resume only
+  // blocked visible videos, preserving an intentional pause by the visitor.
+  const resumeBlocked = () => visibleVideos.forEach(video => {
+    if (video.dataset.autoplayBlocked) tryAutoplay(video);
+  });
+  document.addEventListener('touchend', resumeBlocked, { passive: true });
+  document.addEventListener('pointerdown', resumeBlocked, { passive: true });
 })();

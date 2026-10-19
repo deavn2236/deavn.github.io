@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { site } from '../content/site.mjs';
 import { media as mediaAssets } from '../content/media.mjs';
+import { figureInfo, figureRows, figureWidth } from './figure-layout.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 // This repository publishes its root. Rebuild generated pages in place; preserve Git and assets.
@@ -54,7 +55,7 @@ function renderMedia(media = {}, prefix, className = '', eager = false, card = f
   const label = media.alt || b('项目演示视频', 'Project demonstration video');
   const video = card ? mediaAssets.videos[media.video]?.preview || media.video : media.video;
   const info = mediaAssets.videos[video] || mediaAssets.videos[media.video] || {};
-  if (video) return `<div class="media ${className}${info.height > info.width ? ' is-portrait' : ''}"${info.width ? ` style="--media-ratio:${info.width}/${info.height}"` : ''}><video class="autoplay-video" ${info.width ? `width="${info.width}" height="${info.height}"` : ''} ${media.poster ? `data-poster="${esc(prefix + media.poster)}"` : ''} data-playback-rate="1.5" muted autoplay loop playsinline preload="none" aria-label="${esc(tr(label))}" data-label-zh="${esc(tr(label))}" data-label-en="${esc(tr(label, 'en'))}"><source data-src="${esc(prefix + video)}" type="video/mp4"></video><span class="video-speed" aria-hidden="true">1.5×</span><button class="video-control is-paused" type="button" data-video-toggle aria-label="播放视频"><span class="pause-icon" aria-hidden="true">Ⅱ</span><span class="play-icon" aria-hidden="true">▶</span></button></div>`;
+  if (video) return `<div class="media ${className}${info.height > info.width ? ' is-portrait' : ''}"${info.width ? ` style="--media-ratio:${info.width}/${info.height}"` : ''}><video class="autoplay-video" ${info.width ? `width="${info.width}" height="${info.height}"` : ''} ${media.poster ? `data-poster="${esc(prefix + media.poster)}"` : ''} data-playback-rate="1.5" muted autoplay loop playsinline webkit-playsinline preload="none" aria-label="${esc(tr(label))}" data-label-zh="${esc(tr(label))}" data-label-en="${esc(tr(label, 'en'))}"><source data-src="${esc(prefix + video)}" type="video/mp4"></video><span class="video-speed" aria-hidden="true">1.5×</span><button class="video-control is-paused" type="button" data-video-toggle aria-label="播放视频"><span class="pause-icon" aria-hidden="true">Ⅱ</span><span class="play-icon" aria-hidden="true">▶</span></button></div>`;
   const src = media.image || media.poster;
   return src ? `<div class="media ${className}">${renderImage(src, media.alt || '', prefix, { card, eager, sizes: '(max-width:560px) calc(100vw - 40px), (max-width:760px) calc((100vw - 58px) / 2), (min-width:1400px) 527px, 507px' })}</div>` : '';
 }
@@ -97,7 +98,7 @@ function renderHome() {
     <section class="home-section" id="publications">${sectionHeading('publication', b('论文成果', 'Publications'))}<div class="paper-list">${site.papers.map(p => paperCard(p)).join('')}</div></section>
     <section class="home-section" id="work"><div class="section-title-row">${sectionHeading('robot', b('机器人项目', 'Robotics Projects'))}<div class="project-filters" role="group" aria-label="Filter projects">${filters}</div></div>${projectGroups}</section>
     <section class="home-section" id="student-work">${sectionHeading('users', b('学生工作', 'Student Leadership & Service'))}<div class="student-work-list">${studentWork}</div></section>
-    <section class="home-section" id="honors">${sectionHeading('award', b('荣誉奖励', 'Selected Honors'))}<ul class="honor-list">${site.honors.map(item => `<li>${bi(item)}</li>`).join('')}</ul></section>
+    <section class="home-section" id="honors">${sectionHeading('award', b('荣誉奖励', 'Selected Honors'))}<div class="honor-groups">${site.honorGroups.map(group => `<div class="honor-group"><h3>${bi(group.title)}</h3><ul class="honor-list">${group.items.map(item => `<li>${bi(item)}</li>`).join('')}</ul></div>`).join('')}</div></section>
     <section class="home-section contact-section" id="contact">${sectionHeading('mail', b('联系', 'Contact'))}<p>${bi(b('欢迎就具身导航与操作、多模态理解、计算机视觉进行交流。', 'I welcome conversations about embodied navigation and manipulation, multimodal understanding, and computer vision.'))}</p><p class="contact-details"><a href="tel:${esc(site.phone)}">${bi(b('电话：', 'Phone: '))}${esc(site.phone)}</a><a href="mailto:${esc(site.email)}">${bi(b('邮箱：', 'Email: '))}${esc(site.email)}</a></p></section>
   </div>`;
 }
@@ -107,14 +108,25 @@ function breadcrumb(prefix, type, title) {
 }
 
 function renderRankings(item) {
-  return (item.rankings || []).map(rank => `<a class="venue-rank" href="${esc(rank.url)}" target="_blank" rel="noopener noreferrer" title="${esc(tr(rank.note || rank.label))}" data-title-zh="${esc(tr(rank.note || rank.label))}" data-title-en="${esc(tr(rank.note || rank.label, 'en'))}">${bi(rank.label)}</a>`).join('');
+  return (item.rankings || []).map(rank => `<span class="venue-rank">${bi(rank.label)}</span>`).join('');
 }
 
-function renderFigure(figure, prefix) {
+function renderFigure(figure, prefix, paired = false) {
   const label = figure.caption || figure.alt || b('系统演示', 'System demonstration');
-  const width = Number.isInteger(figure.displayWidth) && figure.displayWidth >= 200 && figure.displayWidth <= 1600 ? figure.displayWidth : null;
-  const sizes = width ? `(max-width:760px) calc(100vw - 40px), ${width}px` : figure.role === 'sensor' ? '(max-width:560px) 180px, 220px' : figure.role === 'main' ? '(max-width:560px) calc(100vw - 40px), 560px' : '(max-width:760px) calc(100vw - 40px), 960px';
-  return `<figure class="section-figure${figure.role ? ` figure-${esc(figure.role)}` : ''}${width ? ' figure-bounded' : ''}${figure.kind === 'table' ? ' figure-table' : ''}"${width ? ` style="--figure-width:${width}px"` : ''}>${figure.video ? renderMedia({ video: figure.video, poster: figure.poster, alt: label }, prefix, 'section-video') : `<a class="figure-expand" href="${esc(prefix + (figure.src || figure.image))}" target="_blank" rel="noopener noreferrer" aria-label="查看大图" data-aria-zh="查看大图" data-aria-en="Open full-size image">${renderImage(figure.src || figure.image, label, prefix, { card: true, sizes })}</a>`}<figcaption>${bi(label)}</figcaption></figure>`;
+  const width = paired ? null : figureWidth(figure);
+  const sizes = paired ? '(max-width:760px) calc(100vw - 40px), (min-width:1400px) 528px, 508px' : `(max-width:760px) calc(100vw - 40px), ${width}px`;
+  const kind = figure.video ? b('视频','Video') : figure.kind === 'table' ? b('实验表格','Results table') : b('图示','Figure');
+  return `<figure class="section-figure${width ? ' figure-bounded' : ''}${figure.kind === 'table' ? ' figure-table' : ''}"${width ? ` style="--figure-width:${width}px"` : ''}>${figure.video ? renderMedia({ video: figure.video, poster: figure.poster, alt: label }, prefix, 'section-video') : `<a class="figure-expand" href="${esc(prefix + (figure.src || figure.image))}" target="_blank" rel="noopener noreferrer" aria-label="查看大图" data-aria-zh="查看大图" data-aria-en="Open full-size image">${renderImage(figure.src || figure.image, label, prefix, { card: true, sizes })}</a>`}<figcaption><span class="figure-caption-kind">${bi(kind)}</span><span class="figure-caption-text">${bi(label)}</span></figcaption></figure>`;
+}
+
+function renderFigures(section, prefix) {
+  if (!section.figures?.length) return '';
+  return `<div class="section-figures">${figureRows(section).map(row => {
+    const paired = row.length === 2;
+    const ratios = row.map(f => figureInfo(f).ratio);
+    const portraitPair = paired && ratios.every(r => r < .75);
+    return `<div class="media-row ${paired ? 'is-pair' : 'is-single'}${portraitPair ? ' is-portrait-pair' : ''}"${paired ? ` style="--row-ratio:${Math.max(...ratios)}"` : ''}>${row.map(f => renderFigure(f,prefix,paired)).join('')}</div>`;
+  }).join('')}</div>`;
 }
 
 function renderTable(table) {
@@ -123,7 +135,7 @@ function renderTable(table) {
 
 function renderSection(section, prefix, index) {
   const icon = ({ task: 'info', equipment: 'robot', system: 'layers', method: 'layers', demo: 'robot', experiments: 'chart', results: 'chart', contributions: 'publication' })[section.id] || 'publication';
-  return `<section class="detail-section" id="${esc(section.id || `section-${index}`)}">${sectionHeading(icon, section.title || section.heading)}${(section.paragraphs || []).map(p => `<p>${bi(p)}</p>`).join('')}${section.points?.length ? `<ul>${section.points.map(p => `<li>${bi(p)}</li>`).join('')}</ul>` : ''}${section.flow?.length ? `<ol class="system-flow">${section.flow.map(step => `<li>${bi(step)}</li>`).join('')}</ol>` : ''}${section.metrics?.length ? `<div class="paper-results-grid">${section.metrics.map(r => `<div class="paper-result"><strong>${esc(r.value)}</strong><span>${bi(r.label)}</span></div>`).join('')}</div>` : ''}${section.table ? renderTable(section.table) : ''}${(section.tables || []).map(renderTable).join('')}${section.figures?.length ? `<div class="section-figures ${section.id === 'equipment' ? 'equipment-layout' : section.layout === 'full' || section.figures.length === 1 || section.id === 'method' ? 'single' : ''}">${section.figures.map(f => renderFigure(f,prefix)).join('')}</div>` : ''}${section.source ? `<p class="media-source"><a href="${esc(section.source.url)}" target="_blank" rel="noopener noreferrer">${bi(section.source.label)}</a></p>` : ''}</section>`;
+  return `<section class="detail-section" id="${esc(section.id || `section-${index}`)}">${sectionHeading(icon, section.title || section.heading)}${(section.paragraphs || []).map(p => `<p>${bi(p)}</p>`).join('')}${section.points?.length ? `<ul>${section.points.map(p => `<li>${bi(p)}</li>`).join('')}</ul>` : ''}${section.flow?.length ? `<ol class="system-flow">${section.flow.map(step => `<li>${bi(step)}</li>`).join('')}</ol>` : ''}${section.metrics?.length ? `<div class="paper-results-grid">${section.metrics.map(r => `<div class="paper-result"><strong>${esc(r.value)}</strong><span>${bi(r.label)}</span></div>`).join('')}</div>` : ''}${section.table ? renderTable(section.table) : ''}${(section.tables || []).map(renderTable).join('')}${renderFigures(section,prefix)}${section.source ? `<p class="media-source"><a href="${esc(section.source.url)}" target="_blank" rel="noopener noreferrer">${bi(section.source.label)}</a></p>` : ''}</section>`;
 }
 
 function renderContents(sections) {

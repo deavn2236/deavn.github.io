@@ -1,4 +1,4 @@
-// Profile information and selected honors from the supplied materials.
+// Profile and selected honors from the supplied CV and award records.
 import { projects } from './projects.mjs';
 import { papers } from './papers.mjs';
 export const site = {
@@ -235,28 +235,6 @@ export const site = {
       ]
     }
   ],
-  "honors": [
-    {
-      "zh": "博士研究生一等学业奖学金（2022、2024）",
-      "en": "First-class Doctoral Academic Scholarship (2022, 2024)"
-    },
-    {
-      "zh": "山东大学优秀研究生（2021、2023、2024）",
-      "en": "Shandong University Outstanding Graduate Student (2021, 2023, 2024)"
-    },
-    {
-      "zh": "山东大学研究生优秀干部（2023、2024）",
-      "en": "Shandong University Outstanding Graduate Student Leader (2023, 2024)"
-    },
-    {
-      "zh": "学院优秀党务工作者（2023）、优秀学生党务工作骨干（2024）",
-      "en": "School awards for outstanding Party affairs work (2023) and student leadership in Party affairs (2024)"
-    },
-    {
-      "zh": "研究生党支部书记培训优秀学员（2023、2024）",
-      "en": "Outstanding Trainee, Graduate Student Party Branch Secretary Training (2023, 2024)"
-    }
-  ],
   "educationDescription": {
     "zh": "目前为山东大学计算机科学与技术专业博士研究生，2020 年 9 月起在校开展研究生阶段学习；2016 年 9 月至 2020 年 6 月，就读于山东大学计算机科学与技术专业（计算机菁英班）。",
     "en": "I am a doctoral student in Computer Science and Technology at Shandong University, where I began graduate studies in September 2020. From September 2016 to June 2020, I studied Computer Science and Technology in the university’s Elite Class."
@@ -276,8 +254,71 @@ export const site = {
         "en": "Playing badminton"
       }
     }
-  ]
-,
+  ],
+  "honorGroups": [
+    {
+      "id": "graduate",
+      "title": {
+        "zh": "研究生阶段",
+        "en": "Graduate studies"
+      },
+      "items": [
+        {
+          "zh": "博士研究生一等学业奖学金（2022、2024）",
+          "en": "First-class Doctoral Academic Scholarship (2022, 2024)"
+        },
+        {
+          "zh": "山东大学优秀研究生（2021、2023、2024）",
+          "en": "Shandong University Outstanding Graduate Student (2021, 2023, 2024)"
+        },
+        {
+          "zh": "山东大学研究生优秀干部（2023、2024）",
+          "en": "Shandong University Outstanding Graduate Student Leader (2023, 2024)"
+        },
+        {
+          "zh": "学院优秀党务工作者（2023）、优秀学生党务工作骨干（2024）",
+          "en": "School awards for outstanding Party affairs work (2023) and student leadership in Party affairs (2024)"
+        },
+        {
+          "zh": "研究生党支部书记培训优秀学员（2023、2024）",
+          "en": "Outstanding Trainee, Graduate Student Party Branch Secretary Training (2023, 2024)"
+        }
+      ]
+    },
+    {
+      "id": "undergraduate",
+      "title": {
+        "zh": "本科阶段",
+        "en": "Undergraduate studies"
+      },
+      "items": [
+        {
+          "zh": "“深圳杯”数学建模挑战赛优秀论文三等奖（2018）",
+          "en": "Third Prize for Outstanding Paper, Shenzhen Cup Mathematical Modeling Challenge (2018)"
+        },
+        {
+          "zh": "全国大学生数学建模竞赛山东赛区二等奖（2018）",
+          "en": "Second Prize, Shandong Division, China Undergraduate Mathematical Contest in Modeling (2018)"
+        },
+        {
+          "zh": "山东省大学生软件设计大赛二等奖（2017、2018）、三等奖（2018）",
+          "en": "Second Prizes (2017, 2018) and Third Prize (2018), Shandong Provincial Collegiate Software Design Competition"
+        },
+        {
+          "zh": "山东省大学生创业计划大赛二等奖（2018）",
+          "en": "Second Prize, Shandong Provincial Collegiate Business Plan Competition (2018)"
+        },
+        {
+          "zh": "山东大学优秀学生三等奖学金（2017）",
+          "en": "Third-class Outstanding Student Scholarship, Shandong University (2017)"
+        },
+        {
+          "zh": "山东大学学生志愿服务工作先进个人（2017年度）、驻青高校无偿献血志愿服务先进个人（2017—2018年度）",
+          "en": "Outstanding Student Volunteer, Shandong University (2017); Outstanding Blood-donation Volunteer among Qingdao Universities (2017–2018)"
+        }
+      ]
+    }
+  ],
   projects,
   papers
 };

@@ -33,6 +33,7 @@ for (const item of [...site.projects, ...site.papers]) {
   if (!item.title?.zh || !item.title?.en) errors.push(`Missing bilingual title: ${item.id}`);
 }
 for (const p of site.projects) {
+  const sectionAssets = new Set();
   if (!['primary', 'collaboration'].includes(p.group)) errors.push(`${p.id}: missing project involvement group`);
   if (!p.media?.video && !p.media?.image) errors.push(`${p.id}: no main image or video`);
   if (!p.summary?.zh || !p.summary?.en) errors.push(`${p.id}: missing bilingual summary`);
@@ -43,6 +44,9 @@ for (const p of site.projects) {
   for (const section of p.sections || []) {
     if (section.id === 'equipment' && (section.figures || []).filter(f => f.role === 'main').length > 1) errors.push(`${p.id}: keep one main hardware figure`);
     for (const figure of section.figures || []) {
+      const asset = figure.video || figure.src || figure.image;
+      if (sectionAssets.has(asset)) errors.push(`${p.id}: duplicate section media ${asset}`);
+      sectionAssets.add(asset);
       checkAsset(figure.src || figure.image, p.id); checkAsset(figure.video, p.id); checkAsset(figure.poster, p.id);
     }
   }
@@ -53,6 +57,7 @@ for (const id of ['wheel-legged', 'industrial-grasping', 'fruit-sorting']) {
   if (site.projects.find(p => p.id === id)?.group !== 'collaboration') errors.push(`${id}: should be a collaborative project`);
 }
 for (const p of site.papers) {
+  if ((p.rankings || []).some(rank => rank.url)) errors.push(`${p.id}: rankings must be plain text`);
   checkAsset(p.image, p.id); checkAsset(p.pdf, p.id);
   if (p.id !== 'uwb-following' && p.pdf) errors.push(`${p.id}: only the UWB paper may expose its full PDF`);
   if (p.sections?.map(s => s.id).join(',') !== 'task,contributions,method,results') errors.push(`${p.id}: expected four paper sections`);
@@ -61,6 +66,7 @@ for (const p of site.papers) {
   }
   if (p.status || p.statusType || p.pdfNote) errors.push(`${p.id}: status display fields should be omitted`);
 }
+if (site.honorGroups?.map(group => group.id).join(',') !== 'graduate,undergraduate') errors.push('Keep graduate and undergraduate honors in separate groups');
 for (const file of fs.readdirSync(path.join(root, 'assets', 'papers', 'pdf'))) {
   if (file.toLowerCase().endsWith('.pdf') && file !== 'uwb-following.pdf') errors.push(`Unexpected public paper PDF: ${file}`);
 }

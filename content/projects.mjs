@@ -1,4 +1,4 @@
-// Public bilingual project content.
+// Project content and original media from the supplied materials.
 export const projects = [
   {
     "id": "kangaroo",
@@ -136,7 +136,8 @@ export const projects = [
             },
             "displayWidth": 620
           }
-        ]
+        ],
+        "layout": "full"
       },
       {
         "id": "demo",
@@ -327,13 +328,6 @@ export const projects = [
               "zh": "多层智慧图书馆应用场景动画",
               "en": "Multi-floor smart-library application animation"
             }
-          },
-          {
-            "src": "assets/projects/library-robot/ppt/summary-image49.webp",
-            "caption": {
-              "zh": "多层图书馆中的跨楼层任务场景",
-              "en": "Cross-floor task setting in a multi-level library"
-            }
           }
         ]
       },
@@ -404,20 +398,6 @@ export const projects = [
               "zh": "图书管理机器人的导航与取放系统框架",
               "en": "Navigation and book-handling architecture shown in the slides"
             }
-          },
-          {
-            "src": "assets/projects/library-robot/ppt/summary-image70.webp",
-            "caption": {
-              "zh": "图书馆室内导航栅格地图",
-              "en": "Indoor occupancy map for library navigation"
-            }
-          },
-          {
-            "src": "assets/projects/library-robot/ppt/summary-image71.webp",
-            "caption": {
-              "zh": "室内三维点云地图与导航轨迹",
-              "en": "Indoor point-cloud map and navigation trajectory"
-            }
           }
         ],
         "flow": [
@@ -458,19 +438,13 @@ export const projects = [
         "points": [],
         "figures": [
           {
-            "src": "assets/projects/library-robot/ppt/summary-image50.webp",
-            "caption": {
-              "zh": "四足移动操作机器人样机",
-              "en": "Quadruped mobile manipulator prototype"
-            }
-          },
-          {
             "video": "assets/projects/library-robot/demo.mp4",
             "poster": "assets/projects/library-robot/poster.webp",
             "caption": {
               "zh": "四足移动操作机器人取放测试（一）",
               "en": "Quadruped mobile manipulation test I"
-            }
+            },
+            "row": "library-pick-place"
           },
           {
             "video": "assets/projects/library-robot/ppt-14.mp4",
@@ -478,15 +452,8 @@ export const projects = [
             "caption": {
               "zh": "四足机器人楼梯场景与移动测试",
               "en": "Quadruped stair-setting and mobility test"
-            }
-          },
-          {
-            "video": "assets/projects/library-robot/ppt-15.mp4",
-            "poster": "assets/projects/library-robot/ppt-15.poster.webp",
-            "caption": {
-              "zh": "四足平台机械臂抓取与搬移",
-              "en": "Arm grasping and transfer on the quadruped"
-            }
+            },
+            "row": "library-pick-place"
           },
           {
             "video": "assets/projects/library-robot/ppt-16.mp4",
@@ -494,7 +461,8 @@ export const projects = [
             "caption": {
               "zh": "楼梯场景中的四足平台控制",
               "en": "Quadruped control in a stair setting"
-            }
+            },
+            "row": "library-stair-trial"
           },
           {
             "video": "assets/projects/library-robot/ppt-18.mp4",
@@ -502,7 +470,17 @@ export const projects = [
             "caption": {
               "zh": "四足移动操作机器人取放测试（二）",
               "en": "Quadruped mobile manipulation test II"
-            }
+            },
+            "row": "library-stair-trial"
+          },
+          {
+            "video": "assets/projects/library-robot/ppt-15.mp4",
+            "poster": "assets/projects/library-robot/ppt-15.poster.webp",
+            "caption": {
+              "zh": "四足平台机械臂抓取与搬移",
+              "en": "Arm grasping and transfer on the quadruped"
+            },
+            "row": "library-arm"
           }
         ]
       },
@@ -526,7 +504,6 @@ export const projects = [
         "figures": [
           {
             "src": "assets/projects/library-robot/book-recognition.webp",
-            "displayWidth": 620,
             "caption": {
               "zh": "图书识别：书脊检测与目标书籍定位。",
               "en": "Book recognition: spine detection and target-book localization."
@@ -544,6 +521,13 @@ export const projects = [
             "caption": {
               "zh": "机械臂三维抓取与环境感知可视化",
               "en": "3D grasp and environment visualization"
+            }
+          },
+          {
+            "src": "assets/projects/library-robot/ppt/summary-image71.webp",
+            "caption": {
+              "zh": "室内三维点云地图与导航轨迹",
+              "en": "Indoor point-cloud map and navigation trajectory"
             }
           }
         ],
@@ -614,7 +598,17 @@ export const projects = [
           }
         ],
         "points": [],
-        "figures": []
+        "figures": [
+          {
+            "video": "assets/projects/image-goal/web-all1.mp4",
+            "poster": "assets/projects/image-goal/web-all1.poster.webp",
+            "caption": {
+              "zh": "跨场景导航总览",
+              "en": "Cross-scene navigation overview"
+            },
+            "layout": "full"
+          }
+        ]
       },
       {
         "id": "task",
@@ -671,8 +665,8 @@ export const projects = [
             "en": "The system separates visual waypoint prediction, scene-constraint recovery, and motion optimization. P3Net models temporal and spatial relations among past, current, and goal images to predict local waypoints. SCMPC incorporates scene constraints into predictive control to produce executable base commands."
           },
           {
-            "zh": "视觉模块负责判断朝哪里前进，控制模块结合可通行区域和底盘运动约束修正局部轨迹。两者在机器人行进中持续闭环更新，使图像目标理解与障碍环境中的运动执行相互衔接；方法和对比视频展示各模块对实际行为的影响。",
-            "en": "Visual prediction provides local goal direction, while control adapts the trajectory to traversable space and base-motion constraints. Repeated closed-loop updates connect goal understanding with physical execution; method and comparison videos show how these components affect robot behavior."
+            "zh": "视觉模块负责判断朝哪里前进，控制模块结合可通行区域和底盘运动约束修正局部轨迹。两者在机器人行进中持续闭环更新，使图像目标理解与障碍环境中的运动执行相互衔接。",
+            "en": "Visual prediction provides local goal direction, while control adapts the trajectory to traversable space and base-motion constraints. Repeated closed-loop updates connect goal understanding with physical execution."
           }
         ],
         "points": [],
@@ -699,7 +693,8 @@ export const projects = [
               "en": "Method video: ternary spatiotemporal waypoint prediction and scene-constrained control"
             }
           }
-        ]
+        ],
+        "layout": "full"
       },
       {
         "id": "demo",
@@ -715,14 +710,6 @@ export const projects = [
         ],
         "points": [],
         "figures": [
-          {
-            "video": "assets/projects/image-goal/web-all1.mp4",
-            "poster": "assets/projects/image-goal/web-all1.poster.webp",
-            "caption": {
-              "zh": "跨场景导航总览",
-              "en": "Cross-scene navigation overview"
-            }
-          },
           {
             "video": "assets/projects/image-goal/web-indoor_1.mp4",
             "poster": "assets/projects/image-goal/web-indoor_1.poster.webp",
@@ -827,6 +814,15 @@ export const projects = [
         "points": [],
         "figures": [
           {
+            "src": "assets/papers/sctnav-results-original-table.webp",
+            "caption": {
+              "zh": "论文原表 Table II：SCTNav 的仿真、真实部署和模型规模比较。",
+              "en": "Original Table II: simulation, real-world navigation, and model size."
+            },
+            "kind": "table",
+            "displayWidth": 740
+          },
+          {
             "src": "assets/projects/image-goal/web-pipline.webp",
             "caption": {
               "zh": "训练数据来源、仿真与实机环境，以及关闭深度通道的单目机器人平台",
@@ -834,49 +830,10 @@ export const projects = [
             }
           },
           {
-            "src": "assets/papers/sctnav-realworld.webp",
-            "caption": {
-              "zh": "受限房间、长走廊和开放校园的真实机器人导航。",
-              "en": "Real robot navigation in confined rooms, long corridors, and an open campus."
-            }
-          },
-          {
             "src": "assets/papers/sctnav-results-scenes.webp",
             "caption": {
               "zh": "三个真实环境的成功率比较，每个环境 40 次测试。",
               "en": "Real-world success comparison, with 40 runs in each environment."
-            }
-          },
-          {
-            "video": "assets/projects/image-goal/demo.mp4",
-            "poster": "assets/projects/image-goal/poster.webp",
-            "caption": {
-              "zh": "EffoNav：室外预测失效对比",
-              "en": "EffoNav: outdoor prediction failure"
-            }
-          },
-          {
-            "video": "assets/projects/image-goal/web-fail_predict_flownav.mp4",
-            "poster": "assets/projects/image-goal/web-fail_predict_flownav.poster.webp",
-            "caption": {
-              "zh": "FlowNav：轨迹漂移对比",
-              "en": "FlowNav: trajectory drift"
-            }
-          },
-          {
-            "video": "assets/projects/image-goal/web-fail_collision_vint.mp4",
-            "poster": "assets/projects/image-goal/web-fail_collision_vint.poster.webp",
-            "caption": {
-              "zh": "ViNT：障碍物安全性对比",
-              "en": "ViNT: obstacle safety failure"
-            }
-          },
-          {
-            "video": "assets/projects/image-goal/ppt-03.mp4",
-            "poster": "assets/projects/image-goal/ppt-03.poster.webp",
-            "caption": {
-              "zh": "GNM：室内碰撞对比",
-              "en": "GNM: indoor collision"
             }
           }
         ],
@@ -939,7 +896,8 @@ export const projects = [
               "—"
             ]
           ]
-        }
+        },
+        "layout": "full"
       }
     ],
     "categoryKey": "navigation",
@@ -1029,15 +987,7 @@ export const projects = [
           }
         ],
         "points": [],
-        "figures": [
-          {
-            "src": "assets/projects/patrol-inspection/ppt/summary-image115.webp",
-            "caption": {
-              "zh": "按钮识别、接触反馈与操作复位流程",
-              "en": "Button detection, contact feedback, and return workflow"
-            }
-          }
-        ]
+        "figures": []
       },
       {
         "id": "equipment",
@@ -1080,7 +1030,15 @@ export const projects = [
           }
         ],
         "points": [],
-        "figures": []
+        "figures": [
+          {
+            "src": "assets/projects/patrol-inspection/ppt/summary-image115.webp",
+            "caption": {
+              "zh": "按钮识别、接触反馈与操作复位流程",
+              "en": "Button detection, contact feedback, and return workflow"
+            }
+          }
+        ]
       },
       {
         "id": "demo",
@@ -1300,7 +1258,8 @@ export const projects = [
             "caption": {
               "zh": "双臂递木块仿真示例",
               "en": "Simulated dual-arm block handover"
-            }
+            },
+            "layout": "full"
           },
           {
             "video": "assets/projects/aloha/ppt-30.mp4",
@@ -1539,18 +1498,12 @@ export const projects = [
         "points": [],
         "figures": [
           {
-            "src": "assets/projects/shuttlecock-grasping/ppt/summary-image26.webp",
-            "caption": {
-              "zh": "视觉捡球的关键部位检测结果",
-              "en": "Key-region detection for the collection system"
-            }
-          },
-          {
             "src": "assets/projects/shuttlecock-grasping/ppt/summary-image118.webp",
             "caption": {
               "zh": "视觉捡球的识别与抓取流程",
               "en": "Perception and grasp-control pipeline for collection"
-            }
+            },
+            "displayWidth": 700
           }
         ]
       },
@@ -1591,7 +1544,15 @@ export const projects = [
           }
         ],
         "points": [],
-        "figures": []
+        "figures": [
+          {
+            "src": "assets/projects/shuttlecock-grasping/ppt/summary-image26.webp",
+            "caption": {
+              "zh": "视觉捡球的关键部位检测结果",
+              "en": "Key-region detection for the collection system"
+            }
+          }
+        ]
       }
     ],
     "categoryKey": "manipulation",
@@ -1736,13 +1697,6 @@ export const projects = [
               "zh": " LIO-SAM 模块框架",
               "en": "LIO-SAM modules shown in the slides"
             }
-          },
-          {
-            "src": "assets/projects/lidar-3d/ppt/summary-image89.webp",
-            "caption": {
-              "zh": "实测点云地图",
-              "en": "Recorded point-cloud map"
-            }
           }
         ]
       },
@@ -1790,6 +1744,13 @@ export const projects = [
             "caption": {
               "zh": "三维激光导航：人员穿行场景",
               "en": "3D LiDAR navigation: a person crossing the scene"
+            }
+          },
+          {
+            "src": "assets/projects/lidar-3d/ppt/summary-image89.webp",
+            "caption": {
+              "zh": "实测点云地图",
+              "en": "Recorded point-cloud map"
             }
           }
         ]
@@ -1985,15 +1946,8 @@ export const projects = [
             "caption": {
               "zh": "校园道路循迹：车载跟拍视角",
               "en": "Campus route following: close tracking view"
-            }
-          },
-          {
-            "video": "assets/projects/rtk-navigation/demo.mp4",
-            "poster": "assets/projects/rtk-navigation/poster.webp",
-            "caption": {
-              "zh": "校园道路循迹：路侧视角",
-              "en": "Campus route following: roadside view"
-            }
+            },
+            "row": "rtk-onboard"
           },
           {
             "video": "assets/projects/rtk-navigation/ppt-24.mp4",
@@ -2001,6 +1955,15 @@ export const projects = [
             "caption": {
               "zh": "校园道路与坡道循迹",
               "en": "Campus road and ramp tracking"
+            },
+            "row": "rtk-onboard"
+          },
+          {
+            "video": "assets/projects/rtk-navigation/demo.mp4",
+            "poster": "assets/projects/rtk-navigation/poster.webp",
+            "caption": {
+              "zh": "校园道路循迹：路侧视角",
+              "en": "Campus route following: roadside view"
             }
           }
         ]
@@ -2111,10 +2074,10 @@ export const projects = [
         "points": [],
         "figures": [
           {
-            "src": "assets/projects/agva/ppt/summary-image40.webp",
+            "src": "assets/projects/agva/ppt/summary-image29.webp",
             "caption": {
-              "zh": "用于融合导航的机器人平台",
-              "en": "Platform used for fusion navigation"
+              "zh": "移动操作平台结构",
+              "en": "Mobile manipulation platform design"
             },
             "role": "main"
           }
@@ -2137,41 +2100,27 @@ export const projects = [
           }
         ],
         "points": [],
-        "figures": [
+        "figures": [],
+        "flow": [
           {
-            "src": "assets/projects/agva/ppt/summary-image29.webp",
-            "caption": {
-              "zh": "移动操作平台结构",
-              "en": "Mobile manipulation platform design"
-            }
+            "zh": "激光与相机观测",
+            "en": "Laser and camera observations"
           },
           {
-            "src": "assets/projects/agva/ppt/summary-image30.webp",
-            "caption": {
-              "zh": "激光与视觉融合的室内地图",
-              "en": "Indoor map from laser–vision fusion"
-            }
+            "zh": "点云滤波与投影",
+            "en": "Point-cloud filtering and projection"
           },
           {
-            "src": "assets/projects/agva/ppt/summary-image41.webp",
-            "caption": {
-              "zh": "二维地图中的路径规划示意",
-              "en": "Path planning in the 2D map"
-            }
+            "zh": "几何信息融合",
+            "en": "Geometry fusion"
           },
           {
-            "src": "assets/projects/agva/ppt/summary-image42.webp",
-            "caption": {
-              "zh": "室内语义感知实验",
-              "en": "Indoor semantic-perception experiment"
-            }
+            "zh": "Cartographer 建图",
+            "en": "Cartographer mapping"
           },
           {
-            "src": "assets/projects/agva/ppt/summary-image43.webp",
-            "caption": {
-              "zh": "室外语义感知探索",
-              "en": "Outdoor semantic-perception exploration"
-            }
+            "zh": "导航代价地图更新",
+            "en": "Navigation costmap updates"
           }
         ]
       },
@@ -2190,28 +2139,13 @@ export const projects = [
         "points": [],
         "figures": [
           {
-            "video": "assets/projects/agva/demo.mp4",
-            "poster": "assets/projects/agva/poster.webp",
-            "caption": {
-              "zh": "激光与视觉融合的室内走廊导航",
-              "en": "Indoor corridor navigation with LiDAR–vision fusion"
-            }
-          },
-          {
             "video": "assets/projects/agva/ppt-09.mp4",
             "poster": "assets/projects/agva/ppt-09.poster.webp",
             "caption": {
               "zh": "实验室障碍环境中的移动导航",
               "en": "Mobile navigation among laboratory obstacles"
-            }
-          },
-          {
-            "video": "assets/projects/agva/ppt-10.mp4",
-            "poster": "assets/projects/agva/ppt-10.poster.webp",
-            "caption": {
-              "zh": "室内移动操作平台运行片段",
-              "en": "Indoor mobile manipulation platform in motion"
-            }
+            },
+            "row": "agva-workbench"
           },
           {
             "video": "assets/projects/agva/ppt-11.mp4",
@@ -2219,6 +2153,61 @@ export const projects = [
             "caption": {
               "zh": "移动操作平台接近工作台",
               "en": "Mobile manipulator approaching a workbench"
+            },
+            "row": "agva-workbench"
+          },
+          {
+            "video": "assets/projects/agva/demo.mp4",
+            "poster": "assets/projects/agva/poster.webp",
+            "caption": {
+              "zh": "激光与视觉融合的室内走廊导航",
+              "en": "Indoor corridor navigation with LiDAR–vision fusion"
+            },
+            "row": "agva-navigation"
+          },
+          {
+            "video": "assets/projects/agva/ppt-10.mp4",
+            "poster": "assets/projects/agva/ppt-10.poster.webp",
+            "caption": {
+              "zh": "室内移动操作平台运行片段",
+              "en": "Indoor mobile manipulation platform in motion"
+            },
+            "row": "agva-navigation"
+          }
+        ]
+      },
+      {
+        "id": "experiments",
+        "title": {
+          "zh": "建图与语义感知结果",
+          "en": "Mapping and semantic-perception results"
+        },
+        "paragraphs": [
+          {
+            "zh": "图像记录了激光与视觉融合得到的室内地图，以及室内、室外场景的语义感知结果，用于观察环境几何和目标类别的表达。",
+            "en": "The images record an indoor map from laser–vision fusion and semantic perception in indoor and outdoor scenes, showing the represented geometry and object categories."
+          }
+        ],
+        "figures": [
+          {
+            "src": "assets/projects/agva/ppt/summary-image30.webp",
+            "caption": {
+              "zh": "激光与视觉融合的室内地图",
+              "en": "Indoor map from laser–vision fusion"
+            }
+          },
+          {
+            "src": "assets/projects/agva/ppt/summary-image42.webp",
+            "caption": {
+              "zh": "室内语义感知实验",
+              "en": "Indoor semantic-perception experiment"
+            }
+          },
+          {
+            "src": "assets/projects/agva/ppt/summary-image43.webp",
+            "caption": {
+              "zh": "室外语义感知探索",
+              "en": "Outdoor semantic-perception exploration"
             }
           }
         ]
@@ -2230,11 +2219,11 @@ export const projects = [
       "en": "Multi-sensor navigation"
     },
     "media": {
-      "video": "assets/projects/agva/demo.mp4",
-      "poster": "assets/projects/agva/poster.webp",
+      "video": "assets/projects/agva/ppt-11.mp4",
+      "poster": "assets/projects/agva/ppt-11.poster.webp",
       "alt": {
-        "zh": "AGVA 室内走廊导航演示",
-        "en": "AGVA indoor corridor navigation demo"
+        "zh": "移动操作平台接近工作台",
+        "en": "Mobile manipulation platform approaching a workbench"
       }
     },
     "period": {
@@ -2470,7 +2459,15 @@ export const projects = [
             "en": "Coordinate base position, arm pose, and striking time to translate predictions into physical actions."
           }
         ],
-        "figures": []
+        "figures": [
+          {
+            "src": "assets/projects/sports-robot/mvbmr-overview.webp",
+            "caption": {
+              "zh": "技术参考：Shi 等，MV-BMR，Information Fusion 123 (2025)，Fig. 1",
+              "en": "Technical reference: Shi et al., MV-BMR, Information Fusion 123 (2025), Fig. 1"
+            }
+          }
+        ]
       },
       {
         "id": "equipment",
@@ -2511,15 +2508,7 @@ export const projects = [
             "en": "In the MV-BMR badminton system, SEPNet combines racket-IMU and visual information to estimate a hit zone early, with PID starting the platform. A second stage updates the visual trajectory and interception point and uses NMPC for coordinated base and arm motion. This structure first gains movement time and then progressively refines interception."
           }
         ],
-        "figures": [
-          {
-            "src": "assets/projects/sports-robot/mvbmr-overview.webp",
-            "caption": {
-              "zh": "技术参考：Shi 等，MV-BMR，Information Fusion 123 (2025)，Fig. 1",
-              "en": "Technical reference: Shi et al., MV-BMR, Information Fusion 123 (2025), Fig. 1"
-            }
-          }
-        ],
+        "figures": [],
         "source": {
           "url": "https://doi.org/10.1016/j.inffus.2025.103337",
           "label": {
@@ -2911,7 +2900,25 @@ export const projects = [
           }
         ],
         "points": [],
-        "figures": []
+        "figures": [
+          {
+            "src": "assets/projects/industrial-grasping/ppt/summary-image125.webp",
+            "caption": {
+              "zh": "机械臂与物料处理实验装置",
+              "en": "Arm and material-handling setup"
+            },
+            "role": "main",
+            "row": "industrial-hardware"
+          },
+          {
+            "src": "assets/projects/industrial-grasping/ppt/summary-image128.webp",
+            "caption": {
+              "zh": "机械臂夹持与工作台配置",
+              "en": "Gripper and workbench setup"
+            },
+            "row": "industrial-hardware"
+          }
+        ]
       },
       {
         "id": "system",
@@ -2930,36 +2937,7 @@ export const projects = [
           }
         ],
         "points": [],
-        "figures": [
-          {
-            "src": "assets/projects/industrial-grasping/ppt/summary-image125.webp",
-            "caption": {
-              "zh": "机械臂与物料处理实验装置",
-              "en": "Arm and material-handling setup"
-            }
-          },
-          {
-            "src": "assets/projects/industrial-grasping/ppt/summary-image126.webp",
-            "caption": {
-              "zh": "食品物料操作实验",
-              "en": "Food-material manipulation experiment"
-            }
-          },
-          {
-            "src": "assets/projects/industrial-grasping/ppt/summary-image127.webp",
-            "caption": {
-              "zh": "食品处理设备与机械臂操作",
-              "en": "Food-processing fixture and arm operation"
-            }
-          },
-          {
-            "src": "assets/projects/industrial-grasping/ppt/summary-image128.webp",
-            "caption": {
-              "zh": "机械臂夹持与工作台配置",
-              "en": "Gripper and workbench setup"
-            }
-          }
-        ]
+        "figures": []
       },
       {
         "id": "demo",
@@ -3008,11 +2986,17 @@ export const projects = [
             }
           },
           {
-            "video": "assets/projects/aloha/ppt-47.mp4",
-            "poster": "assets/projects/aloha/ppt-47.poster.webp",
+            "src": "assets/projects/industrial-grasping/ppt/summary-image126.webp",
             "caption": {
-              "zh": "服装操作的双臂示教与遥操作",
-              "en": "Dual-arm demonstration and teleoperation for garment handling"
+              "zh": "食品物料操作实验",
+              "en": "Food-material manipulation experiment"
+            }
+          },
+          {
+            "src": "assets/projects/industrial-grasping/ppt/summary-image127.webp",
+            "caption": {
+              "zh": "食品处理设备与机械臂操作",
+              "en": "Food-processing fixture and arm operation"
             }
           }
         ]
@@ -3136,15 +3120,7 @@ export const projects = [
           }
         ],
         "points": [],
-        "figures": [
-          {
-            "src": "assets/projects/fruit-sorting/ppt/summary-image122.webp",
-            "caption": {
-              "zh": "果蔬干目标识别与定位画面",
-              "en": "Dried-fruit detection and localization"
-            }
-          }
-        ]
+        "figures": []
       },
       {
         "id": "demo",
@@ -3173,6 +3149,13 @@ export const projects = [
             "caption": {
               "zh": "果蔬干预研产线现场演示",
               "en": "On-site demonstration of the dried-fruit pilot line"
+            }
+          },
+          {
+            "src": "assets/projects/fruit-sorting/ppt/summary-image122.webp",
+            "caption": {
+              "zh": "果蔬干目标识别与定位画面",
+              "en": "Dried-fruit detection and localization"
             }
           }
         ]

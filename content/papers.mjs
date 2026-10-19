@@ -1,4 +1,4 @@
-// Public bilingual paper content.
+// Paper content; original tables and figures are displayed without full unpublished PDFs.
 export const papers = [
   {
     "id": "kangaroo-paper",
@@ -167,11 +167,6 @@ export const papers = [
         "label": {
           "zh": "中科院1区",
           "en": "CAS Zone 1"
-        },
-        "url": "https://ccst.jlu.edu.cn/info/1028/19128.htm",
-        "note": {
-          "zh": "中科院分区（2025年公开标注）",
-          "en": "CAS partition as publicly listed in 2025"
         }
       }
     ]
@@ -351,11 +346,6 @@ export const papers = [
         "label": {
           "zh": "中科院2区",
           "en": "CAS Zone 2"
-        },
-        "url": "https://faculty.bjtu.edu.cn/98940423/",
-        "note": {
-          "zh": "中科院分区（2025年公开标注）",
-          "en": "CAS partition as publicly listed in 2025"
         }
       }
     ]
@@ -524,11 +514,6 @@ export const papers = [
         "label": {
           "zh": "CCF B",
           "en": "CCF B"
-        },
-        "url": "https://cs.hubu.edu.cn/fujian1-zhongguojisuanjixuehuituijianguojixueshuhuiyiheqikanmulu-2022nian.pdf",
-        "note": {
-          "zh": "CCF推荐目录（2022年版）",
-          "en": "CCF recommended list, 2022 edition"
         }
       }
     ],
@@ -691,11 +676,6 @@ export const papers = [
         "label": {
           "zh": "CCF B",
           "en": "CCF B"
-        },
-        "url": "https://cbs.hdu.edu.cn/_upload/article/files/b6/e0/1e5534c845b39210d5e8f6944bad/cabfaaf8-4ad1-4d60-abe1-8f0a80eb9b58.pdf",
-        "note": {
-          "zh": "CCF推荐目录（2022年版）",
-          "en": "CCF recommended list, 2022 edition"
         }
       }
     ],
@@ -874,11 +854,6 @@ export const papers = [
         "label": {
           "zh": "CCF C",
           "en": "CCF C"
-        },
-        "url": "https://cs.hubu.edu.cn/fujian1-zhongguojisuanjixuehuituijianguojixueshuhuiyiheqikanmulu-2022nian.pdf",
-        "note": {
-          "zh": "CCF推荐目录（2022年版）",
-          "en": "CCF recommended list, 2022 edition"
         }
       }
     ]
@@ -1041,11 +1016,6 @@ export const papers = [
         "label": {
           "zh": "CCF B",
           "en": "CCF B"
-        },
-        "url": "https://www.ccf.org.cn/Academic_Evaluation/AI/",
-        "note": {
-          "zh": "CCF推荐目录（2022年版）",
-          "en": "CCF recommended list, 2022 edition"
         }
       }
     ],
