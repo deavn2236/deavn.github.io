@@ -34,7 +34,7 @@ for (const item of [...site.projects, ...site.papers]) {
 }
 for (const p of site.projects) {
   const sectionAssets = new Set();
-  if (!['primary', 'collaboration'].includes(p.group)) errors.push(`${p.id}: missing project involvement group`);
+  if (!['systems', 'primary', 'collaboration'].includes(p.group)) errors.push(`${p.id}: missing project involvement group`);
   if (!p.media?.video && !p.media?.image) errors.push(`${p.id}: no main image or video`);
   if (!p.summary?.zh || !p.summary?.en) errors.push(`${p.id}: missing bilingual summary`);
   if (!Array.isArray(p.sections) || p.sections.length < 2) errors.push(`${p.id}: add at least two documented sections`);

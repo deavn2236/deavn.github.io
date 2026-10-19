@@ -44,7 +44,7 @@
   document.querySelectorAll('[data-set-lang]').forEach(button => button.addEventListener('click', () => setLang(button.dataset.setLang)));
 
   const filterButtons = [...document.querySelectorAll('[data-project-filter]')];
-  const projectCards = [...document.querySelectorAll('.project-card[data-category]')];
+  const projectCards = [...document.querySelectorAll('#work .project-card[data-category]')];
   filterButtons.forEach(button => button.addEventListener('click', () => {
     const selected = button.dataset.projectFilter;
     filterButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));

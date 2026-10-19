@@ -1,4 +1,4 @@
-// Intrinsic dimensions and optimized local previews.
+// Original proportions, compressed files, and responsive variants.
 export const media = {
   "images": {
     "assets/papers/bmanet-framework.thumb-480.webp": {
@@ -2091,6 +2091,258 @@ export const media = {
     "assets/projects/sports-robot/sensing-control-architecture.thumb-960.webp": {
       "width": 960,
       "height": 499
+    },
+    "assets/projects/thermal-safety/transformer-480.webp": {
+      "width": 480,
+      "height": 298,
+      "bytes": 18386
+    },
+    "assets/projects/thermal-safety/transformer.webp": {
+      "width": 813,
+      "height": 505,
+      "bytes": 62082,
+      "variants": [
+        {
+          "src": "assets/projects/thermal-safety/transformer-480.webp",
+          "width": 480,
+          "height": 298
+        }
+      ]
+    },
+    "assets/projects/thermal-safety/machine-guard-480.webp": {
+      "width": 480,
+      "height": 299,
+      "bytes": 21388
+    },
+    "assets/projects/thermal-safety/machine-guard.webp": {
+      "width": 932,
+      "height": 580,
+      "bytes": 57930,
+      "variants": [
+        {
+          "src": "assets/projects/thermal-safety/machine-guard-480.webp",
+          "width": 480,
+          "height": 299
+        }
+      ]
+    },
+    "assets/projects/thermal-safety/uncovered-trench-480.webp": {
+      "width": 480,
+      "height": 278,
+      "bytes": 11560
+    },
+    "assets/projects/thermal-safety/uncovered-trench-960.webp": {
+      "width": 960,
+      "height": 557,
+      "bytes": 25886
+    },
+    "assets/projects/thermal-safety/uncovered-trench.webp": {
+      "width": 978,
+      "height": 567,
+      "bytes": 31272,
+      "variants": [
+        {
+          "src": "assets/projects/thermal-safety/uncovered-trench-480.webp",
+          "width": 480,
+          "height": 278
+        },
+        {
+          "src": "assets/projects/thermal-safety/uncovered-trench-960.webp",
+          "width": 960,
+          "height": 557
+        }
+      ]
+    },
+    "assets/projects/thermal-safety/corrosion-480.webp": {
+      "width": 480,
+      "height": 321,
+      "bytes": 17188
+    },
+    "assets/projects/thermal-safety/corrosion.webp": {
+      "width": 859,
+      "height": 574,
+      "bytes": 39884,
+      "variants": [
+        {
+          "src": "assets/projects/thermal-safety/corrosion-480.webp",
+          "width": 480,
+          "height": 321
+        }
+      ]
+    },
+    "assets/projects/personnel-tracking/architecture-480.webp": {
+      "width": 480,
+      "height": 270,
+      "bytes": 12498
+    },
+    "assets/projects/personnel-tracking/architecture-960.webp": {
+      "width": 960,
+      "height": 540,
+      "bytes": 38202
+    },
+    "assets/projects/personnel-tracking/architecture.webp": {
+      "width": 1329,
+      "height": 748,
+      "bytes": 72448,
+      "variants": [
+        {
+          "src": "assets/projects/personnel-tracking/architecture-480.webp",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "assets/projects/personnel-tracking/architecture-960.webp",
+          "width": 960,
+          "height": 540
+        }
+      ]
+    },
+    "assets/projects/personnel-tracking/realtime-flow-480.webp": {
+      "width": 480,
+      "height": 233,
+      "bytes": 9898
+    },
+    "assets/projects/personnel-tracking/realtime-flow-960.webp": {
+      "width": 960,
+      "height": 465,
+      "bytes": 31136
+    },
+    "assets/projects/personnel-tracking/realtime-flow.webp": {
+      "width": 1329,
+      "height": 644,
+      "bytes": 57130,
+      "variants": [
+        {
+          "src": "assets/projects/personnel-tracking/realtime-flow-480.webp",
+          "width": 480,
+          "height": 233
+        },
+        {
+          "src": "assets/projects/personnel-tracking/realtime-flow-960.webp",
+          "width": 960,
+          "height": 465
+        }
+      ]
+    },
+    "assets/projects/tender-analysis/architecture-480.webp": {
+      "width": 480,
+      "height": 293,
+      "bytes": 14002
+    },
+    "assets/projects/tender-analysis/architecture-960.webp": {
+      "width": 960,
+      "height": 586,
+      "bytes": 36170
+    },
+    "assets/projects/tender-analysis/architecture.webp": {
+      "width": 1800,
+      "height": 1099,
+      "bytes": 85834,
+      "variants": [
+        {
+          "src": "assets/projects/tender-analysis/architecture-480.webp",
+          "width": 480,
+          "height": 293
+        },
+        {
+          "src": "assets/projects/tender-analysis/architecture-960.webp",
+          "width": 960,
+          "height": 586
+        }
+      ]
+    },
+    "assets/projects/tender-analysis/analysis-sequence-480.webp": {
+      "width": 480,
+      "height": 426,
+      "bytes": 16270
+    },
+    "assets/projects/tender-analysis/analysis-sequence.webp": {
+      "width": 843,
+      "height": 748,
+      "bytes": 39330,
+      "variants": [
+        {
+          "src": "assets/projects/tender-analysis/analysis-sequence-480.webp",
+          "width": 480,
+          "height": 426
+        }
+      ]
+    },
+    "assets/projects/tender-analysis/upload-prototype-480.webp": {
+      "width": 480,
+      "height": 241,
+      "bytes": 5160
+    },
+    "assets/projects/tender-analysis/upload-prototype.webp": {
+      "width": 724,
+      "height": 363,
+      "bytes": 10492,
+      "variants": [
+        {
+          "src": "assets/projects/tender-analysis/upload-prototype-480.webp",
+          "width": 480,
+          "height": 241
+        }
+      ]
+    },
+    "assets/projects/thermal-safety/poster-480.webp": {
+      "width": 480,
+      "height": 270,
+      "bytes": 21060
+    },
+    "assets/projects/thermal-safety/poster-960.webp": {
+      "width": 960,
+      "height": 540,
+      "bytes": 55786
+    },
+    "assets/projects/thermal-safety/poster.webp": {
+      "width": 1280,
+      "height": 720,
+      "bytes": 89526,
+      "variants": [
+        {
+          "src": "assets/projects/thermal-safety/poster-480.webp",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "assets/projects/thermal-safety/poster-960.webp",
+          "width": 960,
+          "height": 540
+        }
+      ]
+    },
+    "assets/projects/personnel-tracking/poster-480.webp": {
+      "width": 480,
+      "height": 190,
+      "bytes": 7662
+    },
+    "assets/projects/personnel-tracking/poster-960.webp": {
+      "width": 960,
+      "height": 380,
+      "bytes": 18824
+    },
+    "assets/projects/personnel-tracking/poster.webp": {
+      "width": 1290,
+      "height": 510,
+      "bytes": 28150,
+      "variants": [
+        {
+          "src": "assets/projects/personnel-tracking/poster-480.webp",
+          "width": 480,
+          "height": 190
+        },
+        {
+          "src": "assets/projects/personnel-tracking/poster-960.webp",
+          "width": 960,
+          "height": 380
+        }
+      ]
+    },
+    "assets/projects/thermal-safety/pipeline.svg": {
+      "width": 1400,
+      "height": 370,
+      "bytes": 2039
     }
   },
   "videos": {
@@ -2586,6 +2838,32 @@ export const media = {
       "width": 480,
       "height": 270,
       "bytes": 124077
+    },
+    "assets/projects/thermal-safety/detection.mp4": {
+      "duration": 37.3,
+      "width": 960,
+      "height": 540,
+      "bytes": 3293610,
+      "preview": "assets/projects/thermal-safety/detection.preview.mp4"
+    },
+    "assets/projects/thermal-safety/detection.preview.mp4": {
+      "duration": 10,
+      "width": 480,
+      "height": 270,
+      "bytes": 118451
+    },
+    "assets/projects/personnel-tracking/fusion.mp4": {
+      "duration": 5.69,
+      "width": 1290,
+      "height": 510,
+      "bytes": 118229,
+      "preview": "assets/projects/personnel-tracking/fusion.preview.mp4"
+    },
+    "assets/projects/personnel-tracking/fusion.preview.mp4": {
+      "duration": 5.69,
+      "width": 640,
+      "height": 254,
+      "bytes": 35612
     }
   }
 };

@@ -57,7 +57,7 @@ const factIconPaths = {
 const renderFactIcon = name => `<svg class="fact-icon fact-${name}" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${factIconPaths[name] || factIconPaths.compass}</svg>`;
 
 function renderHeader(prefix) {
-  const nav = [['publications', b('论文', 'Publications')], ['work', b('项目', 'Projects')], ['student-work', b('学生工作', 'Student Leadership')], ['contact', b('联系', 'Contact')]];
+  const nav = [['publications', b('论文', 'Publications')], ['systems', b('智能系统', 'Intelligent Systems')], ['work', b('机器人', 'Robotics')], ['student-work', b('学生工作', 'Student Leadership')], ['contact', b('联系', 'Contact')]];
   return `<header class="site-header" id="top"><div class="header-inner wrap"><a class="brand" href="${prefix}index.html">${bi(site.name)}</a><nav class="nav" aria-label="Main navigation">${nav.map(([id, label]) => `<a href="${prefix}index.html#${id}">${bi(label)}</a>`).join('')}</nav><div class="language-switch" role="group" aria-label="Language"><button type="button" data-set-lang="zh" aria-pressed="true">中文</button><span aria-hidden="true">/</span><button type="button" data-set-lang="en" aria-pressed="false">English</button></div></div></header>`;
 }
 
@@ -103,6 +103,7 @@ function renderHome() {
   const factTypes = { '出生年月':'calendar', '籍贯':'pin', '学历':'education', '政治面貌':'flag', '学生工作':'users', '六级成绩':'language' };
   const personalInfo = site.personalInfo.map(item => `<div><dt>${renderFactIcon(factTypes[tr(item.label)])}${bi(item.label)}</dt><dd>${bi(item.value)}</dd></div>`).join('');
   const studentWork = site.studentWork.map(item => `<article class="student-work-entry"><div class="student-work-header"><div><h3>${bi(item.institution)}</h3><p class="student-work-role">${bi(item.role)}</p></div><span class="student-work-period">${bi(item.period)}</span></div><ul>${item.points.map(point => `<li>${bi(point)}</li>`).join('')}</ul></article>`).join('');
+  const systems = site.projects.filter(project => project.group === 'systems').map((project, index) => projectCard(project, index)).join('');
   const projectGroups = [
     { id: 'primary', label: b('主要研发', 'Research & Development'), icon: 'layers' },
     { id: 'collaboration', label: b('参与项目', 'Collaborative Projects'), icon: 'users' }
@@ -122,6 +123,7 @@ function renderHome() {
       </div>
     </section>
     <section class="home-section" id="publications">${sectionHeading('publication', b('论文成果', 'Publications'))}<div class="paper-list">${site.papers.map(p => paperCard(p)).join('')}</div></section>
+    <section class="home-section" id="systems">${sectionHeading('layers', b('智能系统', 'Intelligent Systems'))}<div class="project-grid">${systems}</div></section>
     <section class="home-section" id="work"><div class="section-title-row">${sectionHeading('robot', b('机器人项目', 'Robotics Projects'))}<div class="project-filters" role="group" aria-label="Filter projects">${filters}</div></div>${projectGroups}</section>
     <section class="home-section" id="student-work">${sectionHeading('users', b('学生工作', 'Student Leadership & Service'))}<div class="student-work-list">${studentWork}</div></section>
     <section class="home-section" id="honors">${sectionHeading('award', b('荣誉奖励', 'Selected Honors'))}<div class="honor-groups">${site.honorGroups.map(group => `<div class="honor-group"><h3>${bi(group.title)}</h3><ul class="honor-list">${group.items.map(item => `<li>${bi(item)}</li>`).join('')}</ul></div>`).join('')}</div></section>
@@ -130,7 +132,8 @@ function renderHome() {
 }
 
 function breadcrumb(prefix, type, title) {
-  return `<nav class="breadcrumb wrap" aria-label="Breadcrumb"><a href="${prefix}index.html">${bi(b('首页', 'Home'))}</a><span>/</span><a href="${prefix}index.html#${type}">${bi(type === 'work' ? b('项目', 'Projects') : b('论文', 'Publications'))}</a><span>/</span><span>${bi(title)}</span></nav>`;
+  const label = { work: b('机器人项目', 'Robotics Projects'), systems: b('智能系统', 'Intelligent Systems'), publications: b('论文', 'Publications') }[type];
+  return `<nav class="breadcrumb wrap" aria-label="Breadcrumb"><a href="${prefix}index.html">${bi(b('首页', 'Home'))}</a><span>/</span><a href="${prefix}index.html#${type}">${bi(label)}</a><span>/</span><span>${bi(title)}</span></nav>`;
 }
 
 function renderRankings(item) {
@@ -168,16 +171,18 @@ function renderTable(table) {
 }
 
 function renderSection(section, prefix, index) {
-  const icon = ({ task: 'info', equipment: 'robot', system: 'layers', method: 'layers', demo: 'robot', experiments: 'chart', results: 'chart', contributions: 'publication' })[section.id] || 'publication';
+  const icon = ({ task: 'info', equipment: 'robot', deployment: 'layers', system: 'layers', method: 'layers', demo: 'robot', experiments: 'chart', results: 'chart', contributions: 'publication' })[section.id] || 'publication';
   const technologies = section.techniques?.length ? `<ul class="technology-list">${section.techniques.map(t => `<li><strong>${bi(t.name)}${bi(b('：', ': '))}</strong>${bi(t.description)}</li>`).join('')}</ul>` : '';
   return `<section class="detail-section" id="${esc(section.id || `section-${index}`)}">${sectionHeading(icon, section.title || section.heading)}${(section.paragraphs || []).map(p => `<p>${bi(p)}</p>`).join('')}${technologies}${section.points?.length ? `<ul>${section.points.map(p => `<li>${bi(p)}</li>`).join('')}</ul>` : ''}${section.flow?.length ? `<ol class="system-flow">${section.flow.map(step => `<li>${bi(step)}</li>`).join('')}</ol>` : ''}${section.metrics?.length ? `<div class="paper-results-grid">${section.metrics.map(r => `<div class="paper-result"><strong>${esc(r.value)}</strong><span>${bi(r.label)}</span></div>`).join('')}</div>` : ''}${section.table ? renderTable(section.table) : ''}${(section.tables || []).map(renderTable).join('')}${renderFigures(section,prefix)}${section.source ? `<p class="media-source"><a href="${esc(section.source.url)}" target="_blank" rel="noopener noreferrer">${bi(section.source.label)}</a></p>` : ''}</section>`;
 }
 
 function renderProjectDetail(project, prefix = '../../') {
   const sections = project.sections || [];
+  const homeSection = project.group === 'systems' ? 'systems' : 'work';
+  const backLabel = project.group === 'systems' ? b('← 返回智能系统', '← All intelligent systems') : b('← 返回所有项目', '← All projects');
   const facts = (project.facts || []).map(f => `<div><dt>${bi(f.label)}</dt><dd>${bi(f.value)}</dd></div>`).join('');
   const related = site.papers.filter(p => (project.relatedPapers || []).includes(p.id));
-  return `${breadcrumb(prefix, 'work', project.title)}<article class="detail-page structured-detail wrap"><header class="detail-hero"><p class="detail-kicker">${bi(project.category)}${project.period ? ` · ${bi(project.period)}` : project.year ? ` · ${esc(project.year)}` : ''}${project.organization ? ` · ${bi(project.organization)}` : ''}</p><h1>${bi(project.title)}</h1><p class="detail-deck">${bi(project.summary)}</p></header>${facts ? `<dl class="project-facts">${facts}</dl>` : ''}${sections.map((s,i) => renderSection(s,prefix,i)).join('')}${related.length ? `<section class="related-section">${sectionHeading('publication', b('相关论文', 'Related Publications'))}<div class="paper-list">${related.map(p => paperCard(p,prefix)).join('')}</div></section>` : ''}<p class="detail-back"><a href="${prefix}index.html#work">${bi(b('← 返回所有项目', '← All projects'))}</a></p></article>`;
+  return `${breadcrumb(prefix, homeSection, project.title)}<article class="detail-page structured-detail wrap"><header class="detail-hero"><p class="detail-kicker">${bi(project.category)}${project.period ? ` · ${bi(project.period)}` : project.year ? ` · ${esc(project.year)}` : ''}${project.organization ? ` · ${bi(project.organization)}` : ''}</p><h1>${bi(project.title)}</h1><p class="detail-deck">${bi(project.summary)}</p></header>${facts ? `<dl class="project-facts">${facts}</dl>` : ''}${sections.map((s,i) => renderSection(s,prefix,i)).join('')}${related.length ? `<section class="related-section">${sectionHeading('publication', b('相关论文', 'Related Publications'))}<div class="paper-list">${related.map(p => paperCard(p,prefix)).join('')}</div></section>` : ''}<p class="detail-back"><a href="${prefix}index.html#${homeSection}">${bi(backLabel)}</a></p></article>`;
 }
 
 function renderPaperDetail(paper, prefix = '../../') {

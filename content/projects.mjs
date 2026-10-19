@@ -1,5 +1,7 @@
 // Project content and original media from the supplied materials.
+import { intelligentSystems } from './systems.mjs';
 export const projects = [
+  ...intelligentSystems,
   {
     "id": "kangaroo",
     "title": {
