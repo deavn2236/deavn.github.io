@@ -226,8 +226,9 @@ a:hover,.brand:hover,.nav a:hover,.paper-copy h3 a:hover,.paper-links>a:hover,.f
 .project-period{white-space:nowrap}
 .meta-separator{color:#000}
 .project-copy h3{margin-bottom:10px;font-weight:700}
-.project-summary{font-size:15px;line-height:1.85;margin-bottom:8px;color:#000}
-.project-summary .project-details{display:block;text-align:right;white-space:nowrap;margin:3px 0 0;font-size:15px;font-weight:700}
+.project-summary{display:flow-root;font-size:15px;line-height:1.85;margin-bottom:8px;color:#000}
+.project-summary .project-details{display:inline-block;white-space:nowrap;margin:0 0 0 .45em;font-size:15px;font-weight:700;line-height:inherit}
+.project-summary .project-details.is-wrapped{float:right;margin-left:.45em}
 .project-copy .project-preview-caption{font-size:14px;color:#000;margin:7px 0 0}
 .project-media{margin-top:auto}
 .student-work-role{display:block;margin-top:5px;padding:0;border:0;border-radius:0;color:#000;background:transparent;font-size:15px;font-weight:700;line-height:1.65}
@@ -313,3 +314,10 @@ html[data-lang="en"] .profile-facts{--fact-label-width:144px}
  .student-work-period{font-size:14px}
 }
 @media(prefers-reduced-motion:reduce){.profile-route path[stroke-dasharray]{animation:none}}
+
+/* Hardware overview: the compact sensor stays beside its mobile platform. */
+.media-row.is-equipment{grid-template-columns:minmax(0,2.25fr) minmax(0,1fr);gap:28px;align-items:center}
+.media-row.is-equipment .figure-expand{aspect-ratio:var(--figure-ratio,1)}
+.media-row.is-equipment .figure-sensor{width:min(100%,180px);justify-self:center}
+.media-row.is-equipment .figure-caption-kind{display:none}
+@media(max-width:560px){.media-row.is-equipment{gap:14px}.media-row.is-equipment .section-figure figcaption{padding-top:8px;font-size:14px}}

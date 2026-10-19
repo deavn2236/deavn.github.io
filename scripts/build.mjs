@@ -105,7 +105,7 @@ function renderHome() {
   ].map(group => `<div class="project-group" data-project-group="${group.id}"><h3 class="project-group-heading">${renderIcon(group.icon)}${bi(group.label)}</h3><div class="project-grid">${site.projects.filter(p => p.group === group.id).map((p,i) => projectCard(p,i)).join('')}</div></div>`).join('');
   return `<div class="home wrap">
     <section class="profile" id="intro">
-      <div class="profile-eyebrow"><span>${renderFactIcon('compass')}${bi(b('个人学术主页','Academic Profile'))}</span><span class="profile-rule" aria-hidden="true"></span><svg class="profile-route" width="130" height="28" viewBox="0 0 130 28" fill="none" aria-hidden="true"><path d="M3 20h29l11-12h34l12 12h38" stroke="#111" stroke-width="1.1"/><path d="M3 24h31L45 12h30l12 12h40" stroke="#af8765" stroke-dasharray="2 4"/><circle cx="32" cy="20" r="3" fill="#43685a"/><circle cx="77" cy="8" r="3" fill="#8b2d34"/><circle cx="89" cy="20" r="3" fill="#af8765"/></svg></div>
+      <div class="profile-eyebrow"><span>${renderFactIcon('compass')}${bi(b('个人主页','Personal Homepage'))}</span><span class="profile-rule" aria-hidden="true"></span><svg class="profile-route" width="130" height="28" viewBox="0 0 130 28" fill="none" aria-hidden="true"><path d="M3 20h29l11-12h34l12 12h38" stroke="#111" stroke-width="1.1"/><path d="M3 24h31L45 12h30l12 12h40" stroke="#af8765" stroke-dasharray="2 4"/><circle cx="32" cy="20" r="3" fill="#43685a"/><circle cx="77" cy="8" r="3" fill="#8b2d34"/><circle cx="89" cy="20" r="3" fill="#af8765"/></svg></div>
       <div class="profile-layout">
         <div class="profile-copy">
           <div class="profile-heading"><div class="profile-name-row"><h1>${bi(site.name)}</h1><p class="profile-affiliation">${bi(site.location)}</p></div><p class="profile-role">${bi(site.role)}</p></div>
@@ -140,7 +140,7 @@ function renderFigure(figure, prefix, paired = false) {
   const sizes = paired ? '(max-width:760px) calc(100vw - 40px), (min-width:1400px) 528px, 508px' : `(max-width:760px) calc(100vw - 40px), ${width}px`;
   const kind = figure.video ? b('视频','Video') : figure.kind === 'table' ? b('实验表格','Results table') : b('图示','Figure');
   const symbol = figure.video ? '<circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m8 6 6 4-6 4Z" fill="currentColor"/>' : '<rect x="2" y="3" width="16" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m4 14 4-4 3 3 2-2 3 3" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="13" cy="7" r="1.5" fill="currentColor"/>';
-  return `<figure class="section-figure${width ? ' figure-bounded' : ''}${figure.kind === 'table' ? ' figure-table' : ''}${figure.video && ratio < .75 ? ' figure-portrait-video' : ''}" style="--figure-ratio:${ratio};${width ? `--figure-width:${width}px` : ''}">${figure.video ? renderMedia({ video: figure.video, poster: figure.poster, alt: label }, prefix, 'section-video') : `<a class="figure-expand" href="${esc(prefix + (figure.src || figure.image))}" target="_blank" rel="noopener noreferrer" aria-label="查看大图" data-aria-zh="查看大图" data-aria-en="Open full-size image">${renderImage(figure.src || figure.image, label, prefix, { card: true, sizes })}</a>`}<figcaption><span class="figure-caption-kind"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">${symbol}</svg>${bi(kind)}</span><span class="figure-caption-text">${bi(label)}</span></figcaption></figure>`;
+  return `<figure class="section-figure${width ? ' figure-bounded' : ''}${['main','sensor'].includes(figure.role) ? ` figure-${figure.role}` : ''}${figure.kind === 'table' ? ' figure-table' : ''}${figure.video && ratio < .75 ? ' figure-portrait-video' : ''}" style="--figure-ratio:${ratio};${width ? `--figure-width:${width}px` : ''}">${figure.video ? renderMedia({ video: figure.video, poster: figure.poster, alt: label }, prefix, 'section-video') : `<a class="figure-expand" href="${esc(prefix + (figure.src || figure.image))}" target="_blank" rel="noopener noreferrer" aria-label="查看大图" data-aria-zh="查看大图" data-aria-en="Open full-size image">${renderImage(figure.src || figure.image, label, prefix, { card: true, sizes })}</a>`}<figcaption><span class="figure-caption-kind"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">${symbol}</svg>${bi(kind)}</span><span class="figure-caption-text">${bi(label)}</span></figcaption></figure>`;
 }
 
 function renderFigures(section, prefix) {
@@ -154,7 +154,7 @@ function renderFigures(section, prefix) {
     // the same width, while vertical whitespace keeps captions aligned.
     const rowRatio = row.every(f => !f.video) ? Math.min(...ratios) : Math.max(...ratios);
     const styles = [paired ? `--row-ratio:${rowRatio}` : '', widths.length ? `--row-width:${Math.min(...widths)}px` : ''].filter(Boolean).join(';');
-    return `<div class="media-row ${paired ? 'is-pair' : 'is-single'}${portraitPair ? ' is-portrait-pair' : ''}"${styles ? ` style="${styles}"` : ''}>${row.map(f => renderFigure(f,prefix,paired)).join('')}</div>`;
+    return `<div class="media-row ${paired ? 'is-pair' : 'is-single'}${section.layout === 'equipment' ? ' is-equipment' : ''}${portraitPair ? ' is-portrait-pair' : ''}"${styles ? ` style="${styles}"` : ''}>${row.map(f => renderFigure(f,prefix,paired)).join('')}</div>`;
   }).join('')}</div>`;
 }
 
@@ -180,7 +180,7 @@ function renderPaperDetail(paper, prefix = '../../') {
 }
 
 function write(rel, html) { const dest = path.join(out, rel); fs.mkdirSync(path.dirname(dest), { recursive: true }); fs.writeFileSync(dest, html, 'utf8'); }
-write('index.html', page({ title: b('个人学术主页', 'Academic Homepage'), description: site.hero.description, body: renderHome() }));
+write('index.html', page({ title: b('个人主页', 'Personal Homepage'), description: site.hero.description, body: renderHome() }));
 for (const p of site.projects) write(`projects/${p.id}/index.html`, page({ title: p.title, description: p.summary, body: renderProjectDetail(p), prefix: '../../' }));
 for (const p of site.papers) write(`papers/${p.id}/index.html`, page({ title: p.title, description: p.summary, body: renderPaperDetail(p), prefix: '../../' }));
 write('404.html', page({ title: b('页面未找到', 'Page Not Found'), description: b('页面未找到', 'Page not found'), prefix: site.url, body: `<section class="wrap not-found"><h1>404</h1><p>${bi(b('页面未找到，请返回首页继续浏览。', 'Page not found. Please return to the homepage.'))}</p><a href="${esc(site.url || './index.html')}">${bi(b('返回首页', 'Go home'))}</a></section>` }));

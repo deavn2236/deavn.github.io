@@ -10,6 +10,7 @@ export function figureInfo(figure) {
 // neighboring media; extreme ratios retain a full row and their original shape.
 export function figureRows(section) {
   const figures = section.figures || [];
+  if (section.layout === 'equipment' && figures.length === 2) return [figures];
   const rows = [];
   for (let index = 0; index < figures.length;) {
     const current = figures[index];

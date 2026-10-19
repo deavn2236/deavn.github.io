@@ -2054,6 +2054,10 @@ export const media = {
     "assets/projects/chess-grasping/demo.poster.webp": {
       "width": 480,
       "height": 360
+    },
+    "assets/projects/lidar-3d/ppt-26.poster.webp": {
+      "width": 640,
+      "height": 368
     }
   },
   "videos": {
@@ -2536,6 +2540,19 @@ export const media = {
       "width": 480,
       "height": 270,
       "bytes": 158531
+    },
+    "assets/projects/lidar-3d/ppt-26.mp4": {
+      "duration": 199.39,
+      "width": 654,
+      "height": 368,
+      "bytes": 5106097,
+      "preview": "assets/projects/lidar-3d/ppt-26.preview.mp4"
+    },
+    "assets/projects/lidar-3d/ppt-26.preview.mp4": {
+      "duration": 10,
+      "width": 480,
+      "height": 270,
+      "bytes": 124077
     }
   }
 };

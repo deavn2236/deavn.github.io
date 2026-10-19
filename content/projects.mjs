@@ -7,8 +7,8 @@ export const projects = [
       "en": "LLM-driven macro–micro robot delivery across indoor and outdoor environments"
     },
     "summary": {
-      "zh": "面向跨室内外物流配送，以大语言模型分解需求，结合 SLAM、RTK 与 MPC 协调子母车；已在大厅—小房间、室外道路—窄通道场景验证运输、交接和末端导航。",
-      "en": "For delivery across indoor and outdoor environments, language-model planning, SLAM, RTK, and MPC coordinate macro–micro vehicles; transport, handoff, and final navigation are validated across hall–room and road–narrow-path settings."
+      "zh": "面向跨室内外配送，以大模型规划与 SLAM、RTK、MPC 协调子母车，实机验证跨尺度运输、交接与末端导航。",
+      "en": "For cross-environment delivery, language-model planning coordinates macro–micro robots with SLAM, RTK, and MPC; real robots demonstrate transport, handoff, and final navigation."
     },
     "facts": [
       {
@@ -1016,8 +1016,8 @@ export const projects = [
       "en": "Dual-arm imitation learning and mobile manipulation"
     },
     "summary": {
-      "zh": "面向双臂协同抓取与操作技能学习，以主从机械臂采集示教并训练 ACT；在仿真和实机中演示木块递交、羽毛球抓取与嵌套物体拆解。",
-      "en": "For coordinated manipulation and skill learning, leader–follower arms collect demonstrations for ACT training; simulation and real-robot examples cover block handover, shuttlecock grasping, and nested-object separation."
+      "zh": "面向双臂操作技能学习，以主从机械臂采集示教并训练 ACT；仿真与实机演示木块递交、羽毛球抓取和嵌套物体拆解。",
+      "en": "For bimanual skill learning, leader–follower arms collect demonstrations for ACT; simulation and real robots demonstrate block handoff, shuttlecock grasping, and nested-object separation."
     },
     "facts": [
       {
@@ -1308,8 +1308,8 @@ export const projects = [
       "en": "Shuttlecock collection robot"
     },
     "summary": {
-      "zh": "面向单球、堆叠及勾连羽毛球的自动拾取，通过 YOLOv5 关键点检测估计抓握姿态，以夹持后抖动分离目标；实机单球与多球抓取准确率分别为97.83%和95.1%。",
-      "en": "For automatic collection of single, piled, and entangled shuttlecocks, YOLOv5 keypoint detection estimates grasp pose and a post-grasp shaking action separates targets. Physical tests report 97.83% single-object and 95.1% multiple-object grasp accuracy."
+      "zh": "面向单球与堆叠羽毛球拾取，以 YOLOv5 关键点估计抓握姿态并抖动分离；实机单球/多球准确率97.83%/95.1%。",
+      "en": "For single and stacked shuttlecock pickup, YOLOv5 keypoints guide grasp poses and shaking separates targets; real grasp accuracy is 97.83% for single and 95.1% for multiple shuttlecocks."
     },
     "facts": [
       {
@@ -1501,8 +1501,8 @@ export const projects = [
       "en": "3D LiDAR–inertial mapping and navigation"
     },
     "summary": {
-      "zh": "面向三维环境中的定位建图与自主避障，以 LIO-SAM 融合激光点云和 IMU，连接目标点规划与底盘控制；已在走廊和室内障碍环境完成实机导航演示。",
-      "en": "For 3D mapping, localization, and obstacle avoidance, LIO-SAM fuses LiDAR and IMU measurements with goal planning and base control; real demonstrations cover corridors and indoor obstacles."
+      "zh": "面向三维建图与避障，以 LIO-SAM 融合激光雷达与 IMU，衔接规划和控制；实机验证走廊及障碍环境的自主导航。",
+      "en": "For 3D mapping and obstacle avoidance, LIO-SAM fuses LiDAR and IMU measurements; planning and base control enable real navigation in corridors and obstacle-filled rooms."
     },
     "facts": [
       {
@@ -1573,8 +1573,8 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "平台为四轮无人车，搭载三维激光雷达、IMU 和计算控制单元。设备及建图结果如下。",
-            "en": "A four-wheel robot carries 3D LiDAR, IMU, and computing/control hardware. The slides show the sensor, base integration, and mapping results."
+            "zh": "平台为四轮无人车，搭载三维激光雷达、IMU 和计算控制单元。右侧为独立展示的三维激光雷达传感器。",
+            "en": "A four-wheel robot carries 3D LiDAR, an IMU, and computing/control hardware. The LiDAR sensor is shown separately to the right."
           }
         ],
         "points": [],
@@ -1585,7 +1585,8 @@ export const projects = [
               "zh": "激光导航无人车平台",
               "en": "LiDAR-navigation mobile platform"
             },
-            "role": "main"
+            "role": "main",
+            "rowWidth": 600
           },
           {
             "src": "assets/projects/lidar-3d/ppt/summary-image85.webp",
@@ -1593,9 +1594,11 @@ export const projects = [
               "zh": "三维激光雷达传感器",
               "en": "3D LiDAR sensor"
             },
-            "role": "sensor"
+            "role": "sensor",
+            "rowWidth": 600
           }
-        ]
+        ],
+        "layout": "equipment"
       },
       {
         "id": "system",
@@ -1632,12 +1635,21 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "视频展示室内目标点通行、不同障碍布局下的避障，以及人员穿行场景；点云地图展示实测环境的三维结构。所选实机片段主要在室内进行。",
-            "en": "Videos show indoor goal reaching, obstacle avoidance across layouts, and a person crossing the scene. A recorded point-cloud map shows the environment’s 3D structure. The physical demonstrations are primarily indoors."
+            "zh": "主视频同步展示导航地图、局部轨迹与机器人运动；其余片段展示室内目标点通行、不同障碍布局下的避障和人员穿行场景。点云地图展示实测环境的三维结构。",
+            "en": "The main video shows the navigation map, local trajectories, and robot motion. Additional clips cover indoor goal reaching, obstacle avoidance across layouts, and a person crossing the scene. A recorded point-cloud map shows the environment’s 3D structure."
           }
         ],
         "points": [],
         "figures": [
+          {
+            "video": "assets/projects/lidar-3d/ppt-26.mp4",
+            "poster": "assets/projects/lidar-3d/ppt-26.poster.webp",
+            "caption": {
+              "zh": "三维激光导航：地图与局部轨迹可视化",
+              "en": "3D LiDAR navigation: map and local trajectories"
+            },
+            "layout": "full"
+          },
           {
             "video": "assets/projects/lidar-3d/ppt-25.mp4",
             "poster": "assets/projects/lidar-3d/ppt-25.poster.webp",
@@ -1678,11 +1690,11 @@ export const projects = [
       "en": "LiDAR navigation"
     },
     "media": {
-      "video": "assets/projects/lidar-3d/ppt-27.mp4",
-      "poster": "assets/projects/lidar-3d/ppt-27.poster.webp",
+      "video": "assets/projects/lidar-3d/ppt-26.mp4",
+      "poster": "assets/projects/lidar-3d/ppt-26.poster.webp",
       "alt": {
-        "zh": "三维激光导航：不同障碍布局通行",
-        "en": "3D LiDAR navigation: movement across obstacle layouts"
+        "zh": "三维激光导航：地图与局部轨迹可视化",
+        "en": "3D LiDAR navigation: map and local trajectories"
       }
     },
     "period": {
@@ -1907,8 +1919,8 @@ export const projects = [
       "en": "LiDAR–vision navigation and manipulation with a semi-humanoid robot"
     },
     "summary": {
-      "zh": "面向半人型机器人的室内定位与作业位置到达，融合二维激光雷达、视觉点云和 SLAM；实机展示走廊导航、障碍场景通行与接近工作台。",
-      "en": "For indoor localization and access to work poses, a semi-humanoid platform combines 2D LiDAR, visual point clouds, and SLAM; real demonstrations cover corridor navigation, obstacles, and approaching a workbench."
+      "zh": "面向半人型机器人的定位与作业位置到达，融合激光雷达、视觉点云和 SLAM；实机展示走廊导航、绕障与接近工作台。",
+      "en": "For a semi-humanoid robot, LiDAR, visual point clouds, and SLAM support localization and task-site arrival; real demonstrations cover corridor navigation, obstacles, and workbench approach."
     },
     "facts": [
       {
@@ -2156,8 +2168,8 @@ export const projects = [
       "en": "RFID/NFC electronic visual tags for localization"
     },
     "summary": {
-      "zh": "面向遮挡场景中的位置与朝向估计，结合 RFID 远场检出和多 NFC 近场读取，研究标签几何布局与分层定位；完成误差分析和实验方案设计。",
-      "en": "For position and orientation estimation under occlusion, far-range RFID detection and multiple near-range NFC readings support tag-layout and hierarchical-localization research, with geometric error analysis and an experimental design."
+      "zh": "面向遮挡环境定位，以 RFID 远场检出与多 NFC 近场读取估计位置和朝向；完成标签布局研究、误差分析与实验设计。",
+      "en": "For localization under occlusion, RFID detection and multiple NFC readers estimate position and orientation; the study covers tag layouts, error analysis, and experimental design."
     },
     "facts": [
       {
@@ -2302,8 +2314,8 @@ export const projects = [
     },
     "categoryKey": "manipulation",
     "summary": {
-      "zh": "面向乒乓球、羽毛球和网球的人机对打，展示球类感知、轨迹预测与移动挥拍的协同；实机视频覆盖三类球运动，结合 MV-BMR 文献说明羽毛球的两阶段预测与控制。",
-      "en": "For human–robot rallies in table tennis, badminton, and tennis, the demonstrations show coordinated perception, trajectory prediction, positioning, and striking. The MV-BMR paper provides context for two-stage badminton prediction and control."
+      "zh": "面向乒乓球、羽毛球和网球对打，实机展示感知、轨迹预测与移动挥拍协同；结合 MV-BMR 文献介绍羽毛球预测与控制。",
+      "en": "For table tennis, badminton, and tennis rallies, real demonstrations combine perception, trajectory prediction, and mobile hitting; MV-BMR provides related background on badminton prediction and control."
     },
     "media": {
       "video": "assets/projects/sports-robot/demo.mp4",

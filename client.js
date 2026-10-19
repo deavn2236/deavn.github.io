@@ -1,5 +1,23 @@
 (() => {
   const root = document.documentElement;
+  let summaryLayoutFrame = 0;
+  const layoutProjectSummaries = () => {
+    summaryLayoutFrame = 0;
+    const summaries = [...document.querySelectorAll('.project-card:not([hidden]) .project-summary')];
+    summaries.forEach(summary => summary.querySelector('.project-details')?.classList.remove('is-wrapped'));
+    const wrapped = summaries.filter(summary => {
+      const text = summary.querySelector(`:scope > [data-lang="${root.dataset.lang}"]`);
+      const link = summary.querySelector('.project-details');
+      if (!text || !link) return false;
+      const lines = text.getClientRects();
+      const last = lines[lines.length - 1];
+      return last && link.getBoundingClientRect().top > last.bottom;
+    });
+    wrapped.forEach(summary => summary.querySelector('.project-details').classList.add('is-wrapped'));
+  };
+  const scheduleSummaryLayout = () => {
+    if (!summaryLayoutFrame) summaryLayoutFrame = requestAnimationFrame(layoutProjectSummaries);
+  };
   let initial = 'zh';
   try { initial = sessionStorage.getItem('academic-language-v2') === 'en' ? 'en' : 'zh'; } catch {}
   const videoControlLabel = video => root.dataset.lang === 'en' ? (video.paused ? 'Play video' : 'Pause video') : (video.paused ? '播放视频' : '暂停视频');
@@ -20,6 +38,7 @@
       video.setAttribute('aria-label', video.dataset[lang === 'zh' ? 'labelZh' : 'labelEn']);
       video.parentElement.querySelector('[data-video-toggle]')?.setAttribute('aria-label', videoControlLabel(video));
     });
+    scheduleSummaryLayout();
   };
   setLang(initial);
   document.querySelectorAll('[data-set-lang]').forEach(button => button.addEventListener('click', () => setLang(button.dataset.setLang)));
@@ -33,7 +52,12 @@
     document.querySelectorAll('[data-project-group]').forEach(group => {
       group.hidden = ![...group.querySelectorAll('.project-card')].some(card => !card.hidden);
     });
+    scheduleSummaryLayout();
   }));
+  if (projectCards.length) {
+    window.addEventListener('resize', scheduleSummaryLayout, { passive: true });
+    document.fonts?.ready.then(scheduleSummaryLayout);
+  }
 
   const videos = [...document.querySelectorAll('.autoplay-video')];
   const visibleVideos = new Set();
