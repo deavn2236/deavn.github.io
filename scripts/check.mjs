@@ -38,6 +38,8 @@ for (const p of site.projects) {
   if (!p.media?.video && !p.media?.image) errors.push(`${p.id}: no main image or video`);
   if (!p.summary?.zh || !p.summary?.en) errors.push(`${p.id}: missing bilingual summary`);
   if (!Array.isArray(p.sections) || p.sections.length < 2) errors.push(`${p.id}: add at least two documented sections`);
+  if (p.id === 'library-robot' && p.sections.some(s => s.id === 'experiments')) errors.push('Library results should be merged into demonstrations');
+  if (p.id === 'image-goal' && p.sections.some(s => s.table || s.tables?.length)) errors.push('SCTNav project should use its original paper table only');
   checkAsset(p.media?.video, p.id);
   checkAsset(p.media?.image, p.id);
   checkAsset(p.media?.poster, p.id);
@@ -67,6 +69,7 @@ for (const p of site.papers) {
   if (p.status || p.statusType || p.pdfNote) errors.push(`${p.id}: status display fields should be omitted`);
 }
 if (site.honorGroups?.map(group => group.id).join(',') !== 'graduate,undergraduate') errors.push('Keep graduate and undergraduate honors in separate groups');
+if (site.honorGroups?.some(group => group.items.some(item => item.zh.includes('优秀学生三等奖学金')))) errors.push('Remove the 2017 third-class undergraduate scholarship');
 for (const file of fs.readdirSync(path.join(root, 'assets', 'papers', 'pdf'))) {
   if (file.toLowerCase().endsWith('.pdf') && file !== 'uwb-following.pdf') errors.push(`Unexpected public paper PDF: ${file}`);
 }

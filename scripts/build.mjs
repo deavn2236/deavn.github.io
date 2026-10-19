@@ -22,7 +22,7 @@ const projectPath = (project, prefix) => `${prefix}projects/${esc(project.id)}/i
 const sectionIcons = {
   education: '<rect width="32" height="32" rx="9" fill="#eef3fc"/><path d="m5 13 11-6 11 6-11 6-11-6Z" fill="#5165a4"/><path d="M9 16v6c4 3 10 3 14 0v-6l-7 4-7-4Z" fill="#88c8d1"/><path d="M27 14v8" stroke="#eea15b" stroke-width="2" stroke-linecap="round"/><circle cx="27" cy="23" r="2" fill="#eea15b"/>',
   publication: '<rect width="32" height="32" rx="9" fill="#edf4fc"/><path d="M9 5h11l5 5v17H9a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" fill="#fff" stroke="#7399c2" stroke-width="1.3"/><path d="M19 5v7h6" fill="#b5d5eb"/><path d="M11 16h10M11 20h7M11 24h9" stroke="#7399c2" stroke-width="1.5" stroke-linecap="round"/><path d="M11 5h5v7l-2.5-2-2.5 2V5Z" fill="#edac71"/>',
-  robot: '<rect width="32" height="32" rx="9" fill="#eaf6f6"/><path d="M16 6v4" stroke="#607c9d" stroke-width="1.5"/><circle cx="16" cy="5.5" r="2" fill="#efa874"/><rect x="6" y="10" width="20" height="17" rx="5" fill="#81b4cd"/><rect x="9" y="13" width="14" height="9" rx="3" fill="#fff"/><circle cx="12.5" cy="17" r="1.3" fill="#51637c"/><circle cx="19.5" cy="17" r="1.3" fill="#51637c"/><path d="M13 24h6" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/><path d="M4 15v7M28 15v7" stroke="#e4a7ac" stroke-width="2.8" stroke-linecap="round"/>',
+  robot: '<rect width="32" height="32" rx="9" fill="#eaf6f6"/><path d="M16 6v4" stroke="#607c9d" stroke-width="1.5"/><circle cx="16" cy="5.5" r="2" fill="#efa874"/><rect x="6" y="10" width="20" height="17" rx="5" fill="#81b4cd"/><rect x="9" y="13" width="14" height="9" rx="3" fill="#fff"/><g class="robot-eyes"><circle cx="12.5" cy="17" r="1.3" fill="#51637c"/><circle cx="19.5" cy="17" r="1.3" fill="#51637c"/></g><path d="M13 24h6" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/><path d="M4 15v7M28 15v7" stroke="#e4a7ac" stroke-width="2.8" stroke-linecap="round"/>',
   users: '<rect width="32" height="32" rx="9" fill="#f2effa"/><circle cx="12" cy="11" r="4" fill="#8b8fc7"/><circle cx="23" cy="13" r="3.3" fill="#e8a1a4"/><path d="M4 26v-2a8 8 0 0 1 16 0v2" fill="#a8c2dc"/><path d="M21 26v-2a11 11 0 0 0-2-6c5-2 10 1 10 6v2" fill="#eabcb7"/><circle cx="12" cy="10.5" r="2.4" fill="#e7e3f8"/>',
   award: '<rect width="32" height="32" rx="9" fill="#fff6e6"/><path d="m10 18-3 11 9-5 9 5-3-11" fill="#e8a2a0"/><circle cx="16" cy="13" r="9" fill="#e8ba5f"/><circle cx="16" cy="13" r="6.5" fill="#fff1c5"/><path d="m16 8 1.5 3.1 3.5.5-2.5 2.5.6 3.5-3.1-1.7-3.1 1.7.6-3.5-2.5-2.5 3.5-.5L16 8Z" fill="#dda44c"/>',
   mail: '<rect width="32" height="32" rx="9" fill="#fcf0eb"/><rect x="4" y="8" width="24" height="18" rx="3" fill="#8db9c9"/><path d="m5 24 9-8h4l9 8" fill="#c4dce7"/><path d="M4 10 16 19 28 10V9a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2Z" fill="#f0b4a6"/><path d="m5 9 11 8L27 9" stroke="#fff7f0" stroke-width="1.2" fill="none"/>',
@@ -32,7 +32,7 @@ const sectionIcons = {
   music: '<rect width="32" height="32" rx="9" fill="#f7edf3"/><path d="M7 18v-3a9 9 0 0 1 18 0v3" stroke="#8b8fbd" stroke-width="3" fill="none"/><rect x="5" y="16" width="6" height="10" rx="3" fill="#e4a4b4"/><rect x="21" y="16" width="6" height="10" rx="3" fill="#e4a4b4"/><path d="M15 13v9" stroke="#8b8fbd" stroke-width="1.8" stroke-linecap="round"/><circle cx="13.5" cy="23" r="2.5" fill="#a9a7ce"/>',
   badminton: '<rect width="32" height="32" rx="9" fill="#eef6ed"/><g transform="rotate(32 16 16)"><ellipse cx="15" cy="11" rx="7" ry="9" fill="#fff" stroke="#81b8bd" stroke-width="2"/><path d="M10 6h10M9 10h12M9 14h12M13 3v16M17 3v16" stroke="#d3e5dc" stroke-width="1"/><path d="M15 20v8" stroke="#e9b477" stroke-width="3" stroke-linecap="round"/><path d="M15 26v3" stroke="#8b96bf" stroke-width="3.5" stroke-linecap="round"/></g>'
 };
-const renderIcon = (icon, className = 'section-icon') => `<svg class="${className}" width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">${sectionIcons[icon]}</svg>`;
+const renderIcon = (icon, className = 'section-icon') => `<svg class="${className} icon-${icon}" width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">${sectionIcons[icon]}</svg>`;
 const sectionHeading = (icon, label) => `<h2 class="section-heading">${renderIcon(icon)}${bi(label)}</h2>`;
 
 function renderHeader(prefix) {
@@ -71,7 +71,7 @@ function paperLinks(paper, prefix = './', overview = true) {
 }
 
 function paperCard(paper, prefix = './') {
-  return `<article class="paper-card"><a class="paper-figure" href="${paperPath(paper, prefix)}">${renderImage(paper.image, paper.figureAlt, prefix, { card: true, sizes: '(max-width:560px) 115px, (max-width:760px) 165px, 215px' })}</a><div class="paper-copy"><h3><a href="${paperPath(paper, prefix)}">${bi(paper.title)}</a></h3><p class="authors">${authors(paper.authors)}</p><p class="paper-venue">${bi(paper.venueShort || paper.venue)}${paper.year && !tr(paper.venueShort || paper.venue).includes(paper.year) ? `, ${esc(paper.year)}` : ''}${renderRankings(paper)}</p><p class="paper-summary">${bi(paper.summary)}</p>${paperLinks(paper, prefix)}</div></article>`;
+  return `<article class="paper-card"><a class="paper-figure" href="${paperPath(paper, prefix)}">${renderImage(paper.image, paper.figureAlt, prefix, { card: true, sizes: '(max-width:560px) calc(100vw - 78px), (max-width:760px) 160px, (max-width:900px) 195px, 235px' })}</a><div class="paper-copy"><h3><a href="${paperPath(paper, prefix)}">${bi(paper.title)}</a></h3><p class="authors">${authors(paper.authors)}</p><p class="paper-venue">${bi(paper.venueShort || paper.venue)}${paper.year && !tr(paper.venueShort || paper.venue).includes(paper.year) ? `, ${esc(paper.year)}` : ''}${renderRankings(paper)}</p><p class="paper-summary">${bi(paper.summary)}</p>${paperLinks(paper, prefix)}</div></article>`;
 }
 
 function renderHome() {
@@ -116,9 +116,11 @@ function renderRankings(item) {
 function renderFigure(figure, prefix, paired = false) {
   const label = figure.caption || figure.alt || b('系统演示', 'System demonstration');
   const width = paired ? null : figureWidth(figure);
+  const ratio = figureInfo(figure).ratio;
   const sizes = paired ? '(max-width:760px) calc(100vw - 40px), (min-width:1400px) 528px, 508px' : `(max-width:760px) calc(100vw - 40px), ${width}px`;
   const kind = figure.video ? b('视频','Video') : figure.kind === 'table' ? b('实验表格','Results table') : b('图示','Figure');
-  return `<figure class="section-figure${width ? ' figure-bounded' : ''}${figure.kind === 'table' ? ' figure-table' : ''}"${width ? ` style="--figure-width:${width}px"` : ''}>${figure.video ? renderMedia({ video: figure.video, poster: figure.poster, alt: label }, prefix, 'section-video') : `<a class="figure-expand" href="${esc(prefix + (figure.src || figure.image))}" target="_blank" rel="noopener noreferrer" aria-label="查看大图" data-aria-zh="查看大图" data-aria-en="Open full-size image">${renderImage(figure.src || figure.image, label, prefix, { card: true, sizes })}</a>`}<figcaption><span class="figure-caption-kind">${bi(kind)}</span><span class="figure-caption-text">${bi(label)}</span></figcaption></figure>`;
+  const symbol = figure.video ? '<circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m8 6 6 4-6 4Z" fill="currentColor"/>' : '<rect x="2" y="3" width="16" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m4 14 4-4 3 3 2-2 3 3" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="13" cy="7" r="1.5" fill="currentColor"/>';
+  return `<figure class="section-figure${width ? ' figure-bounded' : ''}${figure.kind === 'table' ? ' figure-table' : ''}${figure.video && ratio < .75 ? ' figure-portrait-video' : ''}" style="--figure-ratio:${ratio};${width ? `--figure-width:${width}px` : ''}">${figure.video ? renderMedia({ video: figure.video, poster: figure.poster, alt: label }, prefix, 'section-video') : `<a class="figure-expand" href="${esc(prefix + (figure.src || figure.image))}" target="_blank" rel="noopener noreferrer" aria-label="查看大图" data-aria-zh="查看大图" data-aria-en="Open full-size image">${renderImage(figure.src || figure.image, label, prefix, { card: true, sizes })}</a>`}<figcaption><span class="figure-caption-kind"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">${symbol}</svg>${bi(kind)}</span><span class="figure-caption-text">${bi(label)}</span></figcaption></figure>`;
 }
 
 function renderFigures(section, prefix) {
@@ -127,7 +129,12 @@ function renderFigures(section, prefix) {
     const paired = row.length === 2;
     const ratios = row.map(f => figureInfo(f).ratio);
     const portraitPair = paired && ratios.every(r => r < .75);
-    return `<div class="media-row ${paired ? 'is-pair' : 'is-single'}${portraitPair ? ' is-portrait-pair' : ''}"${paired ? ` style="--row-ratio:${Math.max(...ratios)}"` : ''}>${row.map(f => renderFigure(f,prefix,paired)).join('')}</div>`;
+    const widths = row.map(f => f.rowWidth).filter(w => Number.isInteger(w) && w >= 200 && w <= 1080);
+    // Image rows use the tallest image's ratio: every contained image fills
+    // the same width, while vertical whitespace keeps captions aligned.
+    const rowRatio = row.every(f => !f.video) ? Math.min(...ratios) : Math.max(...ratios);
+    const styles = [paired ? `--row-ratio:${rowRatio}` : '', widths.length ? `--row-width:${Math.min(...widths)}px` : ''].filter(Boolean).join(';');
+    return `<div class="media-row ${paired ? 'is-pair' : 'is-single'}${portraitPair ? ' is-portrait-pair' : ''}"${styles ? ` style="${styles}"` : ''}>${row.map(f => renderFigure(f,prefix,paired)).join('')}</div>`;
   }).join('')}</div>`;
 }
 

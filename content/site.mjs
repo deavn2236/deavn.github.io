@@ -309,10 +309,6 @@ export const site = {
           "en": "Second Prize, Shandong Provincial Collegiate Business Plan Competition (2018)"
         },
         {
-          "zh": "山东大学优秀学生三等奖学金（2017）",
-          "en": "Third-class Outstanding Student Scholarship, Shandong University (2017)"
-        },
-        {
           "zh": "山东大学学生志愿服务工作先进个人（2017年度）、驻青高校无偿献血志愿服务先进个人（2017—2018年度）",
           "en": "Outstanding Student Volunteer, Shandong University (2017); Outstanding Blood-donation Volunteer among Qingdao Universities (2017–2018)"
         }

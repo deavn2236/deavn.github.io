@@ -433,6 +433,14 @@ export const projects = [
           {
             "zh": "页面开头的场景动画说明跨楼层取送需求；以下实机片段展示样机、机械臂抓取与搬移，以及楼梯附近的移动和平台控制。导航与操作通过统一任务流程衔接。",
             "en": "The opening application animation introduces cross-floor book retrieval and delivery. The physical clips below show the prototype, arm grasping and transfer, and movement and control near stairs. A shared task workflow connects navigation and manipulation."
+          },
+          {
+            "zh": "实机实验中，图书识别率为96%，任务成功率为89%。书脊检测提供目标书籍的位置，三维感知与抓取规划进一步连接识别结果和取放动作。",
+            "en": "Real-robot experiments achieve 96% book-recognition accuracy and 89% task success. Book-spine detection provides target locations, while 3D perception and grasp planning connect recognition to pick-and-place."
+          },
+          {
+            "zh": "下图展示书脊识别、楼梯感知和三维抓取可视化。光照变化、遮挡和复杂图书摆放是持续优化的场景因素。",
+            "en": "The images show book-spine recognition, stair perception, and 3D grasp visualization. Lighting changes, occlusion, and varied book arrangements remain relevant conditions for further refinement."
           }
         ],
         "points": [],
@@ -480,58 +488,46 @@ export const projects = [
               "zh": "四足平台机械臂抓取与搬移",
               "en": "Arm grasping and transfer on the quadruped"
             },
-            "row": "library-arm"
-          }
-        ]
-      },
-      {
-        "id": "experiments",
-        "title": {
-          "zh": "实验结果",
-          "en": "Experimental results"
-        },
-        "paragraphs": [
-          {
-            "zh": "实机实验中，图书识别率为96%，任务成功率为89%。书脊检测提供目标书籍的位置，三维感知与抓取规划进一步连接识别结果和取放动作。",
-            "en": "Real-robot experiments achieve 96% book-recognition accuracy and 89% task success. Book-spine detection provides target locations, while 3D perception and grasp planning connect recognition to pick-and-place."
+            "row": "library-arm",
+            "displayWidth": 720
           },
-          {
-            "zh": "下图展示书脊识别、楼梯感知和三维抓取可视化。光照变化、遮挡和复杂图书摆放是持续优化的场景因素。",
-            "en": "The images show book-spine recognition, stair perception, and 3D grasp visualization. Lighting changes, occlusion, and varied book arrangements remain relevant conditions for further refinement."
-          }
-        ],
-        "points": [],
-        "figures": [
           {
             "src": "assets/projects/library-robot/book-recognition.webp",
             "caption": {
               "zh": "图书识别：书脊检测与目标书籍定位。",
               "en": "Book recognition: spine detection and target-book localization."
-            }
-          },
-          {
-            "src": "assets/projects/library-robot/ppt/summary-image72.webp",
-            "caption": {
-              "zh": "楼梯识别流程与点云检测结果",
-              "en": "Stair-recognition pipeline and point-cloud detection"
-            }
+            },
+            "row": "library-recognition-results",
+            "rowWidth": 760
           },
           {
             "src": "assets/projects/library-robot/ppt/summary-image73.webp",
             "caption": {
               "zh": "机械臂三维抓取与环境感知可视化",
               "en": "3D grasp and environment visualization"
-            }
+            },
+            "row": "library-recognition-results",
+            "rowWidth": 760
+          },
+          {
+            "src": "assets/projects/library-robot/ppt/summary-image72.webp",
+            "caption": {
+              "zh": "楼梯识别流程与点云检测结果",
+              "en": "Stair-recognition pipeline and point-cloud detection"
+            },
+            "row": "library-navigation-results",
+            "rowWidth": 760
           },
           {
             "src": "assets/projects/library-robot/ppt/summary-image71.webp",
             "caption": {
               "zh": "室内三维点云地图与导航轨迹",
               "en": "Indoor point-cloud map and navigation trajectory"
-            }
+            },
+            "row": "library-navigation-results",
+            "rowWidth": 760
           }
-        ],
-        "metrics": []
+        ]
       }
     ],
     "categoryKey": "manipulation",
@@ -837,66 +833,6 @@ export const projects = [
             }
           }
         ],
-        "metrics": [
-          {
-            "value": "98.0%",
-            "label": {
-              "zh": "Gazebo 仿真成功率，102 组起终点",
-              "en": "Simulation success over 102 start–goal pairs"
-            }
-          },
-          {
-            "value": "90.8%",
-            "label": {
-              "zh": "真实三场景平均成功率，共 120 次测试",
-              "en": "Mean real-world success over 120 runs"
-            }
-          }
-        ],
-        "table": {
-          "caption": {
-            "zh": "仿真与真实部署主要指标",
-            "en": "Simulation and deployment metrics"
-          },
-          "columns": [
-            {
-              "zh": "评估",
-              "en": "Evaluation"
-            },
-            {
-              "zh": "成功率",
-              "en": "Success rate"
-            },
-            {
-              "zh": "碰撞率",
-              "en": "Collision rate"
-            },
-            {
-              "zh": "SPL",
-              "en": "SPL"
-            }
-          ],
-          "rows": [
-            [
-              {
-                "zh": "仿真，102组起终点",
-                "en": "Simulation, 102 start–goal pairs"
-              },
-              "98.0%",
-              "2.0%",
-              "95.1%"
-            ],
-            [
-              {
-                "zh": "真实三场景平均，120次",
-                "en": "Real-world mean, 120 runs"
-              },
-              "90.8%",
-              "—",
-              "—"
-            ]
-          ]
-        },
         "layout": "full"
       }
     ],
@@ -2194,21 +2130,26 @@ export const projects = [
             "caption": {
               "zh": "激光与视觉融合的室内地图",
               "en": "Indoor map from laser–vision fusion"
-            }
+            },
+            "displayWidth": 460
           },
           {
             "src": "assets/projects/agva/ppt/summary-image42.webp",
             "caption": {
               "zh": "室内语义感知实验",
               "en": "Indoor semantic-perception experiment"
-            }
+            },
+            "row": "agva-semantic-results",
+            "rowWidth": 640
           },
           {
             "src": "assets/projects/agva/ppt/summary-image43.webp",
             "caption": {
               "zh": "室外语义感知探索",
               "en": "Outdoor semantic-perception exploration"
-            }
+            },
+            "row": "agva-semantic-results",
+            "rowWidth": 640
           }
         ]
       }
