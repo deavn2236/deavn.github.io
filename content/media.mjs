@@ -651,21 +651,6 @@ export const media = {
         }
       ]
     },
-    "assets/papers/uwb-state-machine.thumb-480.webp": {
-      "width": 480,
-      "height": 362
-    },
-    "assets/papers/uwb-state-machine.webp": {
-      "width": 896,
-      "height": 676,
-      "variants": [
-        {
-          "src": "assets/papers/uwb-state-machine.thumb-480.webp",
-          "width": 480,
-          "height": 362
-        }
-      ]
-    },
     "assets/papers/uwb-system.thumb-480.webp": {
       "width": 480,
       "height": 221
@@ -2058,6 +2043,54 @@ export const media = {
     "assets/projects/lidar-3d/ppt-26.poster.webp": {
       "width": 640,
       "height": 368
+    },
+    "assets/papers/uwb-state-machine-full.webp": {
+      "width": 1058,
+      "height": 895,
+      "variants": [
+        {
+          "src": "assets/papers/uwb-state-machine-full.thumb-480.webp",
+          "width": 480,
+          "height": 406
+        },
+        {
+          "src": "assets/papers/uwb-state-machine-full.thumb-960.webp",
+          "width": 960,
+          "height": 812
+        }
+      ]
+    },
+    "assets/papers/uwb-state-machine-full.thumb-480.webp": {
+      "width": 480,
+      "height": 406
+    },
+    "assets/papers/uwb-state-machine-full.thumb-960.webp": {
+      "width": 960,
+      "height": 812
+    },
+    "assets/projects/sports-robot/sensing-control-architecture.webp": {
+      "width": 1025,
+      "height": 533,
+      "variants": [
+        {
+          "src": "assets/projects/sports-robot/sensing-control-architecture.thumb-480.webp",
+          "width": 480,
+          "height": 250
+        },
+        {
+          "src": "assets/projects/sports-robot/sensing-control-architecture.thumb-960.webp",
+          "width": 960,
+          "height": 499
+        }
+      ]
+    },
+    "assets/projects/sports-robot/sensing-control-architecture.thumb-480.webp": {
+      "width": 480,
+      "height": 250
+    },
+    "assets/projects/sports-robot/sensing-control-architecture.thumb-960.webp": {
+      "width": 960,
+      "height": 499
     }
   },
   "videos": {

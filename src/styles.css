@@ -146,10 +146,14 @@ body{font-size:16px;line-height:1.85}
 .media-row .section-video{flex:none;width:100%;max-width:none;max-height:none;margin:0;aspect-ratio:var(--media-ratio,16/9);border:0;border-radius:0;background:#f5f8fc}
 .media-row.is-pair .figure-expand,.media-row.is-pair .section-video{aspect-ratio:var(--row-ratio,16/9)}
 .media-row .section-video>video{width:100%;height:100%;max-width:none;object-fit:contain}
-.media-row .section-figure figcaption{display:flex;align-items:flex-start;gap:10px;flex:1;margin:0;padding:14px 16px;border:0;border-top:1px solid #e3eaf2;border-radius:0;background:#fff;font-size:14px;font-weight:500;line-height:1.8;color:#000;overflow-wrap:anywhere}
+.media-row .section-figure figcaption{display:block;flex:1;margin:0;padding:14px 16px;border:0;border-top:1px solid #e3eaf2;border-radius:0;background:#fff;font-size:14px;font-weight:500;line-height:1.8;color:#000;overflow-wrap:anywhere}
 .figure-caption-kind{display:inline-flex;align-items:flex-start;gap:6px;flex:none;color:#000;font-size:14px;font-weight:600;white-space:nowrap}
 .figure-caption-kind svg{width:16px;height:16px;flex:none;margin-top:4px}
-.figure-caption-text{min-width:0}
+.figure-caption-kind{margin-right:8px;vertical-align:top}
+.figure-caption-text{display:inline;min-width:0}
+.technology-list{margin-top:16px;max-width:960px}
+.technology-list li{margin-bottom:12px}
+.technology-list strong{font-weight:700}
 .video-control{width:36px;height:34px;bottom:12px;right:12px;border-radius:7px}
 .video-speed{font-size:11px;bottom:12px;left:12px;border-radius:5px}
 .robot-eyes{transform-box:fill-box;transform-origin:center;animation:robot-blink 6s infinite}
@@ -236,6 +240,7 @@ a:hover,.brand:hover,.nav a:hover,.paper-copy h3 a:hover,.paper-links>a:hover,.f
 .student-work-header h3{font-weight:700;color:#000}
 .student-work-entry{border-left-color:#000}
 .student-work-entry ul,.honor-list{font-size:15px;color:#000}
+.student-work-entry li strong{font-weight:700}
 .honor-group h3{font-weight:700;color:#000}
 .detail-section p,.detail-section li{font-size:16px;color:#000}
 .media-row .section-figure figcaption,.figure-caption-kind{color:#000}
@@ -316,7 +321,7 @@ html[data-lang="en"] .profile-facts{--fact-label-width:144px}
 @media(prefers-reduced-motion:reduce){.profile-route path[stroke-dasharray]{animation:none}}
 
 /* Hardware overview: the compact sensor stays beside its mobile platform. */
-.media-row.is-equipment{grid-template-columns:minmax(0,2.25fr) minmax(0,1fr);gap:28px;align-items:center}
+.media-row.is-equipment{grid-template-columns:minmax(0,var(--equipment-main,2.25fr)) minmax(0,1fr);gap:28px;align-items:center}
 .media-row.is-equipment .figure-expand{aspect-ratio:var(--figure-ratio,1)}
 .media-row.is-equipment .figure-sensor{width:min(100%,180px);justify-self:center}
 .media-row.is-equipment .figure-caption-kind{display:none}

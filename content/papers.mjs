@@ -785,11 +785,12 @@ export const papers = [
             }
           },
           {
-            "src": "assets/papers/uwb-state-machine.webp",
+            "src": "assets/papers/uwb-state-machine-full.webp",
             "caption": {
               "zh": "近距跟随与远距召回的模式管理。",
               "en": "Mode management for close following and long-range recall."
-            }
+            },
+            "displayWidth": 740
           }
         ],
         "metrics": []

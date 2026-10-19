@@ -17,7 +17,11 @@ const bi = v => {
   const zh = tr(v, 'zh');
   const en = tr(v, 'en');
   const zhLanguage = /[\u3400-\u9fff]/u.test(zh) ? 'zh-CN' : 'en';
-  return `<span data-lang="zh" lang="${zhLanguage}">${esc(zh)}</span><span data-lang="en" lang="en">${esc(en)}</span>`;
+  const marked = (value, lang) => {
+    const phrase = v?.emphasis?.[lang];
+    return phrase ? String(value).split(phrase).map(esc).join(`<strong>${esc(phrase)}</strong>`) : esc(value);
+  };
+  return `<span data-lang="zh" lang="${zhLanguage}">${marked(zh, 'zh')}</span><span data-lang="en" lang="en">${marked(en, 'en')}</span>`;
 };
 const b = (zh, en) => ({ zh, en });
 const authors = value => esc(value || '').replaceAll('Wendong Guo', '<strong>Wendong Guo</strong>');
@@ -153,7 +157,8 @@ function renderFigures(section, prefix) {
     // Image rows use the tallest image's ratio: every contained image fills
     // the same width, while vertical whitespace keeps captions aligned.
     const rowRatio = row.every(f => !f.video) ? Math.min(...ratios) : Math.max(...ratios);
-    const styles = [paired ? `--row-ratio:${rowRatio}` : '', widths.length ? `--row-width:${Math.min(...widths)}px` : ''].filter(Boolean).join(';');
+    const hardwareRatio = section.layout === 'equipment' && Number.isFinite(section.equipmentRatio) && section.equipmentRatio > 0 && section.equipmentRatio <= 3 ? section.equipmentRatio : null;
+    const styles = [paired ? `--row-ratio:${rowRatio}` : '', widths.length ? `--row-width:${Math.min(...widths)}px` : '', hardwareRatio ? `--equipment-main:${hardwareRatio}fr` : ''].filter(Boolean).join(';');
     return `<div class="media-row ${paired ? 'is-pair' : 'is-single'}${section.layout === 'equipment' ? ' is-equipment' : ''}${portraitPair ? ' is-portrait-pair' : ''}"${styles ? ` style="${styles}"` : ''}>${row.map(f => renderFigure(f,prefix,paired)).join('')}</div>`;
   }).join('')}</div>`;
 }
@@ -164,7 +169,8 @@ function renderTable(table) {
 
 function renderSection(section, prefix, index) {
   const icon = ({ task: 'info', equipment: 'robot', system: 'layers', method: 'layers', demo: 'robot', experiments: 'chart', results: 'chart', contributions: 'publication' })[section.id] || 'publication';
-  return `<section class="detail-section" id="${esc(section.id || `section-${index}`)}">${sectionHeading(icon, section.title || section.heading)}${(section.paragraphs || []).map(p => `<p>${bi(p)}</p>`).join('')}${section.points?.length ? `<ul>${section.points.map(p => `<li>${bi(p)}</li>`).join('')}</ul>` : ''}${section.flow?.length ? `<ol class="system-flow">${section.flow.map(step => `<li>${bi(step)}</li>`).join('')}</ol>` : ''}${section.metrics?.length ? `<div class="paper-results-grid">${section.metrics.map(r => `<div class="paper-result"><strong>${esc(r.value)}</strong><span>${bi(r.label)}</span></div>`).join('')}</div>` : ''}${section.table ? renderTable(section.table) : ''}${(section.tables || []).map(renderTable).join('')}${renderFigures(section,prefix)}${section.source ? `<p class="media-source"><a href="${esc(section.source.url)}" target="_blank" rel="noopener noreferrer">${bi(section.source.label)}</a></p>` : ''}</section>`;
+  const technologies = section.techniques?.length ? `<ul class="technology-list">${section.techniques.map(t => `<li><strong>${bi(t.name)}${bi(b('：', ': '))}</strong>${bi(t.description)}</li>`).join('')}</ul>` : '';
+  return `<section class="detail-section" id="${esc(section.id || `section-${index}`)}">${sectionHeading(icon, section.title || section.heading)}${(section.paragraphs || []).map(p => `<p>${bi(p)}</p>`).join('')}${technologies}${section.points?.length ? `<ul>${section.points.map(p => `<li>${bi(p)}</li>`).join('')}</ul>` : ''}${section.flow?.length ? `<ol class="system-flow">${section.flow.map(step => `<li>${bi(step)}</li>`).join('')}</ol>` : ''}${section.metrics?.length ? `<div class="paper-results-grid">${section.metrics.map(r => `<div class="paper-result"><strong>${esc(r.value)}</strong><span>${bi(r.label)}</span></div>`).join('')}</div>` : ''}${section.table ? renderTable(section.table) : ''}${(section.tables || []).map(renderTable).join('')}${renderFigures(section,prefix)}${section.source ? `<p class="media-source"><a href="${esc(section.source.url)}" target="_blank" rel="noopener noreferrer">${bi(section.source.label)}</a></p>` : ''}</section>`;
 }
 
 function renderProjectDetail(project, prefix = '../../') {

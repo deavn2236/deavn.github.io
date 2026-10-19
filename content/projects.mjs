@@ -111,12 +111,8 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "迭代反馈规划器将用户需求转化为运动原语，并利用规则反馈检查任务逻辑与执行可行性。底层控制结合多传感器建图定位和导航，按场景调用 RTK、SLAM 与 MPC；大小载具之间交换状态和控制信息。",
-            "en": "An iterative feedback planner converts requests into motion primitives and uses rule-based feedback to check task logic and feasibility. Multi-sensor mapping, localization, and navigation combine RTK, SLAM, and MPC, with state and command exchange between the vehicles."
-          },
-          {
-            "zh": "高层将载具能力与任务地点表示为可检查的运动原语，反馈环节发现动作依赖或位置关系不满足时重新组织计划。低层分别维护两车定位与导航，交接环节通过装卸、对接及状态同步把独立导航连接为完整任务链。",
-            "en": "The high-level planner represents vehicle capabilities and locations through checkable motion primitives and revises plans when action dependencies or spatial conditions are unmet. Each vehicle maintains localization and navigation, while loading, docking, and state exchange connect the two into a complete workflow."
+            "zh": "系统分为语言任务规划与双车导航执行两层，由执行反馈连接高层需求和底层控制。",
+            "en": "The system separates language-level task planning from vehicle navigation and connects them through execution feedback."
           }
         ],
         "points": [],
@@ -137,7 +133,39 @@ export const projects = [
             "displayWidth": 620
           }
         ],
-        "layout": "full"
+        "layout": "full",
+        "techniques": [
+          {
+            "name": {
+              "zh": "IF-Planner 反馈规划",
+              "en": "IF-Planner feedback planning"
+            },
+            "description": {
+              "zh": "把自然语言需求组织为带前置条件的运动原语，结合规则检查与执行状态修正规划，处理运输、卸载、末端导航和返回之间的依赖。",
+              "en": "Translate language requests into motion primitives with preconditions, then use rule checks and execution state to revise dependencies between transport, unloading, final navigation, and return."
+            }
+          },
+          {
+            "name": {
+              "zh": "多传感器定位与 MPC",
+              "en": "Multi-sensor localization and MPC"
+            },
+            "description": {
+              "zh": "按场景衔接 RTK、激光/惯性 SLAM 与模型预测控制，将室外大范围运输和室内狭窄区域导航转换为底盘可执行的运动指令。",
+              "en": "Connect RTK, LiDAR–inertial SLAM, and model predictive control across environments, turning large-area transport and confined indoor navigation into executable base commands."
+            }
+          },
+          {
+            "name": {
+              "zh": "双车通信与装卸对接",
+              "en": "Vehicle communication and docking"
+            },
+            "description": {
+              "zh": "交换两车的定位、任务及执行状态，协调电动载台装卸与视觉–LiDAR 对接，使独立导航模块按交接顺序协同运行。",
+              "en": "Exchange localization, task, and execution state, coordinating powered loading and visual–LiDAR docking so the two navigation modules follow a shared handoff sequence."
+            }
+          }
+        ]
       },
       {
         "id": "demo",
@@ -370,12 +398,8 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "系统将环境感知、SLAM、三维定位、路径规划和机械臂运动学连接为取放流程。书架与书籍感知提供目标位姿，抓取规划和逆运动学生成机械臂动作，底盘导航负责在楼层和书架之间转移。系统架构还包括 ROS 2、Nav2、MoveIt 2、视觉伺服、夹持反馈和重试恢复。",
-            "en": "The system connects perception, SLAM, 3D localization, path planning, and arm kinematics. Shelf and book perception supply target poses, grasp planning and inverse kinematics produce arm actions, and navigation transfers the robot between floors and shelves. The architecture also includes ROS 2, Nav2, MoveIt 2, visual servoing, gripper feedback, and recovery."
-          },
-          {
-            "zh": "导航侧使用点云与惯性信息持续估计平台位姿，并将楼梯与障碍区域作为通行条件；操作侧根据目标位姿完成抓取规划与逆运动学求解。视觉伺服和夹持反馈用于减小到位误差，识别或抓取不满足条件时进入调整与重试流程。",
-            "en": "Point clouds and inertial sensing maintain the platform pose and support traversal decisions around stairs and obstacles. Target poses feed grasp planning and inverse kinematics. Visual servoing and gripper feedback reduce positioning error, with adjustment and retry when perception or grasp conditions are unmet."
+            "zh": "移动导航与近架操作分别处理平台到位和书籍取放，通过统一任务流程交换目标与执行状态。",
+            "en": "Navigation handles platform arrival and manipulation handles shelf-side book operations, sharing goals and execution state through a common workflow."
           }
         ],
         "points": [],
@@ -408,6 +432,38 @@ export const projects = [
           {
             "zh": "MoveIt 2抓取与取放",
             "en": "MoveIt 2 grasping and placement"
+          }
+        ],
+        "techniques": [
+          {
+            "name": {
+              "zh": "ROS 2、Nav2 与激光惯性 SLAM",
+              "en": "ROS 2, Nav2, and LiDAR–inertial SLAM"
+            },
+            "description": {
+              "zh": "点云与惯性信息用于定位建图，Nav2 组织目标导航、路径规划和避障；楼梯与障碍感知为跨楼层通行提供环境约束。",
+              "en": "Use point clouds and inertial measurements for mapping and localization, with Nav2 organizing goal navigation, path planning, and obstacle avoidance. Stair and obstacle perception supplies traversal constraints."
+            }
+          },
+          {
+            "name": {
+              "zh": "书脊视觉识别与三维定位",
+              "en": "Book-spine recognition and 3D localization"
+            },
+            "description": {
+              "zh": "从书架画面中检测书脊与目标书籍，将视觉位置与深度信息关联，形成机械臂坐标系下的取放目标。",
+              "en": "Detect book spines and target books in shelf images, associate observations with depth, and express pick-and-place targets in the arm coordinate frame."
+            }
+          },
+          {
+            "name": {
+              "zh": "MoveIt 2 与视觉/夹持反馈",
+              "en": "MoveIt 2 with visual and gripper feedback"
+            },
+            "description": {
+              "zh": "利用抓取位姿、逆运动学和运动规划生成机械臂轨迹；视觉伺服、夹持反馈与重试流程处理近架定位和操作误差。",
+              "en": "Use grasp poses, inverse kinematics, and motion planning to produce arm trajectories; visual servoing, gripper feedback, and retries address shelf-side positioning and manipulation errors."
+            }
           }
         ]
       },
@@ -645,12 +701,8 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "系统采用“视觉路点预测—场景约束恢复—运动优化”的分层结构。P3Net 对历史、当前和目标图像进行时空关系建模，预测面向目标的局部路点；SCMPC 将恢复的场景约束引入模型预测控制，生成可由底盘执行的运动指令。",
-            "en": "The system separates visual waypoint prediction, scene-constraint recovery, and motion optimization. P3Net models temporal and spatial relations among past, current, and goal images to predict local waypoints. SCMPC incorporates scene constraints into predictive control to produce executable base commands."
-          },
-          {
-            "zh": "视觉模块负责判断朝哪里前进，控制模块结合可通行区域和底盘运动约束修正局部轨迹。两者在机器人行进中持续闭环更新，使图像目标理解与障碍环境中的运动执行相互衔接。",
-            "en": "Visual prediction provides local goal direction, while control adapts the trajectory to traversable space and base-motion constraints. Repeated closed-loop updates connect goal understanding with physical execution."
+            "zh": "采用视觉路点预测与场景约束控制的分层结构，分别处理目标理解和可执行运动生成。",
+            "en": "A layered architecture separates visual waypoint prediction from scene-constrained control, connecting goal understanding with executable motion."
           }
         ],
         "points": [],
@@ -678,7 +730,39 @@ export const projects = [
             }
           }
         ],
-        "layout": "full"
+        "layout": "full",
+        "techniques": [
+          {
+            "name": {
+              "zh": "P3Net 三元时空路点预测",
+              "en": "P3Net ternary spatio-temporal waypoint prediction"
+            },
+            "description": {
+              "zh": "联合建模历史、当前与目标 RGB 图像的关系，持续预测面向目标的局部路点，以视觉时空信息减少仅凭当前外观判断方向的不确定性。",
+              "en": "Model relationships among historical, current, and goal RGB views to predict local waypoints, using visual temporal context to reduce direction ambiguity."
+            }
+          },
+          {
+            "name": {
+              "zh": "单目场景几何约束",
+              "en": "Monocular scene geometry"
+            },
+            "description": {
+              "zh": "从视觉观测中恢复局部可通行区域与障碍边界，为预测路点增加与真实环境几何对应的运动约束。",
+              "en": "Recover local traversable space and obstacle boundaries from visual observations, grounding predicted waypoints in environmental geometry."
+            }
+          },
+          {
+            "name": {
+              "zh": "SCMPC 模型预测控制",
+              "en": "SCMPC model predictive control"
+            },
+            "description": {
+              "zh": "把路点目标、场景边界和底盘运动约束纳入滚动优化，更新局部轨迹和控制指令，形成视觉感知到运动执行的闭环。",
+              "en": "Optimize waypoint tracking, scene boundaries, and base-motion constraints over a receding horizon, continually updating local trajectories and control commands."
+            }
+          }
+        ]
       },
       {
         "id": "demo",
@@ -945,12 +1029,8 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "导航层融合传感器信息完成定位和目标接近；操作层根据视觉检测结果求解按钮位置，并用接触位姿反馈闭合机械臂操作流程。本人负责按钮识别和机械臂点击等核心环节。",
-            "en": "Sensor fusion supports localization and approach. The manipulation layer computes button positions from vision and closes the interaction loop with contact-pose feedback. My work focused on button recognition and arm pressing."
-          },
-          {
-            "zh": "关键衔接是将视觉目标转换到机械臂可执行的空间位置，并协调底盘、升降机构和机械臂的动作顺序。识别失败重定位、接触检查和复位组成状态闭环，使设备接近和按钮点击能够按流程连续执行。",
-            "en": "A key integration step converts the visual target into an executable arm-space location and sequences the base, lift, and arm. Repositioning after detection failure, contact checks, and return motions close the workflow between approach and pressing."
+            "zh": "本人负责按钮识别和机械臂点击等核心环节，重点将视觉目标转换为受反馈约束的精确操作。",
+            "en": "My work focuses on button recognition and precise arm pressing, converting visual targets into feedback-guided manipulation."
           }
         ],
         "points": [],
@@ -960,6 +1040,38 @@ export const projects = [
             "caption": {
               "zh": "按钮识别、接触反馈与操作复位流程",
               "en": "Button detection, contact feedback, and return workflow"
+            }
+          }
+        ],
+        "techniques": [
+          {
+            "name": {
+              "zh": "按钮视觉检测与操作点定位",
+              "en": "Visual button detection and target localization"
+            },
+            "description": {
+              "zh": "识别设备面板中的目标按钮，结合机器人观测与空间位置关系确定按压点，并将视觉结果转换为机械臂可用的目标坐标。",
+              "en": "Detect the target button on the equipment panel, determine its pressing point from observations and spatial relationships, and transform it into an arm-frame target."
+            }
+          },
+          {
+            "name": {
+              "zh": "机械臂位姿求解与接近控制",
+              "en": "Arm-pose computation and approach control"
+            },
+            "description": {
+              "zh": "围绕按钮位置与面板方向组织末端接近和按压动作，协调底盘站位、升降机构及机械臂工作空间，避免把图像中心直接当作执行目标。",
+              "en": "Organize approach and pressing around the button position and panel orientation, coordinating the base, lift, and arm workspace when producing executable targets."
+            }
+          },
+          {
+            "name": {
+              "zh": "接触位姿反馈与状态管理",
+              "en": "Contact-pose feedback and state management"
+            },
+            "description": {
+              "zh": "以接触信号判断交互阶段，按扫描、定位、接近、按压和复位切换动作；目标不可见或条件不足时调整观察位置后重试。",
+              "en": "Use contact signals to track interaction phases and sequence scanning, localization, approach, pressing, and reset, repositioning and retrying when observation or execution conditions are unmet."
             }
           }
         ]
@@ -1151,16 +1263,44 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "围绕 ACT 模型调整数据记录与训练流程，将人工动作与视觉观测对应起来。进一步探索 mask 观测和基于航点的模仿学习，并在仿真与实机间分别测试动作执行。",
-            "en": "The work adapts demonstration recording and ACT training to align actions with visual observations. It also explores masked observations and waypoint-based imitation learning, with separate simulation and robot tests."
-          },
-          {
-            "zh": "ACT 以连续动作片段建模示教序列，数据流程覆盖同步记录、训练和部署执行。mask 观测与航点设置作为不同输入或动作组织方式分别测试，仿真记录与真实任务演示分别列示，以观察策略在不同设置中的执行行为。",
-            "en": "ACT models demonstrations through action chunks, supported by synchronized recording, training, and execution. Masked observations and waypoint settings are tested as alternative observation and action structures. Simulation records and physical demonstrations document execution under their respective settings."
+            "zh": "围绕示教数据、动作片段建模和机器人执行组织模仿学习流程，区分仿真验证与实机操作。",
+            "en": "The imitation-learning pipeline connects demonstrations, action-chunk modeling, and robot execution, with simulation and physical tests presented separately."
           }
         ],
         "points": [],
-        "figures": []
+        "figures": [],
+        "techniques": [
+          {
+            "name": {
+              "zh": "主从遥操作与同步数据采集",
+              "en": "Leader–follower teleoperation and synchronized data"
+            },
+            "description": {
+              "zh": "同步记录相机图像、关节状态与人工示教动作，建立观测和动作序列的时间对应，为单臂抓取与双臂交接提供训练样本。",
+              "en": "Record camera images, joint states, and demonstrated actions with temporal alignment, providing examples for single-arm grasping and bimanual handoff."
+            }
+          },
+          {
+            "name": {
+              "zh": "ACT 动作片段模仿学习",
+              "en": "ACT action-chunk imitation learning"
+            },
+            "description": {
+              "zh": "用连续动作片段表示操作技能，训练模型从视觉与关节观测预测后续动作序列，并将输出接入机械臂执行流程。",
+              "en": "Represent manipulation through action chunks, train predictions of subsequent actions from visual and joint observations, and connect the sequences to arm execution."
+            }
+          },
+          {
+            "name": {
+              "zh": "Mask 观测与航点式模仿学习探索",
+              "en": "Mask observations and waypoint-based learning"
+            },
+            "description": {
+              "zh": "分别测试目标区域 mask 与航点组织方式，比较不同观测和动作表示对羽毛球拿取、交接及嵌套分离过程的影响。",
+              "en": "Explore target-region masks and waypoint representations, examining their effects on shuttlecock pickup, handoff, and nested-object separation."
+            }
+          }
+        ]
       },
       {
         "id": "demo",
@@ -1411,12 +1551,8 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "在 YOLOv5 中检测球头和球身关键点，根据关键点的相对几何关系求解球体方向矢量，选择球体骨架主干上的抓握位置和姿态。",
-            "en": "YOLOv5 detects head and body keypoints. Their relative geometry determines the shuttlecock direction and a grasp location and pose along its main structure."
-          },
-          {
-            "zh": "机械臂采用分步动作控制：接近目标、夹紧、抬起并抖动分离。该流程将姿态感知与拟人化分离动作衔接，用于处理直接夹取难以解决的多球堆叠和勾连。",
-            "en": "Arm execution is divided into approach, closure, lifting, and shaking for separation. This connects pose estimation with a human-inspired separation action for piled and entangled shuttlecocks."
+            "zh": "系统把关键部位检测、几何姿态计算与分步机械臂控制连接起来，解决羽毛球姿态变化和堆叠勾连。",
+            "en": "The system combines key-part detection, geometric pose computation, and staged arm control to address pose variation and entangled shuttlecocks."
           }
         ],
         "points": [],
@@ -1428,6 +1564,38 @@ export const projects = [
               "en": "Perception and grasp-control pipeline for collection"
             },
             "displayWidth": 700
+          }
+        ],
+        "techniques": [
+          {
+            "name": {
+              "zh": "YOLOv5 关键部位检测",
+              "en": "YOLOv5 key-part detection"
+            },
+            "description": {
+              "zh": "检测球头与球身关键点，获得比普通目标框更适合抓取姿态估计的结构信息。",
+              "en": "Detect shuttlecock heads and body keypoints, providing structural information for grasp-pose estimation beyond a bounding box."
+            }
+          },
+          {
+            "name": {
+              "zh": "几何方向与抓握位姿求解",
+              "en": "Geometric direction and grasp-pose estimation"
+            },
+            "description": {
+              "zh": "利用关键点相对位置求解方向矢量，选择骨架主干上的抓握点和夹爪方向，将视觉检测结果转成操作位姿。",
+              "en": "Estimate the direction vector from keypoint geometry and select a grasp point and gripper orientation along the body, converting visual detections into manipulation poses."
+            }
+          },
+          {
+            "name": {
+              "zh": "ROS 分步控制与抖动分离",
+              "en": "ROS staged control and shaking-based separation"
+            },
+            "description": {
+              "zh": "按接近、夹紧、抬升和抖动分离组织动作，在夹取后加入摆动以处理多球堆叠和勾连。",
+              "en": "Sequence approach, closure, lifting, and shaking in ROS, adding post-grasp motion to separate stacked or entangled shuttlecocks."
+            }
           }
         ]
       },
@@ -1608,12 +1776,8 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "LIO-SAM 将惯性预积分、激光点云配准和因子图优化连接起来，输出位姿与地图；导航层利用地图和实时障碍信息规划路径与局部运动。",
-            "en": "LIO-SAM combines inertial preintegration, LiDAR alignment, and factor-graph optimization to estimate pose and map the environment. Navigation uses the map and obstacle observations to plan motion."
-          },
-          {
-            "zh": "惯性预积分为相邻时刻运动提供先验，激光配准给出环境几何约束，因子图优化整合这些信息。导航层再把定位结果与障碍信息转换为可行路径及局部控制目标；可视化用于检查地图、当前位置和局部轨迹的对应关系。",
-            "en": "Inertial preintegration supplies a motion prior, LiDAR registration provides geometric constraints, and factor-graph optimization combines them. Navigation converts estimated pose and obstacle observations into feasible paths and local control targets, visualized alongside the map."
+            "zh": "定位建图层估计机器人位姿与环境结构，导航层将地图和目标位置转换为路径与底盘控制。",
+            "en": "Mapping estimates robot pose and environmental geometry; navigation converts the map and target into paths and base commands."
           }
         ],
         "points": [],
@@ -1623,6 +1787,38 @@ export const projects = [
             "caption": {
               "zh": " LIO-SAM 模块框架",
               "en": "LIO-SAM modules shown in the slides"
+            }
+          }
+        ],
+        "techniques": [
+          {
+            "name": {
+              "zh": "LIO-SAM 激光惯性里程计",
+              "en": "LIO-SAM LiDAR–inertial odometry"
+            },
+            "description": {
+              "zh": "融合三维激光点云与 IMU，利用惯性运动先验和激光几何约束持续估计机器人位姿。",
+              "en": "Fuse 3D LiDAR and IMU measurements, combining inertial motion priors with geometric constraints for continuous pose estimation."
+            }
+          },
+          {
+            "name": {
+              "zh": "惯性预积分与因子图优化",
+              "en": "Inertial preintegration and factor-graph optimization"
+            },
+            "description": {
+              "zh": "通过惯性预积分、激光配准及因子图整合相邻时刻和地图约束，输出供导航使用的连续位姿与点云地图。",
+              "en": "Combine inertial preintegration, LiDAR registration, and factor-graph constraints to supply navigation with pose estimates and a point-cloud map."
+            }
+          },
+          {
+            "name": {
+              "zh": "目标点规划与局部避障",
+              "en": "Goal planning and local obstacle avoidance"
+            },
+            "description": {
+              "zh": "基于地图生成到目标的全局路径，结合实时障碍信息更新局部轨迹，并把轨迹转换为底盘指令；地图与轨迹可视化用于联调。",
+              "en": "Plan a global path on the map, update local motion from obstacle observations, and convert trajectories into base commands, using map and path visualization for integration checks."
             }
           }
         ]
@@ -1812,17 +2008,21 @@ export const projects = [
               "zh": "四轮无人车平台",
               "en": "Four-wheel mobile platform"
             },
-            "role": "main"
+            "role": "main",
+            "rowWidth": 560
           },
           {
             "src": "assets/projects/rtk-navigation/ppt/summary-image76.webp",
             "caption": {
-              "zh": "GNSS 接收与车载计算设备",
-              "en": "GNSS receiver and onboard computing"
+              "zh": "GNSS 与计算单元",
+              "en": "GNSS and computer"
             },
-            "role": "sensor"
+            "role": "sensor",
+            "rowWidth": 560
           }
-        ]
+        ],
+        "layout": "equipment",
+        "equipmentRatio": 1.5
       },
       {
         "id": "system",
@@ -1832,16 +2032,44 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "参考站和流动站同步观测卫星信号，差分解算获取位置。九轴 IMU 补充姿态信息，通过 EKF 平滑位置和姿态后输入 MPC 控制器，减轻 GNSS 跳变与惯性累计误差对循迹的影响。",
-            "en": "The base and rover observe satellite signals for differential positioning. A nine-axis IMU supplies attitude, and an EKF smooths pose before MPC generates tracking commands."
-          },
-          {
-            "zh": "RTK 提供室外绝对位置，IMU 提供连续姿态变化，EKF 在观测之间维持平滑估计。MPC 依据当前状态与参考轨迹预测后续运动并调整控制，使差分定位、状态估计和底盘循迹形成闭环。",
-            "en": "RTK supplies absolute outdoor position, the IMU tracks orientation changes, and the EKF maintains a smooth estimate between observations. MPC predicts motion relative to the reference route and updates commands, closing the loop from positioning to tracking."
+            "zh": "系统按差分定位、融合估计与循迹控制分层，将定位观测持续转化为车辆控制量。",
+            "en": "The system separates differential positioning, state estimation, and tracking control, continually turning sensor observations into vehicle commands."
           }
         ],
         "points": [],
-        "figures": []
+        "figures": [],
+        "techniques": [
+          {
+            "name": {
+              "zh": "自建 RTK 基站与流动站",
+              "en": "Local RTK base and rover"
+            },
+            "description": {
+              "zh": "参考站与车载接收机同步观测卫星信号，通过差分信息求解车辆位置，形成校园范围内的绝对定位链路。",
+              "en": "Synchronize satellite observations at a fixed reference station and vehicle receiver, using differential corrections to obtain absolute positions on campus."
+            }
+          },
+          {
+            "name": {
+              "zh": "GNSS–IMU 扩展卡尔曼滤波（EKF）",
+              "en": "GNSS–IMU extended Kalman filtering"
+            },
+            "description": {
+              "zh": "以 GNSS 绝对位置约束惯性漂移，以九轴 IMU 补充姿态变化，通过预测与观测更新平滑位姿，减轻位置跳变对控制的影响。",
+              "en": "Constrain inertial drift with GNSS position and use the nine-axis IMU for orientation changes; prediction and measurement updates smooth the pose supplied to control."
+            }
+          },
+          {
+            "name": {
+              "zh": "MPC 轨迹跟踪",
+              "en": "MPC trajectory tracking"
+            },
+            "description": {
+              "zh": "把融合位姿与参考轨迹放在同一坐标系中，滚动预测后续运动并优化控制量，在直行与转弯过程中修正横向和朝向偏差。",
+              "en": "Express the estimated pose and reference path in a shared frame, predict future motion over a receding horizon, and optimize controls to correct lateral and heading errors."
+            }
+          }
+        ]
       },
       {
         "id": "demo",
@@ -1857,13 +2085,6 @@ export const projects = [
         ],
         "points": [],
         "figures": [
-          {
-            "src": "assets/projects/rtk-navigation/ppt/summary-image80.webp",
-            "caption": {
-              "zh": "参考轨迹与实际轨迹对比",
-              "en": "Reference and measured trajectories"
-            }
-          },
           {
             "video": "assets/projects/rtk-navigation/ppt-22.mp4",
             "poster": "assets/projects/rtk-navigation/ppt-22.poster.webp",
@@ -1889,6 +2110,15 @@ export const projects = [
               "zh": "校园道路循迹：路侧视角",
               "en": "Campus route following: roadside view"
             }
+          },
+          {
+            "src": "assets/projects/rtk-navigation/ppt/summary-image80.webp",
+            "caption": {
+              "zh": "参考轨迹与实际轨迹对比",
+              "en": "Reference and measured trajectories"
+            },
+            "layout": "full",
+            "displayWidth": 520
           }
         ]
       }
@@ -2015,12 +2245,8 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "相机点云经过滤波和投影，与二维激光扫描融合后进入 Cartographer 建图和代价地图。后续探索加入深度估计与语义网络，为不同类别物体设置导航代价。",
-            "en": "Filtered and projected camera point clouds are fused with 2D laser scans for Cartographer mapping and costmaps. Follow-up work explores depth and semantic networks to assign category-dependent navigation costs."
-          },
-          {
-            "zh": "点云滤波与投影将相机观测转成可与二维激光共同使用的几何信息，再服务于定位建图和代价地图更新。语义探索进一步研究如何把目标类别映射为导航代价，区分几何可通行与任务相关的区域。",
-            "en": "Filtering and projection transform camera point clouds into geometry compatible with 2D laser scans for localization, mapping, and costmap updates. Semantic exploration examines how object classes can affect navigation costs beyond geometric traversability."
+            "zh": "以二维激光和视觉点云融合建立几何导航基础，并探索将视觉语义加入代价地图。",
+            "en": "The system combines 2D LiDAR and visual point clouds for geometric navigation and explores incorporating visual semantics into navigation costs."
           }
         ],
         "points": [],
@@ -2045,6 +2271,38 @@ export const projects = [
           {
             "zh": "导航代价地图更新",
             "en": "Navigation costmap updates"
+          }
+        ],
+        "techniques": [
+          {
+            "name": {
+              "zh": "视觉点云滤波与投影融合",
+              "en": "Visual point-cloud filtering and projection"
+            },
+            "description": {
+              "zh": "将相机点云滤波并投影到导航平面，与二维激光扫描融合，补充单一平面扫描难以覆盖的障碍几何。",
+              "en": "Filter and project camera point clouds onto the navigation plane, fusing them with 2D laser scans to complement planar obstacle observations."
+            }
+          },
+          {
+            "name": {
+              "zh": "Cartographer 与代价地图",
+              "en": "Cartographer and costmaps"
+            },
+            "description": {
+              "zh": "把融合几何输入用于定位建图，依据地图与实时障碍更新导航代价，连接目标点规划和底盘避障执行。",
+              "en": "Use fused geometry for mapping and localization, update navigation costs from maps and obstacles, and connect goal planning to base-level obstacle avoidance."
+            }
+          },
+          {
+            "name": {
+              "zh": "深度估计与语义导航探索",
+              "en": "Depth estimation and semantic-navigation exploration"
+            },
+            "description": {
+              "zh": "对深度、语义分割及全景分割输出进行对照，研究将物体类别和投影点云映射为导航代价；该部分按探索性工作展示。",
+              "en": "Compare depth, semantic-segmentation, and panoptic-segmentation outputs and explore mapping classes and projected point clouds into navigation costs."
+            }
           }
         ]
       },
@@ -2245,12 +2503,8 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "单个电子视觉标签中的多 NFC 布局以定向精度为目标；物体表面的多电子视觉标签则扩大可读方向和覆盖范围。材料分析三角形、多边形等布局的最坏误差和读取区域。",
-            "en": "Multiple NFC elements within one tag target orientation accuracy, while multiple composite tags expand readable directions and coverage. The slides analyze triangular and polygonal layouts and their worst-case errors."
-          },
-          {
-            "zh": "单标签层面研究多个 NFC 的相对位置如何约束方向，多标签层面研究物体表面布置如何改善读取覆盖。几何推导与读取区域分析构成方案证据，当前展示限定为研究与实验设计。",
-            "en": "Within one composite tag, relative NFC positions constrain orientation; across an object, multiple tags improve read coverage. Geometric derivations and read-region analysis support the concept, which is presented as research and experimental design."
+            "zh": "采用 RFID 粗检出与多 NFC 近场几何约束的分层思路，技术工作集中在标签布局与误差分析。",
+            "en": "A hierarchical design combines coarse RFID detection with geometric constraints from multiple NFC tags, focusing on layout and error analysis."
           }
         ],
         "points": [],
@@ -2267,6 +2521,38 @@ export const projects = [
             "caption": {
               "zh": "几何条件下的标签排布分析",
               "en": "Tag placement under geometric constraints"
+            }
+          }
+        ],
+        "techniques": [
+          {
+            "name": {
+              "zh": "RFID 粗检出与 Grouping-NFC",
+              "en": "RFID detection and Grouping-NFC"
+            },
+            "description": {
+              "zh": "先利用 RFID 确定目标的粗略存在或位置范围，再根据多个 NFC 的读取关系建立更细的定位与定向约束。",
+              "en": "Use RFID for coarse target detection or location bounds, then establish finer position and orientation constraints from multiple NFC readings."
+            }
+          },
+          {
+            "name": {
+              "zh": "标签几何布局与位姿约束",
+              "en": "Tag geometry and pose constraints"
+            },
+            "description": {
+              "zh": "比较三角形、多边形及组合标签排布，分析已知相对位置与读取范围对物体位置和朝向估计的约束能力。",
+              "en": "Compare triangular, polygonal, and composite layouts, analyzing how relative tag positions and read ranges constrain object position and orientation."
+            }
+          },
+          {
+            "name": {
+              "zh": "最坏误差与覆盖范围分析",
+              "en": "Worst-case error and coverage analysis"
+            },
+            "description": {
+              "zh": "研究定向精度、读取区域与标签数量之间的关系，并据此组织实验方案；当前展示为几何研究与实验设计。",
+              "en": "Study the relationships among orientation precision, readable regions, and tag count to structure experiments; the work shown remains geometric analysis and experimental design."
             }
           }
         ]
@@ -2314,8 +2600,8 @@ export const projects = [
     },
     "categoryKey": "manipulation",
     "summary": {
-      "zh": "面向乒乓球、羽毛球和网球对打，实机展示感知、轨迹预测与移动挥拍协同；结合 MV-BMR 文献介绍羽毛球预测与控制。",
-      "en": "For table tennis, badminton, and tennis rallies, real demonstrations combine perception, trajectory prediction, and mobile hitting; MV-BMR provides related background on badminton prediction and control."
+      "zh": "面向乒乓球、羽毛球和网球对打，融合 YOLO 视觉检测、轨迹预测与协同控制；实机展示移动站位和挥拍回击。",
+      "en": "For table tennis, badminton, and tennis, YOLO visual detection, trajectory prediction, and coordinated control connect mobile positioning with physical racket returns."
     },
     "media": {
       "video": "assets/projects/sports-robot/demo.mp4",
@@ -2356,12 +2642,12 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "球类运动要求机器人在来球落地或越过可击打区域前完成感知、判断、移动与回击。不同球类的飞行速度、运动规律和场地尺度不同，但都需要把视觉观测与移动平台、挥拍机械臂联动起来。",
-            "en": "Ball-sport robots must perceive, decide, reposition, and return a ball before it leaves the reachable zone. Flight dynamics and court scale differ across sports, but all require close coordination between vision, a mobile platform, and a striking arm."
+            "zh": "球类运动要求机器人在来球越过可击打区域前完成感知、判断、移动与回击。不同球类的速度、飞行规律和场地尺度不同，但都需要将来球预测与底盘、挥拍机械臂联动。",
+            "en": "Ball-sport robots must sense, predict, reposition, and return a ball before it leaves the reachable zone. Different speeds, flight dynamics, and court scales require prediction to be coordinated with base and arm motion."
           },
           {
-            "zh": "本页通过三球一体实机视频展示平台在不同球类场景中的动作，并参考 Shi 等人的 MV-BMR 研究梳理羽毛球的感知与控制思路。实机演示和相关文献实验分别列示。",
-            "en": "The multi-sport video documents physical actions across the three sports. Shi et al.’s MV-BMR study provides context for badminton sensing and control, with the supplied demonstrations and related literature experiments presented separately."
+            "zh": "羽毛球尤其受到反应时间限制：若等到轨迹估计完全稳定后才移动，底盘可能来不及到位。因此采用先预测可击打区域并提前移动、再随视觉观测细化击球点的两阶段思路。",
+            "en": "Badminton imposes a short reaction window: waiting for a fully stable trajectory estimate can leave too little time to reposition. A two-stage design first predicts an interception region and starts motion, then refines the hit point as observations arrive."
           }
         ],
         "figures": []
@@ -2374,26 +2660,17 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "机器人根据来球状态调整位置与球拍姿态，在可击打时间窗口内完成回击。视频依次包括乒乓球正反手及人机对打、羽毛球对打、网球对打，展示不同球类与球拍配置下的动作。",
-            "en": "The robot adjusts position and racket pose from the incoming ball state and returns it within the available interception window. The video includes table-tennis forehand/backhand and rallies, followed by badminton and tennis rallies under different racket configurations."
+            "zh": "根据人类来球调整底盘位置、机械臂姿态与挥拍时机，在球体进入可击打空间时完成回击。演示覆盖乒乓球正反手、羽毛球和网球对打，任务关注连续感知与击球执行的衔接。",
+            "en": "Adjust base position, arm pose, and racket timing from the incoming ball and return it within the reachable interception window. Demonstrations cover table-tennis forehand and backhand, badminton, and tennis."
           }
         ],
-        "points": [
-          {
-            "zh": "感知来球并估计未来可击打区域，争取底盘移动时间。",
-            "en": "Observe the ball and estimate a future interception region to provide time for base movement."
-          },
-          {
-            "zh": "协调底盘站位、机械臂姿态与挥拍时机，连接预测结果和真实动作。",
-            "en": "Coordinate base position, arm pose, and striking time to translate predictions into physical actions."
-          }
-        ],
+        "points": [],
         "figures": [
           {
             "src": "assets/projects/sports-robot/mvbmr-overview.webp",
             "caption": {
-              "zh": "技术参考：Shi 等，MV-BMR，Information Fusion 123 (2025)，Fig. 1",
-              "en": "Technical reference: Shi et al., MV-BMR, Information Fusion 123 (2025), Fig. 1"
+              "zh": "羽毛球感知、击球区域与场地坐标（来源：Shi 等，2025，Fig. 1）。",
+              "en": "Badminton sensing, interception regions, and court coordinates (source: Shi et al., 2025, Fig. 1)."
             }
           }
         ]
@@ -2406,8 +2683,12 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "视频中的实机由移动底盘、挥拍机械臂和球拍组成，在不同场地中进行三类球运动。设备图截取自演示视频，展示实际平台与挥拍结构。",
-            "en": "The video shows a mobile base, striking arm, and racket operating in three sports settings. The hardware view is a still from the supplied demonstration."
+            "zh": "实机由移动底盘、挥拍机械臂和球拍组成，针对三类球运动使用相应球拍与场地配置。设备图截取自项目演示视频，展示平台与挥拍机构。",
+            "en": "The physical system combines a mobile base, striking arm, and sport-specific rackets and court setups. The hardware image is a still from the supplied demonstration."
+          },
+          {
+            "zh": "羽毛球感知链路结合双目视觉与球拍端 IMU：视觉提供球体三维位置和轨迹，运动传感补充人类击球瞬间的球拍姿态与速度信息。",
+            "en": "The badminton sensing pipeline combines stereo vision with a racket-mounted IMU: vision provides 3D ball positions and trajectories, while motion sensing supplies racket orientation and velocity at the player’s stroke."
           }
         ],
         "figures": [
@@ -2429,22 +2710,70 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "运动任务的基本流程为来球感知、轨迹预测、击球位置选择和底盘/机械臂协同执行。对于可用反应时间短的羽毛球，尽早估计落点区域有助于先启动平台，再利用新的视觉观测修正击球位置。",
-            "en": "The pipeline connects ball sensing, trajectory prediction, interception selection, and coordinated base/arm execution. For fast badminton exchanges, an early region estimate allows the platform to move before later visual observations refine the hit point."
-          },
-          {
-            "zh": "在 MV-BMR 羽毛球方案中，第一阶段将球拍 IMU 与视觉信息输入 SEPNet，提前估计可击打区域并以 PID 启动平台；第二阶段持续更新视觉轨迹与击球点，通过 NMPC 协调平台和机械臂。两阶段结构体现了先争取移动时间、再逐步提高击球精度的设计思路。",
-            "en": "In the MV-BMR badminton system, SEPNet combines racket-IMU and visual information to estimate a hit zone early, with PID starting the platform. A second stage updates the visual trajectory and interception point and uses NMPC for coordinated base and arm motion. This structure first gains movement time and then progressively refines interception."
+            "zh": "运动控制采用“提前判断运动区域、持续细化击球点”的两阶段结构，将感知预测与底盘、机械臂控制配合起来。",
+            "en": "A two-stage design estimates an interception region early and continually refines the hit point, coordinating perception with base and arm control."
           }
         ],
-        "figures": [],
+        "figures": [
+          {
+            "src": "assets/projects/sports-robot/sensing-control-architecture.webp",
+            "caption": {
+              "zh": "视觉–惯性融合与两阶段预测控制架构（来源：Shi 等，2025，Fig. 2）。",
+              "en": "Vision–inertial fusion and two-stage prediction/control architecture (source: Shi et al., 2025, Fig. 2)."
+            },
+            "displayWidth": 740
+          }
+        ],
         "source": {
           "url": "https://doi.org/10.1016/j.inffus.2025.103337",
           "label": {
-            "zh": "参考文献：MV-BMR（Information Fusion, 2025）",
-            "en": "Reference: MV-BMR (Information Fusion, 2025)"
+            "zh": "方法资料：运动与视觉融合的羽毛球机器人",
+            "en": "Method details: motion–vision fusion for badminton robotics"
           }
-        }
+        },
+        "points": [],
+        "techniques": [
+          {
+            "name": {
+              "zh": "YOLO 检测与双目三维轨迹",
+              "en": "YOLO detection and stereo trajectories"
+            },
+            "description": {
+              "zh": "识别球体并获取带时间戳的三维位置序列，结合连续观测估计运动状态，为后续落点和击球点预测提供输入。",
+              "en": "Detect the ball and obtain timestamped 3D positions, estimating motion state from successive observations for landing and hit-point prediction."
+            }
+          },
+          {
+            "name": {
+              "zh": "SEPNet 视觉–运动融合早期预测",
+              "en": "SEPNet early vision–motion prediction"
+            },
+            "description": {
+              "zh": "羽毛球分支融合球体位置/速度和球拍 IMU 姿态/速度，提前预测可击打区域；SEPNet 通过区域分类辅助击球区域中心回归，争取底盘移动时间。",
+              "en": "For badminton, combine ball position and velocity with racket-IMU orientation and velocity to predict a hit region early. SEPNet uses region classification to assist center regression and gain repositioning time."
+            }
+          },
+          {
+            "name": {
+              "zh": "最小二乘拟合与 MLP 轨迹修正",
+              "en": "Least-squares fitting and MLP trajectory refinement"
+            },
+            "description": {
+              "zh": "随视觉轨迹积累，用最小二乘拟合已观测位置与速度，并以 MLP 估计轨迹模型参数，持续更新后续飞行轨迹和可达击球点。",
+              "en": "As visual trajectories accumulate, fit observed positions and velocities with least squares and estimate trajectory-model parameters with an MLP, continually updating the flight prediction and reachable interception point."
+            }
+          },
+          {
+            "name": {
+              "zh": "PID 启动与 NMPC 协同控制",
+              "en": "PID startup and coordinated NMPC"
+            },
+            "description": {
+              "zh": "前段以 PID 驱动平台向预测区域移动，后段通过非线性模型预测控制协调底盘和机械臂，联合约束击球位置、球拍朝向与击球速度。",
+              "en": "Start platform motion toward the predicted region with PID, then coordinate the base and arm through nonlinear MPC, jointly considering hit position, racket orientation, and striking velocity."
+            }
+          }
+        ]
       },
       {
         "id": "demo",
@@ -2454,8 +2783,8 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "以下三球一体实机视频按球类拆分，直接从运动开始播放。乒乓球片段展示正反手与连续回击，羽毛球和网球片段展示移动平台在真实场地中的人机对打。",
-            "en": "The multi-sport video is split by sport, with each clip starting at the physical action. Table-tennis footage shows forehand, backhand, and successive returns, while badminton and tennis clips show mobile-platform rallies in real courts."
+            "zh": "演示分别展示乒乓球的正反手与连续回击，以及羽毛球、网球场景中的移动站位与挥拍对打。",
+            "en": "Demonstrations show table-tennis forehand, backhand, and successive returns, followed by mobile positioning and racket rallies in badminton and tennis settings."
           }
         ],
         "figures": [
@@ -2484,20 +2813,6 @@ export const projects = [
             }
           }
         ]
-      },
-      {
-        "id": "experiments",
-        "title": {
-          "zh": "相关文献实验：MV-BMR",
-          "en": "Related literature: MV-BMR experiments"
-        },
-        "paragraphs": [
-          {
-            "zh": "Shi 等人在 MV-BMR 论文的实验部分报告：羽毛球短球平均击球成功率为 92.2%，最长连续对打为 68 回合。该文献结果展示了两阶段轨迹预测与控制在快速来球任务中的验证效果。",
-            "en": "The experimental section of Shi et al.’s MV-BMR paper reports 92.2% mean short-shot hit success and a longest rally of 68 exchanges. These literature results demonstrate the evaluated two-stage trajectory-prediction and control approach for fast incoming shots."
-          }
-        ],
-        "figures": []
       }
     ]
   },
@@ -2514,8 +2829,8 @@ export const projects = [
       "en": "Robotic visual grasping of game pieces"
     },
     "summary": {
-      "zh": "面向棋盘上小尺寸棋子的视觉抓取，将棋子位置与夹爪接近、夹取动作衔接；实机演示展示协作机械臂对棋子的定位、夹持和操作过程。",
-      "en": "For visual pickup of small pieces on a game board, target positions are connected to gripper approach and closure. The physical demonstration shows a collaborative arm localizing and grasping a board piece."
+      "zh": "面向棋盘上小尺寸棋子抓取，以 YOLO 识别目标、MoveIt 规划机械臂运动；实机展示棋子定位、夹持和搬移。",
+      "en": "For small game-piece pickup, YOLO detects targets and MoveIt plans arm motion; real demonstrations show localization, gripping, and transfer."
     },
     "media": {
       "video": "assets/projects/chess-grasping/demo.mp4",
@@ -2570,8 +2885,8 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "在棋盘区域定位目标棋子，调整夹爪对准目标，完成接近、闭合夹持与后续移动。实机演示聚焦视觉目标和末端操作之间的衔接。",
-            "en": "Locate a target piece on the board, align the gripper, and execute approach, closure, and subsequent movement. The demonstration focuses on connecting a visual target with end-effector operation."
+            "zh": "在棋盘区域选定并定位目标棋子，使夹爪从合适方向接近、夹住并抬离棋盘，随后移动到指定位置。任务重点是小目标抓取和棋盘上方的安全操作。",
+            "en": "Select and localize a target piece, approach from a suitable direction, grasp and lift it from the board, and transfer it to a destination. The task focuses on small-object pickup and safe motion above the board."
           }
         ],
         "figures": []
@@ -2607,11 +2922,54 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "流程围绕视觉目标定位、抓取位置对准和机械臂动作执行展开，将目标识别结果与夹爪接近、闭合和移动等阶段连接。小物体抓取重点关注定位偏差、夹爪开口和接近方向对接触结果的影响。",
-            "en": "The workflow connects visual target localization, grasp alignment, and arm execution through approach, closure, and movement. Small-object manipulation makes localization error, gripper opening, and approach direction particularly relevant to contact outcomes."
+            "zh": "视觉模块负责识别目标，MoveIt 负责将抓取目标转成机械臂运动，夹爪控制完成实际夹持。",
+            "en": "Vision identifies the target, MoveIt converts the grasp goal into arm motion, and gripper control executes the physical pickup."
           }
         ],
-        "figures": []
+        "figures": [],
+        "points": [],
+        "techniques": [
+          {
+            "name": {
+              "zh": "YOLO 棋子目标检测",
+              "en": "YOLO game-piece detection"
+            },
+            "description": {
+              "zh": "从相机画面中识别棋子并获得目标位置，将小尺寸目标与棋盘背景区分，为抓取位姿计算提供视觉输入。",
+              "en": "Detect pieces in camera images and obtain target positions, separating small objects from the board background for grasp-pose computation."
+            }
+          },
+          {
+            "name": {
+              "zh": "坐标变换与抓取位姿",
+              "en": "Coordinate transformation and grasp poses"
+            },
+            "description": {
+              "zh": "将视觉定位结果转换到机械臂坐标系，结合棋子高度、夹爪开口与接近方向确定末端目标位姿。",
+              "en": "Transform visual target positions into the arm frame and determine end-effector goals from piece height, gripper opening, and approach direction."
+            }
+          },
+          {
+            "name": {
+              "zh": "MoveIt 逆运动学与运动规划",
+              "en": "MoveIt inverse kinematics and motion planning"
+            },
+            "description": {
+              "zh": "根据末端目标求解关节运动并规划轨迹，结合碰撞检查组织接近和抬升路径，处理夹爪与棋盘的空间约束。",
+              "en": "Solve joint motion for end-effector goals and plan trajectories, using collision checks to organize approach and lifting around board-clearance constraints."
+            }
+          },
+          {
+            "name": {
+              "zh": "机械臂与夹爪动作衔接",
+              "en": "Arm–gripper sequencing"
+            },
+            "description": {
+              "zh": "按预抓取、接近、夹紧、抬升和搬移分段执行，协调轨迹到位与夹爪开闭，使识别结果连接到完整取放动作。",
+              "en": "Sequence pre-grasp, approach, closure, lifting, and transfer, coordinating arm arrival with gripper actuation to complete the pick-and-place action."
+            }
+          }
+        ]
       },
       {
         "id": "demo",
@@ -2621,8 +2979,8 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "以下片段来自 PPT 中的棋盘实机抓取视频，展示机械臂在棋盘工作区对小尺寸棋子的操作过程。",
-            "en": "The supplied PPT clip documents physical arm manipulation of a small piece in the board workspace."
+            "zh": "实机演示展示棋子视觉抓取过程，包括夹爪对准、接近、夹持和抬升，连接目标定位与机械臂取放动作。",
+            "en": "The physical demonstration shows visually guided piece pickup, including alignment, approach, gripping, and lifting, connecting target localization with arm manipulation."
           }
         ],
         "figures": [
@@ -2645,8 +3003,8 @@ export const projects = [
       "en": "Wheeled-legged balancing robot prototype"
     },
     "summary": {
-      "zh": "面向轮腿平台的平衡与运动稳定性，利用轮式驱动和腿部结构开展原型调试；实机短片展示平衡姿态与近距离运动。",
-      "en": "For balance and motion stability in a wheel-legged platform, a wheeled-drive and leg-structure prototype is tested; real footage shows balancing posture and short-range motion."
+      "zh": "面向轮腿平台姿态平衡，采用 PPO 强化学习训练控制策略，将状态反馈与执行器控制衔接；实机展示平衡与短距离运动。",
+      "en": "For wheeled-legged balance, PPO reinforcement learning trains a feedback control policy; the physical prototype demonstrates balancing and short-range motion."
     },
     "facts": [],
     "sections": [
@@ -2658,12 +3016,8 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "轮腿平台结合轮式移动和腿部结构，以下展示平衡原型的实机测试。",
-            "en": "A wheeled-legged platform combines wheels with leg structures; the supplied material records a balancing prototype test."
-          },
-          {
-            "zh": "双轮平台的支撑范围有限，姿态保持与移动响应需要协调。轮腿结构为姿态调整提供机构条件，原型阶段通过短距离实机测试观察整体运动状态。",
-            "en": "A two-wheel platform has limited support, making balance and travel interdependent. The leg structure provides mechanical freedom for posture adjustment, observed here through short-range prototype tests."
+            "zh": "双轮支撑使机身姿态与运动相互耦合，平台移动和腿部结构变化都会影响平衡。项目采用强化学习训练平衡策略，将连续姿态反馈与机器人执行机构连接起来。",
+            "en": "With two-wheel support, posture and motion are coupled, and movement or leg-configuration changes affect balance. Reinforcement learning trains a policy connecting continuous state feedback to robot actuation."
           }
         ],
         "points": [],
@@ -2677,12 +3031,8 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "观察原型在测试环境中的姿态保持与运动响应。",
-            "en": "Observe posture maintenance and motion response in the test setting."
-          },
-          {
-            "zh": "记录机器人在测试区域中的站立平衡、姿态变化和短距离移动，重点观察轮式驱动与腿部机构共同作用下的运动连续性。",
-            "en": "The recording documents standing balance, posture changes, and short-range movement, focusing on the continuity of wheel-driven travel and leg-structure motion."
+            "zh": "训练轮腿机器人的平衡控制策略，使原型能够保持直立，并在短距离运动中维持姿态稳定。实机演示用于观察站立、姿态变化及移动响应。",
+            "en": "Train a balance policy that maintains upright posture and stability during short-range movement. The physical clip documents standing balance, posture changes, and motion response."
           }
         ],
         "points": [],
@@ -2720,11 +3070,44 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "原型将双轮驱动与腿部机构结合，围绕姿态保持和短距离运动开展联调。视频展示平台构型、平衡姿态与运动响应，记录轮式移动和腿部结构协同作用下的实机表现。",
-            "en": "The prototype combines two driven wheels with leg mechanisms for posture and short-range motion tests. The footage records the hardware configuration, balancing posture, and motion response produced by the combined wheel and leg structure."
+            "zh": "以 PPO（近端策略优化）训练平衡控制策略，围绕状态观测、策略更新和原型执行构成控制流程。",
+            "en": "PPO (Proximal Policy Optimization) trains the balancing policy through state observations, policy updates, and prototype execution."
           }
         ],
-        "figures": []
+        "figures": [],
+        "points": [],
+        "techniques": [
+          {
+            "name": {
+              "zh": "平衡控制的状态与动作建模",
+              "en": "State and action modeling for balance"
+            },
+            "description": {
+              "zh": "将机身姿态、运动变化与轮腿状态作为平衡决策依据，把策略输出映射为平台执行器指令，连接状态反馈和姿态调节。",
+              "en": "Use body posture, motion changes, and wheel–leg state for balance decisions, mapping policy outputs into actuator commands that close the feedback loop."
+            }
+          },
+          {
+            "name": {
+              "zh": "PPO 策略与价值学习",
+              "en": "PPO policy and value learning"
+            },
+            "description": {
+              "zh": "通过交互轨迹更新控制策略与价值估计，利用 PPO 的裁剪目标约束过大的策略变化；训练目标围绕维持直立和运动稳定性组织。",
+              "en": "Update the control policy and value estimate from interaction trajectories, using PPO’s clipped objective to limit excessive policy changes while optimizing upright stability."
+            }
+          },
+          {
+            "name": {
+              "zh": "闭环推理与原型调试",
+              "en": "Closed-loop inference and prototype integration"
+            },
+            "description": {
+              "zh": "根据当前状态持续进行策略推理并执行动作，结合实机姿态和运动响应检查控制链路，展示轮腿原型上的平衡效果。",
+              "en": "Infer actions continually from current state and execute them in a loop, checking the integration against observed posture and motion responses on the physical prototype."
+            }
+          }
+        ]
       },
       {
         "id": "demo",
@@ -2734,8 +3117,8 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "保留原始短片中的平衡和姿态测试过程。",
-            "en": "The short clip records balancing and posture tests."
+            "zh": "实机演示展示轮腿原型的平衡姿态和运动响应，用于观察训练策略在机器人上的闭环执行。",
+            "en": "The physical clip shows balancing posture and motion response, illustrating closed-loop execution of the trained policy on the prototype."
           }
         ],
         "points": [],
@@ -2857,16 +3240,44 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "现有材料主要记录机械臂动作和设备配置，可据视频分项展示夹持、搬移和处理过程。",
-            "en": "The available material documents robot actions and hardware configurations, supporting separate presentations of grasping, transfer, and processing."
-          },
-          {
-            "zh": "技术重点在于目标形态、夹持接触与机械臂动作之间的匹配。实机记录按机械臂和末端工具配置展示夹持、提起、搬移及材料处理，可直接观察不同物料在动作执行中的形态变化。",
-            "en": "The technical focus is matching object shape, gripper contact, and arm motion. Physical records show holding, lifting, transfer, and processing under different arm and end-effector configurations, documenting material deformation during execution."
+            "zh": "关键技术围绕物料形态、末端接触几何与机械臂运动执行展开，分别组织服装和食品等对象的抓取过程。",
+            "en": "The technical work connects material shape, end-effector contact geometry, and arm execution for clothing, food, and other irregular objects."
           }
         ],
         "points": [],
-        "figures": []
+        "figures": [],
+        "techniques": [
+          {
+            "name": {
+              "zh": "物料几何与抓握位姿选择",
+              "en": "Object geometry and grasp-pose selection"
+            },
+            "description": {
+              "zh": "根据目标形态、可夹持部位及接近空间选择抓握位置和方向，考虑柔性材料在提拉时的变形及不规则物体的接触关系。",
+              "en": "Select grasp positions and directions from object shape, accessible regions, and approach space, accounting for deformation and irregular contact geometry."
+            }
+          },
+          {
+            "name": {
+              "zh": "机械臂运动学与分段轨迹",
+              "en": "Arm kinematics and staged trajectories"
+            },
+            "description": {
+              "zh": "将末端接近、夹取、抬升和搬移组织为连续动作段，结合机械臂位姿求解与夹爪开闭完成物料转移。",
+              "en": "Organize approach, grasp, lift, and transfer into motion segments, combining arm-pose computation with gripper actuation."
+            }
+          },
+          {
+            "name": {
+              "zh": "末端工具匹配与操作联调",
+              "en": "End-effector matching and integration"
+            },
+            "description": {
+              "zh": "针对不同物料与机械臂/夹爪配置调整动作顺序和接触方式，通过实机记录检查夹持、搬移与材料处理过程。",
+              "en": "Adapt sequencing and contact to different materials and arm–gripper setups, examining gripping, transfer, and material handling through physical trials."
+            }
+          }
+        ]
       },
       {
         "id": "demo",
@@ -3040,16 +3451,44 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "视觉模块输出目标位置，机械臂执行抓取与放置，计数模块记录处理进度；控制逻辑协调机械臂与其他硬件设备。",
-            "en": "Vision provides target positions, the arm executes pick-and-place, and counting records progress. Control logic coordinates the arm with the other equipment."
-          },
-          {
-            "zh": "系统以目标位置和设备状态为接口组织视觉、抓取与产线控制，计数信息用于记录处理进度。现场联调检查机械臂动作与其他机构的衔接，材料记录了预研调试与验收过程。",
-            "en": "Target positions and equipment state connect vision, grasping, and line control, while counts track progress. On-site integration checks arm interactions with other mechanisms; the supplied material records pilot commissioning and acceptance."
+            "zh": "以视觉目标位置和设备状态为接口，连接四自由度机械臂取放、计数与产线机构联动。",
+            "en": "Visual target positions and device states connect four-DoF pick-and-place with counting and production-line coordination."
           }
         ],
         "points": [],
-        "figures": []
+        "figures": [],
+        "techniques": [
+          {
+            "name": {
+              "zh": "视觉识别定位与坐标对应",
+              "en": "Visual localization and coordinate mapping"
+            },
+            "description": {
+              "zh": "识别产线上的果蔬干目标，将图像位置对应到机械臂可操作的位置，给出取放动作的目标输入。",
+              "en": "Recognize dried-fruit targets on the line and map image locations to reachable arm positions for pick-and-place."
+            }
+          },
+          {
+            "name": {
+              "zh": "四自由度机械臂取放控制",
+              "en": "Four-DoF arm pick-and-place"
+            },
+            "description": {
+              "zh": "根据目标位置求解机械臂姿态，按接近、抓取、搬运和放置组织运动，衔接夹爪与关节动作。",
+              "en": "Compute arm poses from target locations and sequence approach, grasp, transfer, and placement with coordinated gripper and joint motion."
+            }
+          },
+          {
+            "name": {
+              "zh": "计数逻辑与产线状态联动",
+              "en": "Counting logic and line-state coordination"
+            },
+            "description": {
+              "zh": "在取放流程中记录处理数量，根据机械臂和其他机构状态切换执行阶段，联调设备间的等待、动作及完成关系。",
+              "en": "Count processed objects within the pick-and-place workflow and transition execution from arm and mechanism states, coordinating waits, actions, and completion across devices."
+            }
+          }
+        ]
       },
       {
         "id": "demo",

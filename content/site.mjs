@@ -182,7 +182,8 @@ export const site = {
         },
         {
           "zh": "任职期间，支部获评山东大学计算机科学与技术学院“四星党支部”。",
-          "en": "During my term, the branch received the Four-star Party Branch distinction from the School of Computer Science and Technology at Shandong University."
+          "en": "During my term, the branch received the Four-star Party Branch distinction from the School of Computer Science and Technology at Shandong University.",
+          "emphasis": {"zh":"四星党支部","en":"Four-star Party Branch"}
         }
       ]
     },
