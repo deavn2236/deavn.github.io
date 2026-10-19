@@ -200,9 +200,11 @@ body{font-size:16px;line-height:1.85}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
 
-/* Black ink, white paper, and system serif fonts. */
-:root{--ink:#000;--muted:#000;--link:#8b2d34;--line:#d6d6d6;--font:"Times New Roman","SimSun","Songti SC","Noto Serif CJK SC",serif}
+/* Black ink, white paper, Times New Roman and Microsoft YaHei. */
+:root{--ink:#000;--muted:#000;--link:#8b2d34;--line:#d6d6d6;--font:"Times New Roman","Microsoft YaHei","PingFang SC",sans-serif}
 body{color:#000;font-family:var(--font)}
+span[lang="zh-CN"]{font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif}
+span[lang="en"]{font-family:"Times New Roman",serif}
 button,input,select,textarea{font-family:inherit}
 h1,h2,h3{font-weight:700;letter-spacing:0}
 a,.brand,.nav a,.paper-copy h3 a,.paper-links>a,.footer a,.detail-toc a{color:var(--link)}
@@ -211,9 +213,11 @@ a:hover,.brand:hover,.nav a:hover,.paper-copy h3 a:hover,.paper-links>a:hover,.f
 .language-switch button[aria-pressed="true"]{font-weight:700}
 .project-filters button[aria-pressed="true"]{border-color:#000;background:#fff;font-weight:700}
 .paper-card,.paper-card:hover,.paper-card:focus-within{border:1px solid #000;background:#fff;box-shadow:none;border-radius:7px}
-.paper-figure{border-color:#000;background:#fff;border-radius:4px}
-.paper-links>a,.paper-links>a:hover{border-color:#000;background:#fff}
-.venue-rank{border-color:#000;background:#fff;color:#000;border-radius:3px}
+.paper-figure{border:0;background:#fff;border-radius:0}
+.paper-figure img{padding:0;border:0}
+.paper-links>a,.paper-links>a:hover{padding:0;border:0;border-radius:0;background:transparent}
+.paper-links>a:hover{text-decoration:underline}
+.venue-rank{border:0;background:#f1f6fa;color:#000;border-radius:3px;padding:2px 7px}
 .paper-copy h3{font-size:19px;font-weight:700}
 .authors,.paper-venue,.paper-summary{font-size:15px;color:#000}
 .project-card,.project-card:hover{border-color:#000;background:#fff;border-radius:7px;box-shadow:none}
@@ -223,10 +227,10 @@ a:hover,.brand:hover,.nav a:hover,.paper-copy h3 a:hover,.paper-links>a:hover,.f
 .meta-separator{color:#000}
 .project-copy h3{margin-bottom:10px;font-weight:700}
 .project-summary{font-size:15px;line-height:1.85;margin-bottom:8px;color:#000}
-.project-summary .project-details{display:inline;white-space:nowrap;margin-left:7px;font-size:15px;font-weight:700}
+.project-summary .project-details{display:block;text-align:right;white-space:nowrap;margin:3px 0 0;font-size:15px;font-weight:700}
 .project-copy .project-preview-caption{font-size:14px;color:#000;margin:7px 0 0}
 .project-media{margin-top:auto}
-.student-work-role{display:inline-block;margin-top:5px;padding:2px 10px;border:1px solid #000;border-radius:3px;color:#000;background:#fff;font-size:15px;font-weight:700;line-height:1.65}
+.student-work-role{display:block;margin-top:5px;padding:0;border:0;border-radius:0;color:#000;background:transparent;font-size:15px;font-weight:700;line-height:1.65}
 .student-work-period{font-size:14px;color:#000}
 .student-work-header h3{font-weight:700;color:#000}
 .student-work-entry{border-left-color:#000}
@@ -234,8 +238,8 @@ a:hover,.brand:hover,.nav a:hover,.paper-copy h3 a:hover,.paper-links>a:hover,.f
 .honor-group h3{font-weight:700;color:#000}
 .detail-section p,.detail-section li{font-size:16px;color:#000}
 .media-row .section-figure figcaption,.figure-caption-kind{color:#000}
-.profile{margin-top:32px;padding:27px 30px 29px;border:1px solid #000;border-radius:7px;background:#fff;overflow:hidden}
-.profile::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:#000}
+.profile{margin-top:32px;padding:0 0 14px;border:0;border-radius:0;background:#fff;overflow:visible}
+.profile::before{content:none}
 .profile-eyebrow{display:flex;align-items:center;gap:17px;margin-bottom:25px;font-size:14px;font-weight:700;letter-spacing:.04em}
 .profile-eyebrow>span:first-child{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
 .profile-rule{height:1px;flex:1;background:#000;opacity:.2}
@@ -246,28 +250,34 @@ a:hover,.brand:hover,.nav a:hover,.paper-copy h3 a:hover,.paper-links>a:hover,.f
 .profile-name-row h1{font-size:38px;font-weight:700;letter-spacing:.04em}
 .profile-affiliation{padding-left:22px;border-left:1px solid #000;font-size:19px;color:#000}
 .profile-role{font-size:16px;color:#000}
-.profile-facts{gap:9px 22px;margin:21px 0}
-.profile-facts>div{align-items:baseline;gap:11px}
-.profile-facts dt{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;color:#000;font-size:15px}
-.profile-facts dd{color:#000;font-size:15px}
-.fact-icon{display:inline-block;width:19px;height:19px;flex:none;vertical-align:middle;color:#5b3e2c;transform:translateY(-1px)}
+.profile-facts{--fact-label-width:106px;gap:9px 22px;margin:21px 0}
+html[data-lang="en"] .profile-facts{--fact-label-width:144px}
+.profile-facts>div{grid-template-columns:var(--fact-label-width) minmax(0,1fr);align-items:start;gap:11px}
+.profile-facts dt{display:flex;align-items:center;gap:7px;white-space:nowrap;color:#000;font-size:15px;line-height:1.8}
+.profile-facts dd{display:flex;align-items:flex-start;min-width:0;color:#000;font-size:15px;line-height:1.8}
+.profile-facts dt>span,.profile-facts dd>span,.profile-facts dd>a{line-height:inherit}
+.fact-icon{display:inline-block;width:19px;height:19px;flex:none;vertical-align:middle;color:#5b3e2c}
 .fact-pin,.fact-phone{color:#43685a}
 .fact-education,.fact-users,.fact-mail{color:#8b2d34}
 .fact-flag,.fact-language{color:#796132}
 .fact-compass{color:#000}
 .profile-photo{position:relative;margin-top:4px}
-.profile-photo img{border:1px solid #000;border-radius:4px;background:#fff;padding:5px;box-shadow:none}
-.portrait-badge{display:grid;place-items:center;position:absolute;right:-9px;bottom:-12px;width:43px;height:43px;border:1px solid #000;border-radius:50%;background:#fff}
+.profile-photo img{border:0;border-radius:2px;background:#fff;padding:0;box-shadow:none}
+.portrait-badge{display:grid;place-items:center;position:absolute;right:-9px;bottom:-12px;width:43px;height:43px;border:0;background:transparent}
 .portrait-badge .section-icon{width:29px;height:29px}
 .education-description{border-top:1px solid var(--line);padding-top:15px;margin-top:21px;color:#000;font-size:16px}
 .profile .research-line{font-size:16px;color:#000}
 .hobbies-line,.hobbies-label{color:#000;font-size:15px}
 .profile .research-line strong{font-weight:700}
 .footer,.footer span,.project-facts dt,.project-facts dd{color:#000}
+.media-row .section-figure{border:0;border-radius:0}
+.media-row .section-figure figcaption{padding:12px 0 5px;border:0}
+.section-figure img,.paper-main-figure img,.detail-gallery img{border:0}
+.system-flow li{border:0;background:#f6f6f6}
 @media(max-width:760px){
  .paper-copy h3{font-size:18px}
  .authors,.paper-venue,.paper-summary{font-size:15px}
- .profile{margin-top:24px;padding:23px}
+ .profile{margin-top:24px;padding:0 0 12px}
  .profile-layout{grid-template-columns:minmax(0,1fr) 128px;gap:25px}
  .profile-name-row h1{font-size:34px}
  .profile-affiliation{font-size:17px;padding-left:16px}
@@ -278,7 +288,7 @@ a:hover,.brand:hover,.nav a:hover,.paper-copy h3 a:hover,.paper-links>a:hover,.f
  .student-work-entry ul{font-size:15px}
 }
 @media(max-width:560px){
- .profile{padding:19px 18px 23px;margin-top:21px}
+ .profile{padding:0 0 12px;margin-top:21px}
  .profile-eyebrow{gap:10px;margin-bottom:23px;font-size:13px}
  .profile-route{width:83px;height:24px}
  .profile-layout{display:block}

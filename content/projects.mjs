@@ -147,20 +147,12 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "以下片段直接从实机场景的导航开始，分别展示大厅与小房间、室外道路与窄通道中的运输、交接和末端执行。其他母车配置的装卸与对接演示放在页面末尾。",
-            "en": "The clips start with physical navigation and show transport, handoff, and final execution in hall–room and road–narrow-path settings. Loading and docking with other macro-vehicle configurations appear last."
+            "zh": "以下片段直接从室外道路与狭窄通道中的实机导航开始，展示跨环境行驶和建筑入口通行。其他母车配置的装卸与对接演示放在页面末尾。",
+            "en": "The clip starts with physical navigation on an outdoor road and a narrow path, showing cross-environment movement and building access. Loading and docking with other macro-vehicle configurations appear last."
           }
         ],
         "points": [],
         "figures": [
-          {
-            "video": "assets/projects/kangaroo/indoor.mp4",
-            "poster": "assets/projects/kangaroo/indoor.poster.webp",
-            "caption": {
-              "zh": "大厅—小房间：运输、释放、狭窄空间执行与返回对接",
-              "en": "Hall–small room: transport, release, confined-space execution, and return docking"
-            }
-          },
           {
             "video": "assets/projects/kangaroo/outdoor.mp4",
             "poster": "assets/projects/kangaroo/outdoor.poster.webp",
@@ -240,11 +232,11 @@ export const projects = [
     },
     "year": "2024–2025",
     "media": {
-      "video": "assets/projects/kangaroo/indoor.mp4",
-      "poster": "assets/projects/kangaroo/indoor.poster.webp",
+      "video": "assets/projects/kangaroo/outdoor.mp4",
+      "poster": "assets/projects/kangaroo/outdoor.poster.webp",
       "alt": {
-        "zh": "Kangaroo子母车在大厅与小房间间协同配送",
-        "en": "Kangaroo robot delivery across a hall and a small room"
+        "zh": "室外道路—狭窄通道：跨环境行驶与建筑入口通行",
+        "en": "Outdoor road–narrow path: cross-environment navigation and building access"
       }
     },
     "relatedPapers": [
@@ -254,11 +246,7 @@ export const projects = [
       "zh": "2024.08—2025.06",
       "en": "Aug 2024–Jun 2025"
     },
-    "group": "primary",
-    "previewCaption": {
-      "zh": "实机场景：大厅运输与末端导航",
-      "en": "Real-world hall transport and final navigation"
-    }
+    "group": "primary"
   },
   {
     "id": "library-robot",
@@ -1644,8 +1632,8 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "视频包括室内绕障、目标点接近、不同布局通行以及 RViz 中的地图与轨迹显示。所选实机片段主要在室内进行。",
-            "en": "Videos cover indoor obstacle avoidance, goal approach, movement across layouts, and map/trajectory visualization in RViz. The physical demonstrations are primarily indoors."
+            "zh": "视频展示室内目标点通行、不同障碍布局下的避障，以及人员穿行场景；点云地图展示实测环境的三维结构。所选实机片段主要在室内进行。",
+            "en": "Videos show indoor goal reaching, obstacle avoidance across layouts, and a person crossing the scene. A recorded point-cloud map shows the environment’s 3D structure. The physical demonstrations are primarily indoors."
           }
         ],
         "points": [],
@@ -1656,14 +1644,6 @@ export const projects = [
             "caption": {
               "zh": "三维激光导航：室内目标点通行",
               "en": "3D LiDAR navigation: indoor goal reaching"
-            }
-          },
-          {
-            "video": "assets/projects/lidar-3d/ppt-26.mp4",
-            "poster": "assets/projects/lidar-3d/ppt-26.poster.webp",
-            "caption": {
-              "zh": "三维激光导航：地图与局部轨迹可视化",
-              "en": "3D LiDAR navigation: map and local trajectories"
             }
           },
           {
@@ -1698,22 +1678,18 @@ export const projects = [
       "en": "LiDAR navigation"
     },
     "media": {
-      "video": "assets/projects/lidar-3d/ppt-26.mp4",
-      "poster": "assets/projects/lidar-3d/ppt-26.poster.webp",
+      "video": "assets/projects/lidar-3d/ppt-27.mp4",
+      "poster": "assets/projects/lidar-3d/ppt-27.poster.webp",
       "alt": {
-        "zh": "三维激光导航：地图与局部轨迹可视化",
-        "en": "3D LiDAR navigation: map and local trajectories"
+        "zh": "三维激光导航：不同障碍布局通行",
+        "en": "3D LiDAR navigation: movement across obstacle layouts"
       }
     },
     "period": {
       "zh": "2022.09—2023.01",
       "en": "Sep 2022–Jan 2023"
     },
-    "group": "primary",
-    "previewCaption": {
-      "zh": "三维激光导航：地图与局部轨迹可视化",
-      "en": "3D LiDAR navigation: map and local trajectories"
-    }
+    "group": "primary"
   },
   {
     "id": "rtk-navigation",

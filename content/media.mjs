@@ -1189,10 +1189,6 @@ export const media = {
       "width": 800,
       "height": 460
     },
-    "assets/projects/kangaroo/indoor.poster.webp": {
-      "width": 640,
-      "height": 361
-    },
     "assets/projects/kangaroo/outdoor.poster.webp": {
       "width": 640,
       "height": 361
@@ -1505,10 +1501,6 @@ export const media = {
     "assets/projects/lidar-3d/ppt-25.poster.webp": {
       "width": 272,
       "height": 480
-    },
-    "assets/projects/lidar-3d/ppt-26.poster.webp": {
-      "width": 640,
-      "height": 368
     },
     "assets/projects/lidar-3d/ppt-27.poster.webp": {
       "width": 640,
@@ -2338,24 +2330,12 @@ export const media = {
       "height": 270,
       "bytes": 136027
     },
-    "assets/projects/kangaroo/indoor.mp4": {
-      "duration": 90,
-      "width": 720,
-      "height": 406,
-      "bytes": 3816596,
-      "preview": "assets/projects/kangaroo/indoor.preview.mp4"
-    },
-    "assets/projects/kangaroo/indoor.preview.mp4": {
-      "duration": 10,
-      "width": 478,
-      "height": 270,
-      "bytes": 198577
-    },
     "assets/projects/kangaroo/outdoor.mp4": {
       "duration": 40.11,
       "width": 720,
       "height": 406,
-      "bytes": 2135689
+      "bytes": 2135689,
+      "preview": "assets/projects/kangaroo/outdoor.preview.mp4"
     },
     "assets/projects/kangaroo/ppt-06.mp4": {
       "duration": 357.94,
@@ -2425,24 +2405,12 @@ export const media = {
       "height": 540,
       "bytes": 4747577
     },
-    "assets/projects/lidar-3d/ppt-26.mp4": {
-      "duration": 199.39,
-      "width": 654,
-      "height": 368,
-      "bytes": 5106097,
-      "preview": "assets/projects/lidar-3d/ppt-26.preview.mp4"
-    },
-    "assets/projects/lidar-3d/ppt-26.preview.mp4": {
-      "duration": 10,
-      "width": 480,
-      "height": 270,
-      "bytes": 124077
-    },
     "assets/projects/lidar-3d/ppt-27.mp4": {
       "duration": 59,
       "width": 720,
       "height": 406,
-      "bytes": 1758745
+      "bytes": 1758745,
+      "preview": "assets/projects/lidar-3d/ppt-27.preview.mp4"
     },
     "assets/projects/patrol-inspection/demo.mp4": {
       "duration": 99.78,
@@ -2556,6 +2524,18 @@ export const media = {
       "width": 270,
       "height": 480,
       "duration": 10
+    },
+    "assets/projects/lidar-3d/ppt-27.preview.mp4": {
+      "duration": 10,
+      "width": 480,
+      "height": 270,
+      "bytes": 134394
+    },
+    "assets/projects/kangaroo/outdoor.preview.mp4": {
+      "duration": 10,
+      "width": 480,
+      "height": 270,
+      "bytes": 158531
     }
   }
 };

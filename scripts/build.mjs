@@ -13,7 +13,12 @@ const assetVersions = Object.fromEntries([['styles','styles.css'],['client','cli
 
 const esc = (v = '') => String(v).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
 const tr = (v, lang = 'zh') => typeof v === 'object' && v !== null ? (v[lang] || v.zh || v.en || '') : (v || '');
-const bi = v => `<span data-lang="zh" lang="zh-CN">${esc(tr(v, 'zh'))}</span><span data-lang="en" lang="en">${esc(tr(v, 'en'))}</span>`;
+const bi = v => {
+  const zh = tr(v, 'zh');
+  const en = tr(v, 'en');
+  const zhLanguage = /[\u3400-\u9fff]/u.test(zh) ? 'zh-CN' : 'en';
+  return `<span data-lang="zh" lang="${zhLanguage}">${esc(zh)}</span><span data-lang="en" lang="en">${esc(en)}</span>`;
+};
 const b = (zh, en) => ({ zh, en });
 const authors = value => esc(value || '').replaceAll('Wendong Guo', '<strong>Wendong Guo</strong>');
 const alt = value => `alt="${esc(tr(value))}" data-alt-zh="${esc(tr(value))}" data-alt-en="${esc(tr(value, 'en'))}"`;
@@ -162,20 +167,16 @@ function renderSection(section, prefix, index) {
   return `<section class="detail-section" id="${esc(section.id || `section-${index}`)}">${sectionHeading(icon, section.title || section.heading)}${(section.paragraphs || []).map(p => `<p>${bi(p)}</p>`).join('')}${section.points?.length ? `<ul>${section.points.map(p => `<li>${bi(p)}</li>`).join('')}</ul>` : ''}${section.flow?.length ? `<ol class="system-flow">${section.flow.map(step => `<li>${bi(step)}</li>`).join('')}</ol>` : ''}${section.metrics?.length ? `<div class="paper-results-grid">${section.metrics.map(r => `<div class="paper-result"><strong>${esc(r.value)}</strong><span>${bi(r.label)}</span></div>`).join('')}</div>` : ''}${section.table ? renderTable(section.table) : ''}${(section.tables || []).map(renderTable).join('')}${renderFigures(section,prefix)}${section.source ? `<p class="media-source"><a href="${esc(section.source.url)}" target="_blank" rel="noopener noreferrer">${bi(section.source.label)}</a></p>` : ''}</section>`;
 }
 
-function renderContents(sections) {
-  return `<nav class="detail-toc" aria-label="Page contents">${sections.map((s,i) => `<a href="#${esc(s.id || `section-${i}`)}">${bi(s.title || s.heading)}</a>`).join('')}</nav>`;
-}
-
 function renderProjectDetail(project, prefix = '../../') {
   const sections = project.sections || [];
   const facts = (project.facts || []).map(f => `<div><dt>${bi(f.label)}</dt><dd>${bi(f.value)}</dd></div>`).join('');
   const related = site.papers.filter(p => (project.relatedPapers || []).includes(p.id));
-  return `${breadcrumb(prefix, 'work', project.title)}<article class="detail-page structured-detail wrap"><header class="detail-hero"><p class="detail-kicker">${bi(project.category)}${project.period ? ` · ${bi(project.period)}` : project.year ? ` · ${esc(project.year)}` : ''}${project.organization ? ` · ${bi(project.organization)}` : ''}</p><h1>${bi(project.title)}</h1><p class="detail-deck">${bi(project.summary)}</p></header>${facts ? `<dl class="project-facts">${facts}</dl>` : ''}${renderContents(sections)}${sections.map((s,i) => renderSection(s,prefix,i)).join('')}${related.length ? `<section class="related-section">${sectionHeading('publication', b('相关论文', 'Related Publications'))}<div class="paper-list">${related.map(p => paperCard(p,prefix)).join('')}</div></section>` : ''}<p class="detail-back"><a href="${prefix}index.html#work">${bi(b('← 返回所有项目', '← All projects'))}</a></p></article>`;
+  return `${breadcrumb(prefix, 'work', project.title)}<article class="detail-page structured-detail wrap"><header class="detail-hero"><p class="detail-kicker">${bi(project.category)}${project.period ? ` · ${bi(project.period)}` : project.year ? ` · ${esc(project.year)}` : ''}${project.organization ? ` · ${bi(project.organization)}` : ''}</p><h1>${bi(project.title)}</h1><p class="detail-deck">${bi(project.summary)}</p></header>${facts ? `<dl class="project-facts">${facts}</dl>` : ''}${sections.map((s,i) => renderSection(s,prefix,i)).join('')}${related.length ? `<section class="related-section">${sectionHeading('publication', b('相关论文', 'Related Publications'))}<div class="paper-list">${related.map(p => paperCard(p,prefix)).join('')}</div></section>` : ''}<p class="detail-back"><a href="${prefix}index.html#work">${bi(b('← 返回所有项目', '← All projects'))}</a></p></article>`;
 }
 
 function renderPaperDetail(paper, prefix = '../../') {
   const sections = paper.sections || [];
-  return `${breadcrumb(prefix, 'publications', paper.title)}<article class="detail-page paper-detail structured-detail wrap"><header class="detail-hero"><p class="detail-kicker">${bi(b('研究论文', 'Research Paper'))}${paper.year ? ` · ${esc(paper.year)}` : ''}</p><h1>${bi(paper.title)}</h1><p class="paper-detail-authors">${authors(paper.authors)}</p><p class="paper-detail-venue">${bi(paper.venue)}${renderRankings(paper)}</p><p class="detail-deck">${bi(paper.summary)}</p>${paperLinks(paper,prefix,false)}</header>${renderContents(sections)}${sections.map((s,i) => renderSection(s,prefix,i)).join('')}<p class="detail-back"><a href="${prefix}index.html#publications">${bi(b('← 返回论文列表', '← All publications'))}</a></p></article>`;
+  return `${breadcrumb(prefix, 'publications', paper.title)}<article class="detail-page paper-detail structured-detail wrap"><header class="detail-hero"><p class="detail-kicker">${bi(b('研究论文', 'Research Paper'))}${paper.year ? ` · ${esc(paper.year)}` : ''}</p><h1>${bi(paper.title)}</h1><p class="paper-detail-authors">${authors(paper.authors)}</p><p class="paper-detail-venue">${bi(paper.venue)}${renderRankings(paper)}</p><p class="detail-deck">${bi(paper.summary)}</p>${paperLinks(paper,prefix,false)}</header>${sections.map((s,i) => renderSection(s,prefix,i)).join('')}<p class="detail-back"><a href="${prefix}index.html#publications">${bi(b('← 返回论文列表', '← All publications'))}</a></p></article>`;
 }
 
 function write(rel, html) { const dest = path.join(out, rel); fs.mkdirSync(path.dirname(dest), { recursive: true }); fs.writeFileSync(dest, html, 'utf8'); }
