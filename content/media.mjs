@@ -528,16 +528,21 @@ export const media = {
     },
     "assets/papers/sctnav-motivation.thumb-480.webp": {
       "width": 480,
-      "height": 350
+      "height": 455
     },
     "assets/papers/sctnav-motivation.webp": {
-      "width": 878,
-      "height": 641,
+      "width": 1037,
+      "height": 984,
       "variants": [
         {
           "src": "assets/papers/sctnav-motivation.thumb-480.webp",
           "width": 480,
-          "height": 350
+          "height": 455
+        },
+        {
+          "src": "assets/papers/sctnav-motivation.thumb-960.webp",
+          "width": 960,
+          "height": 911
         }
       ]
     },
@@ -963,10 +968,6 @@ export const media = {
         }
       ]
     },
-    "assets/projects/aloha/ppt-19.poster.webp": {
-      "width": 640,
-      "height": 480
-    },
     "assets/projects/aloha/ppt-29.poster.webp": {
       "width": 640,
       "height": 160
@@ -1207,10 +1208,6 @@ export const media = {
       "width": 640,
       "height": 360
     },
-    "assets/projects/industrial-grasping/ppt-46.poster.webp": {
-      "width": 480,
-      "height": 360
-    },
     "assets/projects/industrial-grasping/tendon-poster.webp": {
       "width": 800,
       "height": 460
@@ -1218,10 +1215,6 @@ export const media = {
     "assets/projects/kangaroo/indoor.poster.webp": {
       "width": 640,
       "height": 361
-    },
-    "assets/projects/kangaroo/method.poster.webp": {
-      "width": 640,
-      "height": 360
     },
     "assets/projects/kangaroo/outdoor.poster.webp": {
       "width": 640,
@@ -1258,10 +1251,6 @@ export const media = {
     "assets/projects/kangaroo/ppt-06.poster.webp": {
       "width": 640,
       "height": 360
-    },
-    "assets/projects/kangaroo/ppt-07.poster.webp": {
-      "width": 272,
-      "height": 480
     },
     "assets/projects/kangaroo/system.webp": {
       "width": 450,
@@ -1357,10 +1346,6 @@ export const media = {
           "height": 1280
         }
       ]
-    },
-    "assets/projects/library-robot/ppt/summary-image51.webp": {
-      "width": 310,
-      "height": 551
     },
     "assets/projects/library-robot/ppt/summary-image55.thumb-480.webp": {
       "width": 480,
@@ -1504,19 +1489,7 @@ export const media = {
       "width": 271,
       "height": 480
     },
-    "assets/projects/library-robot/ppt-17.poster.webp": {
-      "width": 640,
-      "height": 363
-    },
     "assets/projects/library-robot/ppt-18.poster.webp": {
-      "width": 271,
-      "height": 480
-    },
-    "assets/projects/library-robot/ppt-20.poster.webp": {
-      "width": 272,
-      "height": 480
-    },
-    "assets/projects/library-robot/ppt-21.poster.webp": {
       "width": 271,
       "height": 480
     },
@@ -2080,6 +2053,101 @@ export const media = {
     "assets/projects/wheel-legged/ppt/summary-image129.webp": {
       "width": 450,
       "height": 253
+    },
+    "assets/papers/sctnav-motivation.thumb-960.webp": {
+      "width": 960,
+      "height": 911
+    },
+    "assets/papers/sctnav-results-original-table.thumb-480.webp": {
+      "width": 480,
+      "height": 367
+    },
+    "assets/papers/sctnav-results-original-table.thumb-960.webp": {
+      "width": 960,
+      "height": 733
+    },
+    "assets/papers/sctnav-results-original-table.webp": {
+      "width": 1025,
+      "height": 783,
+      "variants": [
+        {
+          "src": "assets/papers/sctnav-results-original-table.thumb-480.webp",
+          "width": 480,
+          "height": 367
+        },
+        {
+          "src": "assets/papers/sctnav-results-original-table.thumb-960.webp",
+          "width": 960,
+          "height": 733
+        }
+      ]
+    },
+    "assets/papers/bmanet-results-charades-tacos.thumb-480.webp": {
+      "width": 480,
+      "height": 292
+    },
+    "assets/papers/bmanet-results-charades-tacos.thumb-960.webp": {
+      "width": 960,
+      "height": 585
+    },
+    "assets/papers/bmanet-results-charades-tacos.webp": {
+      "width": 1600,
+      "height": 975,
+      "variants": [
+        {
+          "src": "assets/papers/bmanet-results-charades-tacos.thumb-480.webp",
+          "width": 480,
+          "height": 292
+        },
+        {
+          "src": "assets/papers/bmanet-results-charades-tacos.thumb-960.webp",
+          "width": 960,
+          "height": 585
+        }
+      ]
+    },
+    "assets/papers/uwb-results-following-table.thumb-480.webp": {
+      "width": 480,
+      "height": 538
+    },
+    "assets/papers/uwb-results-following-table.thumb-960.webp": {
+      "width": 960,
+      "height": 1075
+    },
+    "assets/papers/uwb-results-following-table.webp": {
+      "width": 1042,
+      "height": 1167,
+      "variants": [
+        {
+          "src": "assets/papers/uwb-results-following-table.thumb-480.webp",
+          "width": 480,
+          "height": 538
+        },
+        {
+          "src": "assets/papers/uwb-results-following-table.thumb-960.webp",
+          "width": 960,
+          "height": 1075
+        }
+      ]
+    },
+    "assets/projects/library-robot/book-recognition.thumb-480.webp": {
+      "width": 480,
+      "height": 382
+    },
+    "assets/projects/library-robot/book-recognition.webp": {
+      "width": 667,
+      "height": 531,
+      "variants": [
+        {
+          "src": "assets/projects/library-robot/book-recognition.thumb-480.webp",
+          "width": 480,
+          "height": 382
+        }
+      ]
+    },
+    "assets/projects/chess-grasping/demo.poster.webp": {
+      "width": 480,
+      "height": 360
     }
   },
   "videos": {
@@ -2126,12 +2194,6 @@ export const media = {
       "width": 480,
       "height": 270,
       "bytes": 140829
-    },
-    "assets/projects/aloha/ppt-19.mp4": {
-      "duration": 7.94,
-      "width": 640,
-      "height": 480,
-      "bytes": 85673
     },
     "assets/projects/aloha/ppt-29.mp4": {
       "duration": 7.94,
@@ -2348,12 +2410,6 @@ export const media = {
       "height": 406,
       "bytes": 547448
     },
-    "assets/projects/industrial-grasping/ppt-46.mp4": {
-      "duration": 28.56,
-      "width": 480,
-      "height": 360,
-      "bytes": 439890
-    },
     "assets/projects/industrial-grasping/tendon.mp4": {
       "duration": 10.28,
       "width": 640,
@@ -2386,12 +2442,6 @@ export const media = {
       "height": 270,
       "bytes": 198577
     },
-    "assets/projects/kangaroo/method.mp4": {
-      "duration": 44.67,
-      "width": 720,
-      "height": 406,
-      "bytes": 597261
-    },
     "assets/projects/kangaroo/outdoor.mp4": {
       "duration": 40.11,
       "width": 720,
@@ -2403,12 +2453,6 @@ export const media = {
       "width": 720,
       "height": 406,
       "bytes": 7785268
-    },
-    "assets/projects/kangaroo/ppt-07.mp4": {
-      "duration": 458.28,
-      "width": 306,
-      "height": 540,
-      "bytes": 7326614
     },
     "assets/projects/library-robot/demo.mp4": {
       "duration": 70.33,
@@ -2447,29 +2491,11 @@ export const media = {
       "height": 540,
       "bytes": 473769
     },
-    "assets/projects/library-robot/ppt-17.mp4": {
-      "duration": 73.56,
-      "width": 720,
-      "height": 408,
-      "bytes": 2293423
-    },
     "assets/projects/library-robot/ppt-18.mp4": {
       "duration": 105.61,
       "width": 304,
       "height": 540,
       "bytes": 1982616
-    },
-    "assets/projects/library-robot/ppt-20.mp4": {
-      "duration": 51.56,
-      "width": 306,
-      "height": 540,
-      "bytes": 927895
-    },
-    "assets/projects/library-robot/ppt-21.mp4": {
-      "duration": 42.0,
-      "width": 304,
-      "height": 540,
-      "bytes": 535700
     },
     "assets/projects/lidar-3d/demo.mp4": {
       "duration": 16.61,
@@ -2603,6 +2629,19 @@ export const media = {
       "width": 478,
       "height": 270,
       "bytes": 46887
+    },
+    "assets/projects/chess-grasping/demo.mp4": {
+      "width": 480,
+      "height": 360,
+      "duration": 28.56,
+      "bytes": 439890,
+      "preview": "assets/projects/chess-grasping/demo.preview.mp4"
+    },
+    "assets/projects/chess-grasping/demo.preview.mp4": {
+      "width": 480,
+      "height": 360,
+      "duration": 10.0,
+      "bytes": 113215
     }
   }
 };

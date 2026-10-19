@@ -108,14 +108,16 @@ export const papers = [
             "caption": {
               "zh": "IF-Planner 的知识、交互、规则校验与原语生成流程。",
               "en": "IF-Planner integrates prior knowledge, interaction, rule validation, and primitive generation."
-            }
+            },
+            "displayWidth": 620
           },
           {
             "src": "assets/papers/kangaroo-platform.webp",
             "caption": {
               "zh": "论文中的子母车硬件平台及传感器配置。",
               "en": "Macro–micro hardware platform and sensor configuration."
-            }
+            },
+            "displayWidth": 620
           }
         ],
         "metrics": []
@@ -148,71 +150,15 @@ export const papers = [
           {
             "src": "assets/papers/kangaroo-results.webp",
             "caption": {
-              "zh": "两类跨环境场景、四类需求任务的系统比较。",
-              "en": "System comparison across two environments and four demand types."
-            }
+              "zh": "论文原表 Table 5：两类跨环境场景与四类需求任务的系统比较。",
+              "en": "Original Table 5: systems across two environments and four demand types."
+            },
+            "kind": "table",
+            "displayWidth": 900
           }
         ],
-        "metrics": [
-          {
-            "value": "85–88%",
-            "label": {
-              "zh": "VastHall–TinyRoom，四类需求任务成功率",
-              "en": "VastHall–TinyRoom success across four demand types"
-            }
-          },
-          {
-            "value": "78–81%",
-            "label": {
-              "zh": "OutdoorRoad–NarrowPath，四类需求任务成功率",
-              "en": "OutdoorRoad–NarrowPath success across four demand types"
-            }
-          }
-        ],
-        "table": {
-          "caption": {
-            "zh": "完整系统的真实跨环境任务成功率",
-            "en": "Real-world cross-environment success of the full system"
-          },
-          "columns": [
-            {
-              "zh": "场景",
-              "en": "Scenario"
-            },
-            {
-              "zh": "直接单需求",
-              "en": "Direct single"
-            },
-            {
-              "zh": "直接多需求",
-              "en": "Direct multiple"
-            },
-            {
-              "zh": "间接单需求",
-              "en": "Indirect single"
-            },
-            {
-              "zh": "间接多需求",
-              "en": "Indirect multiple"
-            }
-          ],
-          "rows": [
-            [
-              "VastHall–TinyRoom",
-              "88%",
-              "88%",
-              "88%",
-              "85%"
-            ],
-            [
-              "OutdoorRoad–NarrowPath",
-              "81%",
-              "81%",
-              "81%",
-              "78%"
-            ]
-          ]
-        }
+        "metrics": [],
+        "layout": "full"
       }
     ],
     "links": [],
@@ -303,7 +249,8 @@ export const papers = [
             "caption": {
               "zh": "动机：连接三元时空视觉理解与安全、可执行的运动控制。",
               "en": "Motivation: connect ternary visual reasoning to safe, kinematically feasible motion."
-            }
+            },
+            "displayWidth": 760
           }
         ],
         "metrics": []
@@ -366,6 +313,15 @@ export const papers = [
         "points": [],
         "figures": [
           {
+            "src": "assets/papers/sctnav-results-original-table.webp",
+            "caption": {
+              "zh": "论文原表 Table II：SCTNav 的仿真、真实部署和模型规模比较。",
+              "en": "Original Table II: simulation, real-world navigation, and model size."
+            },
+            "kind": "table",
+            "displayWidth": 740
+          },
+          {
             "src": "assets/papers/sctnav-realworld.webp",
             "caption": {
               "zh": "受限房间、长走廊和开放校园的真实机器人导航。",
@@ -380,66 +336,8 @@ export const papers = [
             }
           }
         ],
-        "metrics": [
-          {
-            "value": "98.0%",
-            "label": {
-              "zh": "Gazebo 仿真成功率，102 组起终点",
-              "en": "Simulation success over 102 start–goal pairs"
-            }
-          },
-          {
-            "value": "90.8%",
-            "label": {
-              "zh": "真实三场景平均成功率，共 120 次测试",
-              "en": "Mean real-world success over 120 runs"
-            }
-          }
-        ],
-        "table": {
-          "caption": {
-            "zh": "仿真与真实部署主要指标",
-            "en": "Simulation and deployment metrics"
-          },
-          "columns": [
-            {
-              "zh": "评估",
-              "en": "Evaluation"
-            },
-            {
-              "zh": "成功率",
-              "en": "Success rate"
-            },
-            {
-              "zh": "碰撞率",
-              "en": "Collision rate"
-            },
-            {
-              "zh": "SPL",
-              "en": "SPL"
-            }
-          ],
-          "rows": [
-            [
-              {
-                "zh": "仿真，102组起终点",
-                "en": "Simulation, 102 start–goal pairs"
-              },
-              "98.0%",
-              "2.0%",
-              "95.1%"
-            ],
-            [
-              {
-                "zh": "真实三场景平均，120次",
-                "en": "Real-world mean, 120 runs"
-              },
-              "90.8%",
-              "—",
-              "—"
-            ]
-          ]
-        }
+        "metrics": [],
+        "layout": "full"
       }
     ],
     "links": [
@@ -610,125 +508,15 @@ export const papers = [
           {
             "src": "assets/papers/reconav-results.webp",
             "caption": {
-              "zh": "学习式基线按修改类型的导航结果。",
-              "en": "Navigation results of the learning baseline by edit type."
-            }
-          }
-        ],
-        "metrics": [
-          {
-            "value": "27.07%",
-            "label": {
-              "zh": "学习式基线总体 SR",
-              "en": "Overall learning-baseline SR"
-            }
-          },
-          {
-            "value": "14.43%",
-            "label": {
-              "zh": "学习式基线总体 SPL",
-              "en": "Overall learning-baseline SPL"
-            }
-          }
-        ],
-        "table": {
-          "caption": {
-            "zh": "学习式基线，按修改类型评估",
-            "en": "Learning-baseline evaluation by edit type"
-          },
-          "columns": [
-            {
-              "zh": "修改类型",
-              "en": "Edit type"
+              "zh": "原材料表格：学习式基线在七类修改任务上的结果。",
+              "en": "Original source table: learning-baseline results across seven edit types."
             },
-            "SR ↑ (%)",
-            "SPL ↑ (%)",
-            "SoftSPL ↑ (%)",
-            "DTG ↓ (m)"
-          ],
-          "rows": [
-            [
-              {
-                "zh": "颜色",
-                "en": "Color"
-              },
-              "16.67",
-              "9.85",
-              "20.43",
-              "6.41"
-            ],
-            [
-              {
-                "zh": "表面纹理",
-                "en": "Surface pattern"
-              },
-              "29.73",
-              "15.16",
-              "24.68",
-              "5.15"
-            ],
-            [
-              {
-                "zh": "局部几何",
-                "en": "Part geometry"
-              },
-              "30.49",
-              "14.61",
-              "24.00",
-              "4.66"
-            ],
-            [
-              {
-                "zh": "上下文关系",
-                "en": "Context relation"
-              },
-              "41.86",
-              "21.35",
-              "27.87",
-              "4.07"
-            ],
-            [
-              {
-                "zh": "材质",
-                "en": "Material"
-              },
-              "33.86",
-              "17.95",
-              "28.14",
-              "4.92"
-            ],
-            [
-              {
-                "zh": "目标状态",
-                "en": "Target state"
-              },
-              "28.12",
-              "15.89",
-              "22.90",
-              "5.85"
-            ],
-            [
-              {
-                "zh": "组件配置",
-                "en": "Component configuration"
-              },
-              "20.47",
-              "11.47",
-              "23.06",
-              "5.36"
-            ],
-            [
-              {
-                "zh": "总体",
-                "en": "Overall"
-              },
-              "27.07",
-              "14.43",
-              "24.18",
-              "5.36"
-            ]
-          ]
-        }
+            "kind": "table",
+            "displayWidth": 880
+          }
+        ],
+        "metrics": [],
+        "layout": "full"
       }
     ],
     "rankings": [
@@ -873,9 +661,18 @@ export const papers = [
           {
             "src": "assets/papers/bmanet-results-table.webp",
             "caption": {
-              "zh": "QVHighlights 验证集比较，保留监督设置与主干信息。",
-              "en": "QVHighlights validation comparison with supervision and backbone configurations."
-            }
+              "zh": "论文原表 Table 1：QVHighlights 验证集比较，保留监督设置与主干信息。",
+              "en": "Original Table 1: QVHighlights validation with supervision settings and backbones."
+            },
+            "kind": "table"
+          },
+          {
+            "src": "assets/papers/bmanet-results-charades-tacos.webp",
+            "caption": {
+              "zh": "论文原表 Table 2：Charades-STA 与 TACoS 测试集结果。",
+              "en": "Original Table 2: Charades-STA and TACoS test results."
+            },
+            "kind": "table"
           },
           {
             "src": "assets/papers/bmanet-results-qualitative.webp",
@@ -885,69 +682,8 @@ export const papers = [
             }
           }
         ],
-        "metrics": [
-          {
-            "value": "54.3",
-            "label": {
-              "zh": "QVHighlights 验证集平均 mAP；全监督，InternVideo2",
-              "en": "QVHighlights validation average mAP; fully supervised, InternVideo2"
-            }
-          },
-          {
-            "value": "70.4",
-            "label": {
-              "zh": "Charades-STA 测试集 R1@0.5",
-              "en": "Charades-STA test R1@0.5"
-            }
-          }
-        ],
-        "table": {
-          "caption": {
-            "zh": "BMANet 时刻检索结果，均为全监督设置",
-            "en": "BMANet moment retrieval under full supervision"
-          },
-          "columns": [
-            {
-              "zh": "数据集/划分",
-              "en": "Dataset / split"
-            },
-            "R1@0.5",
-            "R1@0.7",
-            {
-              "zh": "平均mAP / mIoU",
-              "en": "Average mAP / mIoU"
-            }
-          ],
-          "rows": [
-            [
-              {
-                "zh": "QVHighlights 验证集 (IV2)",
-                "en": "QVHighlights val (IV2)"
-              },
-              "73.6",
-              "59.1",
-              "mAP 54.3"
-            ],
-            [
-              {
-                "zh": "Charades-STA 测试集",
-                "en": "Charades-STA test"
-              },
-              "70.4",
-              "49.0",
-              "mIoU 59.1"
-            ],
-            [
-              {
-                "zh": "TACoS 测试集",
-                "en": "TACoS test"
-              },
-              "40.8",
-              "26.0",
-              "mIoU 38.2"
-            ]
-          ]
-        }
+        "metrics": [],
+        "layout": "full"
       }
     ],
     "rankings": [
@@ -1104,101 +840,26 @@ export const papers = [
             }
           },
           {
+            "src": "assets/papers/uwb-results-following-table.webp",
+            "caption": {
+              "zh": "论文原表 Table II：近距离跟随的距离均值与标准差。",
+              "en": "Original Table II: mean distance and standard deviation in close-range following."
+            },
+            "kind": "table",
+            "displayWidth": 660
+          },
+          {
             "src": "assets/papers/uwb-results-recall.webp",
             "caption": {
-              "zh": "不同距离下的按钮与跌倒触发召回，每项 20 次试验。",
-              "en": "Button- and fall-triggered recall at different distances, with 20 trials per condition."
-            }
+              "zh": "论文原表 Table III：按钮与跌倒触发的远距离召回。",
+              "en": "Original Table III: long-distance recall with button and fall triggers."
+            },
+            "kind": "table",
+            "displayWidth": 740
           }
         ],
-        "metrics": [
-          {
-            "value": "0.3–0.7 m",
-            "label": {
-              "zh": "测试的近距跟随设置",
-              "en": "Tested close-following setpoints"
-            }
-          },
-          {
-            "value": "±40°",
-            "label": {
-              "zh": "多角度跟随设置",
-              "en": "Tested angular setpoints"
-            }
-          },
-          {
-            "value": "100%",
-            "label": {
-              "zh": "10–20 m 两种召回方式，每距离每种方式 20 次",
-              "en": "Both recall triggers at 10–20 m, 20 trials per distance and trigger"
-            }
-          }
-        ],
-        "table": {
-          "caption": {
-            "zh": "远距召回结果，每条件20次独立测试",
-            "en": "Long-range recall, 20 independent trials per condition"
-          },
-          "columns": [
-            {
-              "zh": "距离",
-              "en": "Distance"
-            },
-            {
-              "zh": "按钮成功率",
-              "en": "Button success"
-            },
-            {
-              "zh": "按钮时间",
-              "en": "Button time"
-            },
-            {
-              "zh": "跌倒成功率",
-              "en": "Fall success"
-            },
-            {
-              "zh": "跌倒时间",
-              "en": "Fall time"
-            }
-          ],
-          "rows": [
-            [
-              "10 m",
-              "100%",
-              "9.63 s",
-              "100%",
-              "9.68 s"
-            ],
-            [
-              "15 m",
-              "100%",
-              "13.59 s",
-              "100%",
-              "13.88 s"
-            ],
-            [
-              "20 m",
-              "100%",
-              "17.86 s",
-              "100%",
-              "17.99 s"
-            ],
-            [
-              "25 m",
-              "90%",
-              "22.14 s",
-              "80%",
-              "22.46 s"
-            ],
-            [
-              "30 m",
-              "80%",
-              "26.48 s",
-              "70%",
-              "26.55 s"
-            ]
-          ]
-        }
+        "metrics": [],
+        "layout": "full"
       }
     ],
     "pdf": "assets/papers/pdf/uwb-following.pdf",
@@ -1349,9 +1010,19 @@ export const papers = [
           {
             "src": "assets/papers/ddposenet-results-category.webp",
             "caption": {
-              "zh": "REAL275 与 CAMERA25 的类别级位姿和尺寸估计比较。",
-              "en": "Category-level pose and size comparison on REAL275 and CAMERA25."
-            }
+              "zh": "论文原表 Table 1：REAL275 与 CAMERA25 类别级位姿和尺寸估计。",
+              "en": "Original Table 1: category-level pose and size estimation on REAL275 and CAMERA25."
+            },
+            "kind": "table"
+          },
+          {
+            "src": "assets/papers/ddposenet-results-instance.webp",
+            "caption": {
+              "zh": "论文原表 Table 2：YCB-Video 实例级位姿估计结果。",
+              "en": "Original Table 2: instance-level pose results on YCB-Video."
+            },
+            "kind": "table",
+            "displayWidth": 740
           },
           {
             "src": "assets/papers/ddposenet-results-qualitative.webp",
@@ -1361,73 +1032,8 @@ export const papers = [
             }
           }
         ],
-        "metrics": [
-          {
-            "value": "51.4",
-            "label": {
-              "zh": "REAL275 NIoU50，使用三维模型",
-              "en": "REAL275 NIoU50 with 3D models"
-            }
-          },
-          {
-            "value": "86.1",
-            "label": {
-              "zh": "YCB-Video ADD(-S)",
-              "en": "YCB-Video ADD(-S)"
-            }
-          },
-          {
-            "value": "24 FPS",
-            "label": {
-              "zh": "RTX 3090，REAL275/CAMERA25",
-              "en": "RTX 3090 on REAL275/CAMERA25"
-            }
-          }
-        ],
-        "table": {
-          "caption": {
-            "zh": "代表性类别级和实例级指标，单位为%",
-            "en": "Representative category- and instance-level metrics, in %"
-          },
-          "columns": [
-            {
-              "zh": "设置",
-              "en": "Setting"
-            },
-            {
-              "zh": "指标1",
-              "en": "Metric 1"
-            },
-            {
-              "zh": "指标2",
-              "en": "Metric 2"
-            },
-            {
-              "zh": "指标3",
-              "en": "Metric 3"
-            }
-          ],
-          "rows": [
-            [
-              "REAL275 (w/ 3D model)",
-              "NIoU50 51.4",
-              "NIoU75 27.3",
-              "IoU50 22.4"
-            ],
-            [
-              "CAMERA25 (w/ 3D model)",
-              "NIoU50 52.3",
-              "NIoU75 20.9",
-              "IoU50 39.9"
-            ],
-            [
-              "YCB-Video",
-              "ADD(-S) 86.1",
-              "ADD-S AUC 93.3",
-              "ADD(-S) AUC 89.4"
-            ]
-          ]
-        }
+        "metrics": [],
+        "layout": "full"
       }
     ],
     "rankings": [

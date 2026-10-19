@@ -133,15 +133,8 @@ export const projects = [
             "caption": {
               "zh": "迭代反馈规划器",
               "en": "Iterative feedback planner"
-            }
-          },
-          {
-            "video": "assets/projects/kangaroo/method.mp4",
-            "poster": "assets/projects/kangaroo/method.poster.webp",
-            "caption": {
-              "zh": "方法说明：需求分解、反馈检查与双车执行",
-              "en": "Method: demand decomposition, feedback, and coordinated execution"
-            }
+            },
+            "displayWidth": 620
           }
         ]
       },
@@ -153,8 +146,8 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "以下片段直接从实机场景的导航开始，分别展示大厅与小房间、室外道路与窄通道中的运输、交接和末端执行。方法说明保留在系统部分，其他母车配置的迁移演示放在页面末尾。",
-            "en": "The clips start with physical navigation and show transport, handoff, and final execution in hall–room and road–narrow-path settings. The method video remains in the system section; demonstrations with other macro-vehicle configurations appear last."
+            "zh": "以下片段直接从实机场景的导航开始，分别展示大厅与小房间、室外道路与窄通道中的运输、交接和末端执行。其他母车配置的装卸与对接演示放在页面末尾。",
+            "en": "The clips start with physical navigation and show transport, handoff, and final execution in hall–room and road–narrow-path settings. Loading and docking with other macro-vehicle configurations appear last."
           }
         ],
         "points": [],
@@ -198,71 +191,14 @@ export const projects = [
           {
             "src": "assets/papers/kangaroo-results.webp",
             "caption": {
-              "zh": "不同环境与任务复杂度的成功率",
-              "en": "Success rates across environments and task complexity"
-            }
+              "zh": "论文原表：不同环境与任务复杂度的成功率。",
+              "en": "Original paper table: success across environments and task complexity."
+            },
+            "kind": "table",
+            "displayWidth": 900
           }
         ],
-        "metrics": [
-          {
-            "value": "85–88%",
-            "label": {
-              "zh": "VastHall–TinyRoom，四类需求任务成功率",
-              "en": "VastHall–TinyRoom success across four demand types"
-            }
-          },
-          {
-            "value": "78–81%",
-            "label": {
-              "zh": "OutdoorRoad–NarrowPath，四类需求任务成功率",
-              "en": "OutdoorRoad–NarrowPath success across four demand types"
-            }
-          }
-        ],
-        "table": {
-          "caption": {
-            "zh": "完整系统的真实跨环境任务成功率",
-            "en": "Real-world cross-environment success of the full system"
-          },
-          "columns": [
-            {
-              "zh": "场景",
-              "en": "Scenario"
-            },
-            {
-              "zh": "直接单需求",
-              "en": "Direct single"
-            },
-            {
-              "zh": "直接多需求",
-              "en": "Direct multiple"
-            },
-            {
-              "zh": "间接单需求",
-              "en": "Indirect single"
-            },
-            {
-              "zh": "间接多需求",
-              "en": "Indirect multiple"
-            }
-          ],
-          "rows": [
-            [
-              "VastHall–TinyRoom",
-              "88%",
-              "88%",
-              "88%",
-              "85%"
-            ],
-            [
-              "OutdoorRoad–NarrowPath",
-              "81%",
-              "81%",
-              "81%",
-              "78%"
-            ]
-          ]
-        }
+        "metrics": []
       },
       {
         "id": "transfer",
@@ -283,14 +219,6 @@ export const projects = [
             "caption": {
               "zh": "不同设备迁移：轮式母车与子车对接及室内执行",
               "en": "Platform transfer: wheeled macro vehicle, docking, and indoor execution"
-            }
-          },
-          {
-            "video": "assets/projects/kangaroo/ppt-07.mp4",
-            "poster": "assets/projects/kangaroo/ppt-07.poster.webp",
-            "caption": {
-              "zh": "不同设备迁移：母车走廊运输",
-              "en": "Platform transfer: macro-vehicle corridor transport"
             }
           },
           {
@@ -338,8 +266,8 @@ export const projects = [
       "en": "Quadruped mobile manipulation for cross-floor book organization and pick-and-place"
     },
     "summary": {
-      "zh": "面向多楼层图书整理与自主取放，融合激光惯性 SLAM、视觉图书定位和抓取规划；完成四足上下楼、楼层移动及书架操作的实机演示。",
-      "en": "For multi-floor book handling, LiDAR–inertial SLAM, visual book localization, and grasp planning support a quadruped manipulator; real demonstrations cover stairs, floor-to-floor mobility, and shelf operation."
+      "zh": "面向多楼层图书整理与自主取放，融合激光惯性 SLAM、书脊视觉识别和抓取规划；实机图书识别率96%，任务成功率89%。",
+      "en": "For cross-floor book organization and autonomous pick-and-place, LiDAR–inertial SLAM, visual book-spine recognition, and grasp planning achieve 96% book recognition and 89% task success on the robot."
     },
     "facts": [
       {
@@ -392,6 +320,14 @@ export const projects = [
         ],
         "points": [],
         "figures": [
+          {
+            "video": "assets/projects/library-robot/ppt-12.mp4",
+            "poster": "assets/projects/library-robot/ppt-12.poster.webp",
+            "caption": {
+              "zh": "多层智慧图书馆应用场景动画",
+              "en": "Multi-floor smart-library application animation"
+            }
+          },
           {
             "src": "assets/projects/library-robot/ppt/summary-image49.webp",
             "caption": {
@@ -515,8 +451,8 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "视频补充完整样机移动、机械臂抓书、楼梯接近、上下楼与不同场景行驶。导航与操作通过统一任务流程衔接；书架附近的感知与操作画面用于说明从目标定位到抓取执行的过程。",
-            "en": "The demonstrations cover prototype mobility, book grasping, stair approach and traversal, and movement in different settings. Navigation and manipulation are connected through the task flow, with shelf-side footage showing perception and action."
+            "zh": "页面开头的场景动画说明跨楼层取送需求；以下实机片段展示样机、机械臂抓取与搬移，以及楼梯附近的移动和平台控制。导航与操作通过统一任务流程衔接。",
+            "en": "The opening application animation introduces cross-floor book retrieval and delivery. The physical clips below show the prototype, arm grasping and transfer, and movement and control near stairs. A shared task workflow connects navigation and manipulation."
           }
         ],
         "points": [],
@@ -526,21 +462,6 @@ export const projects = [
             "caption": {
               "zh": "四足移动操作机器人样机",
               "en": "Quadruped mobile manipulator prototype"
-            }
-          },
-          {
-            "src": "assets/projects/library-robot/ppt/summary-image51.webp",
-            "caption": {
-              "zh": "书架前的机械臂取放作业",
-              "en": "Arm operation in front of a bookshelf"
-            }
-          },
-          {
-            "video": "assets/projects/library-robot/ppt-12.mp4",
-            "poster": "assets/projects/library-robot/ppt-12.poster.webp",
-            "caption": {
-              "zh": "多层智慧图书馆应用场景动画",
-              "en": "Multi-floor smart-library application animation"
             }
           },
           {
@@ -576,35 +497,11 @@ export const projects = [
             }
           },
           {
-            "video": "assets/projects/library-robot/ppt-17.mp4",
-            "poster": "assets/projects/library-robot/ppt-17.poster.webp",
-            "caption": {
-              "zh": "四足平台遥控与移动测试",
-              "en": "Quadruped teleoperation and mobility test"
-            }
-          },
-          {
             "video": "assets/projects/library-robot/ppt-18.mp4",
             "poster": "assets/projects/library-robot/ppt-18.poster.webp",
             "caption": {
               "zh": "四足移动操作机器人取放测试（二）",
               "en": "Quadruped mobile manipulation test II"
-            }
-          },
-          {
-            "video": "assets/projects/library-robot/ppt-20.mp4",
-            "poster": "assets/projects/library-robot/ppt-20.poster.webp",
-            "caption": {
-              "zh": "四足机器人楼梯通行测试（一）",
-              "en": "Quadruped stair traversal test I"
-            }
-          },
-          {
-            "video": "assets/projects/library-robot/ppt-21.mp4",
-            "poster": "assets/projects/library-robot/ppt-21.poster.webp",
-            "caption": {
-              "zh": "四足机器人楼梯通行测试（二）",
-              "en": "Quadruped stair traversal test II"
             }
           }
         ]
@@ -612,17 +509,29 @@ export const projects = [
       {
         "id": "experiments",
         "title": {
-          "zh": "实验与系统迭代",
-          "en": "Experiments and iteration"
+          "zh": "实验结果",
+          "en": "Experimental results"
         },
         "paragraphs": [
           {
-            "zh": "PPT 记录楼梯识别、三维感知与抓取验证，并指出嵌入式算力、遮挡、光照和复杂图书摆放是后续优化重点。桌面平放与堆叠书籍的处理、双臂协作和边走边抓属于材料中的后续规划。",
-            "en": "The slides document stair recognition, 3D perception, and grasp tests, while identifying embedded compute, occlusion, lighting, and book arrangements as areas for improvement. Handling flat or stacked books, dual-arm work, and manipulation while moving are listed as future directions."
+            "zh": "实机实验中，图书识别率为96%，任务成功率为89%。书脊检测提供目标书籍的位置，三维感知与抓取规划进一步连接识别结果和取放动作。",
+            "en": "Real-robot experiments achieve 96% book-recognition accuracy and 89% task success. Book-spine detection provides target locations, while 3D perception and grasp planning connect recognition to pick-and-place."
+          },
+          {
+            "zh": "下图展示书脊识别、楼梯感知和三维抓取可视化。光照变化、遮挡和复杂图书摆放是持续优化的场景因素。",
+            "en": "The images show book-spine recognition, stair perception, and 3D grasp visualization. Lighting changes, occlusion, and varied book arrangements remain relevant conditions for further refinement."
           }
         ],
         "points": [],
         "figures": [
+          {
+            "src": "assets/projects/library-robot/book-recognition.webp",
+            "displayWidth": 620,
+            "caption": {
+              "zh": "图书识别：书脊检测与目标书籍定位。",
+              "en": "Book recognition: spine detection and target-book localization."
+            }
+          },
           {
             "src": "assets/projects/library-robot/ppt/summary-image72.webp",
             "caption": {
@@ -637,7 +546,8 @@ export const projects = [
               "en": "3D grasp and environment visualization"
             }
           }
-        ]
+        ],
+        "metrics": []
       }
     ],
     "categoryKey": "manipulation",
@@ -1385,19 +1295,11 @@ export const projects = [
         "points": [],
         "figures": [
           {
-            "video": "assets/projects/aloha/ppt-19.mp4",
-            "poster": "assets/projects/aloha/ppt-19.poster.webp",
-            "caption": {
-              "zh": "双臂递木块仿真示例（一）",
-              "en": "Simulated dual-arm block handover I"
-            }
-          },
-          {
             "video": "assets/projects/aloha/ppt-29.mp4",
             "poster": "assets/projects/aloha/ppt-29.poster.webp",
             "caption": {
-              "zh": "双臂递木块仿真示例（二）",
-              "en": "Simulated dual-arm block handover II"
+              "zh": "双臂递木块仿真示例",
+              "en": "Simulated dual-arm block handover"
             }
           },
           {
@@ -1463,14 +1365,6 @@ export const projects = [
               "zh": "不同桌面物体抓取测试",
               "en": "Grasp tests with different tabletop objects"
             }
-          },
-          {
-            "video": "assets/projects/aloha/ppt-47.mp4",
-            "poster": "assets/projects/aloha/ppt-47.poster.webp",
-            "caption": {
-              "zh": "示教与遥操作探索",
-              "en": "Demonstration collection and teleoperation exploration"
-            }
           }
         ]
       },
@@ -1527,42 +1421,32 @@ export const projects = [
   {
     "id": "shuttlecock-grasping",
     "title": {
-      "zh": "羽毛球对打机器人",
-      "en": "Badminton rally robot"
+      "zh": "捡球机器人",
+      "en": "Shuttlecock collection robot"
     },
     "summary": {
-      "zh": "面向羽毛球对打，以深度学习和 EKF 预测轨迹、MPC 控制站位与击球；另以 YOLOv5 位姿检测和目标分离开展视觉抓取拓展，完成实机抓取演示。",
-      "en": "For badminton rallying, deep learning and EKF predict flight trajectories while MPC controls positioning and striking. A separate YOLOv5-based grasping extension demonstrates pose-aware shuttlecock pickup on a real robot."
+      "zh": "面向单球、堆叠及勾连羽毛球的自动拾取，通过 YOLOv5 关键点检测估计抓握姿态，以夹持后抖动分离目标；实机单球与多球抓取准确率分别为97.83%和95.1%。",
+      "en": "For automatic collection of single, piled, and entangled shuttlecocks, YOLOv5 keypoint detection estimates grasp pose and a post-grasp shaking action separates targets. Physical tests report 97.83% single-object and 95.1% multiple-object grasp accuracy."
     },
     "facts": [
       {
         "label": {
-          "zh": "对打项目时间",
-          "en": "Rally project period"
+          "zh": "任务",
+          "en": "Task"
         },
         "value": {
-          "zh": "2021.06—2022.07",
-          "en": "Jun 2021–Jul 2022"
+          "zh": "羽毛球识别、夹取与分离",
+          "en": "Shuttlecock recognition, pickup, and separation"
         }
       },
       {
         "label": {
-          "zh": "对打项目单位",
-          "en": "Rally project partner"
+          "zh": "感知方法",
+          "en": "Perception"
         },
         "value": {
-          "zh": "浙江深酷机器人有限公司",
-          "en": "Zhejiang Shenku Robotics Co., Ltd."
-        }
-      },
-      {
-        "label": {
-          "zh": "对打项目职责",
-          "en": "Rally project role"
-        },
-        "value": {
-          "zh": "部分功能核心开发者",
-          "en": "Core developer for selected functions"
+          "zh": "YOLOv5关键部位检测与几何姿态估计",
+          "en": "YOLOv5 key-region detection and geometric pose estimation"
         }
       }
     ],
@@ -1575,12 +1459,8 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "对打机器人需要在有限时间内感知来球、预测飞行轨迹、调整站位并击球。围绕羽毛球机器人，另有独立的视觉抓取拓展：在球头、羽身方向和多球堆叠条件下选择抓握位置并分离目标。",
-            "en": "A rally robot must perceive an incoming shuttlecock, predict flight, position itself, and strike within a short time. The material also documents a separate grasping extension that handles directional geometry and piled objects."
-          },
-          {
-            "zh": "羽毛球飞行速度快且姿态变化明显，感知延迟会压缩底盘移动和挥拍的可用时间。另一方面，训练后的捡球与分离面对的是低速、接触密集的操作问题，需要以目标结构和夹持过程为重点。",
-            "en": "Fast shuttlecock motion and changing orientation leave little time for positioning and striking after perception. Collection and separation after play are slower contact-rich tasks that instead emphasize object structure and grasp execution."
+            "zh": "羽毛球的球头、羽身和方向差异会改变可夹持位置；多球堆叠或勾连时，直接闭合夹爪容易同时带起多个目标。项目围绕球体姿态判断与抓取后的目标分离，完成自动捡球的视觉与机械臂流程。",
+            "en": "A shuttlecock’s head, feather body, and orientation affect its graspable region. Piled or entangled targets can be lifted together by a simple gripper closure. The project connects pose-aware perception with post-grasp separation for automatic collection."
           }
         ],
         "points": [],
@@ -1594,12 +1474,8 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "对打系统由移动底盘与机械臂协同，实现来球轨迹预测、站位调整和击球；视觉抓取拓展则面向单球、堆叠和勾连羽毛球的定位、夹持与分离。两部分任务分别展示。",
-            "en": "The rally system coordinates a mobile base and arm for trajectory prediction, positioning, and striking. The grasping extension instead detects, holds, and separates single, piled, or entangled shuttlecocks. The two tasks are presented separately."
-          },
-          {
-            "zh": "对打任务围绕观测来球、预测未来击球位置、移动到位和挥拍展开；抓取拓展围绕检测关键部位、确定夹持方向、抓取及抖动分离展开。当前实机视频展示球体定位、夹持和分离等视觉抓取环节。",
-            "en": "Rally play follows observation, prediction of an interception point, repositioning, and striking. The grasping extension follows key-region detection, grasp-direction estimation, pickup, and shaking for separation. The current physical clips document localization, holding, and separation in this extension."
+            "zh": "识别单球或多球场景中的球头与球身关键部位，估计目标方向和夹持姿态，控制机械臂接近并夹取目标。对堆叠与勾连情况，在抓取后执行摆动、抖动等分离动作，取出目标羽毛球。",
+            "en": "Detect head and body key regions in single- and multiple-shuttlecock scenes, estimate target orientation and grasp pose, and execute the approach and pickup. Swinging and shaking after closure separate the target from piled or entangled neighbors."
           }
         ],
         "points": [],
@@ -1607,15 +1483,15 @@ export const projects = [
           {
             "src": "assets/projects/shuttlecock-grasping/ppt/summary-image25.webp",
             "caption": {
-              "zh": "视觉抓取拓展中的嵌套、竖向与勾连场景",
-              "en": "Nested, upright, and entangled configurations in the grasping extension"
+              "zh": "视觉捡球中的嵌套、竖向与勾连场景",
+              "en": "Nested, upright, and entangled configurations in the collection system"
             }
           },
           {
             "src": "assets/projects/shuttlecock-grasping/ppt/summary-image24.webp",
             "caption": {
-              "zh": "视觉抓取拓展中的夹持方向选择",
-              "en": "Grasp-orientation choice in the grasping extension"
+              "zh": "视觉捡球中的夹持方向选择",
+              "en": "Grasp-orientation choice in the collection system"
             }
           }
         ]
@@ -1628,8 +1504,8 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "简历中的对打系统基于移动底盘与机械臂。视觉抓取拓展样机另外包含相机、夹爪和控制计算单元，基于 ROS 连接识别、位姿计算与执行动作。",
-            "en": "The CV describes a rally platform with a mobile base and arm. The separate grasping prototype in the slides adds a camera, gripper, and control computer, using ROS to connect perception and execution."
+            "zh": "实机由机械臂、夹爪、相机与控制计算单元组成，基于 ROS 连接图像识别、抓握姿态计算和机械臂动作执行。",
+            "en": "The prototype combines a robot arm, gripper, camera, and control computer. ROS connects image recognition, grasp-pose estimation, and arm execution."
           }
         ],
         "points": [],
@@ -1637,8 +1513,8 @@ export const projects = [
           {
             "src": "assets/projects/shuttlecock-grasping/ppt/summary-image27.webp",
             "caption": {
-              "zh": "视觉抓取拓展样机及识别界面",
-              "en": "Prototype and perception interface for the grasping extension"
+              "zh": "视觉捡球样机及识别界面",
+              "en": "Prototype and perception interface for the collection system"
             },
             "role": "main"
           }
@@ -1652,12 +1528,12 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "对打系统：采用深度学习与扩展卡尔曼滤波预测羽毛球轨迹，以 MPC 协调底盘站位和机械臂击球。视觉抓取拓展：在 YOLOv5 检测中定位球头、羽身等关键部位，以几何关系求解方向与抓握姿态，并在夹持后加入抖动动作分离堆叠目标。",
-            "en": "Rally system: deep learning and an extended Kalman filter predict shuttlecock flight, while MPC coordinates the base and striking arm. Grasping extension: YOLOv5 locates head and feather key regions, geometry determines orientation and grasp pose, and a shaking action helps separate piled targets."
+            "zh": "在 YOLOv5 中检测球头和球身关键点，根据关键点的相对几何关系求解球体方向矢量，选择球体骨架主干上的抓握位置和姿态。",
+            "en": "YOLOv5 detects head and body keypoints. Their relative geometry determines the shuttlecock direction and a grasp location and pose along its main structure."
           },
           {
-            "zh": "轨迹预测与控制构成动态对打的闭环；抓取分支则利用球头和羽身的相对几何约束降低方向歧义。两条流程在目标速度、控制周期和末端动作上不同，分别展示其感知输入、动作组织和验证片段。",
-            "en": "Trajectory prediction and motion control form the dynamic rally loop. The grasping branch uses relative head–feather geometry to resolve orientation. Their target speeds, control timing, and end-effector actions differ, so inputs, action sequences, and evidence are shown separately."
+            "zh": "机械臂采用分步动作控制：接近目标、夹紧、抬起并抖动分离。该流程将姿态感知与拟人化分离动作衔接，用于处理直接夹取难以解决的多球堆叠和勾连。",
+            "en": "Arm execution is divided into approach, closure, lifting, and shaking for separation. This connects pose estimation with a human-inspired separation action for piled and entangled shuttlecocks."
           }
         ],
         "points": [],
@@ -1665,15 +1541,15 @@ export const projects = [
           {
             "src": "assets/projects/shuttlecock-grasping/ppt/summary-image26.webp",
             "caption": {
-              "zh": "视觉抓取拓展的关键部位检测结果",
-              "en": "Key-region detection for the grasping extension"
+              "zh": "视觉捡球的关键部位检测结果",
+              "en": "Key-region detection for the collection system"
             }
           },
           {
             "src": "assets/projects/shuttlecock-grasping/ppt/summary-image118.webp",
             "caption": {
-              "zh": "视觉抓取拓展的识别与抓取流程",
-              "en": "Perception and grasp-control pipeline for the extension"
+              "zh": "视觉捡球的识别与抓取流程",
+              "en": "Perception and grasp-control pipeline for collection"
             }
           }
         ]
@@ -1686,8 +1562,8 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "简历记载对打系统实现羽毛球对打，本人参与部分功能核心开发。当前提供的实机短片对应视觉抓取拓展，展示抓取平台与羽毛球操作。",
-            "en": "The CV records a badminton rally system, with my contribution focused on selected functions. The supplied robot clip documents the separate visual grasping extension and its platform."
+            "zh": "实机片段展示捡球样机与羽毛球抓取过程，以下识别图和实验结果对应同一类视觉捡球任务。",
+            "en": "The robot clip demonstrates the collection prototype and shuttlecock grasping. The perception images and reported experiments concern the same visual pickup task."
           }
         ],
         "points": [],
@@ -1696,8 +1572,8 @@ export const projects = [
             "video": "assets/projects/shuttlecock-grasping/demo.mp4",
             "poster": "assets/projects/shuttlecock-grasping/poster.webp",
             "caption": {
-              "zh": "羽毛球视觉抓取拓展演示",
-              "en": "Visual shuttlecock grasping extension demonstration"
+              "zh": "羽毛球视觉捡球演示",
+              "en": "Visual shuttlecock collection system demonstration"
             }
           }
         ]
@@ -1705,13 +1581,13 @@ export const projects = [
       {
         "id": "experiments",
         "title": {
-          "zh": "视觉抓取拓展实验",
-          "en": "Grasping-extension experiments"
+          "zh": "实验结果",
+          "en": "Experimental results"
         },
         "paragraphs": [
           {
-            "zh": "视觉抓取拓展的单羽毛球与多羽毛球抓取准确率分别为97.83%和95.1%，对应抓取任务的演示记录。该记录未列出样本量。",
-            "en": "The grasping-extension records give accuracies of 97.83% for single shuttlecocks and 95.1% for multiple shuttlecocks. These are grasping results; the sample counts are unspecified."
+            "zh": "实机单羽毛球抓取准确率为97.83%，多羽毛球抓取准确率为95.1%。姿态检测和夹持后抖动分别对应目标选择与堆叠分离环节。",
+            "en": "Physical tests report 97.83% accuracy for single-shuttlecock grasping and 95.1% for multiple shuttlecocks. Pose detection supports target selection, while post-grasp shaking handles separation."
           }
         ],
         "points": [],
@@ -1727,21 +1603,9 @@ export const projects = [
       "video": "assets/projects/shuttlecock-grasping/demo.mp4",
       "poster": "assets/projects/shuttlecock-grasping/poster.webp",
       "alt": {
-        "zh": "羽毛球机械臂抓取实机演示",
-        "en": "Real robot shuttlecock grasping demo"
+        "zh": "捡球机器人实机识别与抓取演示",
+        "en": "Shuttlecock collection robot: recognition and grasping"
       }
-    },
-    "period": {
-      "zh": "2021.06—2022.07",
-      "en": "Jun 2021–Jul 2022"
-    },
-    "organization": {
-      "zh": "浙江深酷机器人有限公司",
-      "en": "Zhejiang Shenku Robotics Co., Ltd."
-    },
-    "previewCaption": {
-      "zh": "视频：羽毛球视觉抓取拓展",
-      "en": "Video: shuttlecock grasping extension"
     },
     "group": "primary"
   },
@@ -2720,6 +2584,143 @@ export const projects = [
     ]
   },
   {
+    "id": "chess-grasping",
+    "group": "collaboration",
+    "categoryKey": "manipulation",
+    "category": {
+      "zh": "视觉操作",
+      "en": "Visual manipulation"
+    },
+    "title": {
+      "zh": "机械臂棋子视觉抓取",
+      "en": "Robotic visual grasping of game pieces"
+    },
+    "summary": {
+      "zh": "面向棋盘上小尺寸棋子的视觉抓取，将棋子位置与夹爪接近、夹取动作衔接；实机演示展示协作机械臂对棋子的定位、夹持和操作过程。",
+      "en": "For visual pickup of small pieces on a game board, target positions are connected to gripper approach and closure. The physical demonstration shows a collaborative arm localizing and grasping a board piece."
+    },
+    "media": {
+      "video": "assets/projects/chess-grasping/demo.mp4",
+      "poster": "assets/projects/chess-grasping/demo.poster.webp",
+      "alt": {
+        "zh": "机械臂在棋盘上执行棋子抓取",
+        "en": "Robot-arm piece pickup on a game board"
+      }
+    },
+    "facts": [
+      {
+        "label": {
+          "zh": "参与类型",
+          "en": "Involvement"
+        },
+        "value": {
+          "zh": "参与项目",
+          "en": "Collaborative project"
+        }
+      },
+      {
+        "label": {
+          "zh": "操作对象",
+          "en": "Objects"
+        },
+        "value": {
+          "zh": "棋盘与棋子",
+          "en": "Game board and pieces"
+        }
+      }
+    ],
+    "sections": [
+      {
+        "id": "background",
+        "title": {
+          "zh": "项目背景",
+          "en": "Background"
+        },
+        "paragraphs": [
+          {
+            "zh": "棋子尺寸小、形状相近，棋盘纹理与夹爪接近方向都会影响视觉定位和抓取。任务需要把相机观察到的目标位置转换为机械臂可执行的动作，并处理夹爪与棋盘之间的空间关系。",
+            "en": "Small, similarly shaped pieces and a patterned board challenge visual localization and grasp approach. The task connects camera-observed targets with executable arm motion while accounting for the gripper’s clearance above the board."
+          }
+        ],
+        "figures": []
+      },
+      {
+        "id": "task",
+        "title": {
+          "zh": "任务说明",
+          "en": "Task"
+        },
+        "paragraphs": [
+          {
+            "zh": "在棋盘区域定位目标棋子，调整夹爪对准目标，完成接近、闭合夹持与后续移动。实机演示聚焦视觉目标和末端操作之间的衔接。",
+            "en": "Locate a target piece on the board, align the gripper, and execute approach, closure, and subsequent movement. The demonstration focuses on connecting a visual target with end-effector operation."
+          }
+        ],
+        "figures": []
+      },
+      {
+        "id": "equipment",
+        "title": {
+          "zh": "设备说明",
+          "en": "Hardware"
+        },
+        "paragraphs": [
+          {
+            "zh": "实机包含协作机械臂、末端夹爪和棋盘工作台。视频从近距离观察夹爪与棋子的相对位置及接触过程。",
+            "en": "The setup comprises a collaborative arm, an end-effector gripper, and a board workspace. A close view documents the relative positions and contact between the gripper and piece."
+          }
+        ],
+        "figures": [
+          {
+            "src": "assets/projects/chess-grasping/demo.poster.webp",
+            "role": "main",
+            "caption": {
+              "zh": "协作机械臂与棋盘抓取工作区。",
+              "en": "Collaborative arm and board-grasping workspace."
+            }
+          }
+        ]
+      },
+      {
+        "id": "system",
+        "title": {
+          "zh": "系统和关键技术",
+          "en": "System and key technologies"
+        },
+        "paragraphs": [
+          {
+            "zh": "流程围绕视觉目标定位、抓取位置对准和机械臂动作执行展开，将目标识别结果与夹爪接近、闭合和移动等阶段连接。小物体抓取重点关注定位偏差、夹爪开口和接近方向对接触结果的影响。",
+            "en": "The workflow connects visual target localization, grasp alignment, and arm execution through approach, closure, and movement. Small-object manipulation makes localization error, gripper opening, and approach direction particularly relevant to contact outcomes."
+          }
+        ],
+        "figures": []
+      },
+      {
+        "id": "demo",
+        "title": {
+          "zh": "演示与结果",
+          "en": "Demonstration"
+        },
+        "paragraphs": [
+          {
+            "zh": "以下片段来自 PPT 中的棋盘实机抓取视频，展示机械臂在棋盘工作区对小尺寸棋子的操作过程。",
+            "en": "The supplied PPT clip documents physical arm manipulation of a small piece in the board workspace."
+          }
+        ],
+        "figures": [
+          {
+            "video": "assets/projects/chess-grasping/demo.mp4",
+            "poster": "assets/projects/chess-grasping/demo.poster.webp",
+            "caption": {
+              "zh": "棋子视觉定位与机械臂抓取实机演示。",
+              "en": "Physical demonstration of visual piece localization and robot-arm grasping."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "wheel-legged",
     "title": {
       "zh": "轮腿平衡机器人原型测试",
@@ -3007,11 +3008,11 @@ export const projects = [
             }
           },
           {
-            "video": "assets/projects/industrial-grasping/ppt-46.mp4",
-            "poster": "assets/projects/industrial-grasping/ppt-46.poster.webp",
+            "video": "assets/projects/aloha/ppt-47.mp4",
+            "poster": "assets/projects/aloha/ppt-47.poster.webp",
             "caption": {
-              "zh": "桌面夹爪操作实验",
-              "en": "Tabletop gripper manipulation experiment"
+              "zh": "服装操作的双臂示教与遥操作",
+              "en": "Dual-arm demonstration and teleoperation for garment handling"
             }
           }
         ]
