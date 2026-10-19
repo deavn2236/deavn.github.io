@@ -34,6 +34,18 @@ const sectionIcons = {
 };
 const renderIcon = (icon, className = 'section-icon') => `<svg class="${className} icon-${icon}" width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">${sectionIcons[icon]}</svg>`;
 const sectionHeading = (icon, label) => `<h2 class="section-heading">${renderIcon(icon)}${bi(label)}</h2>`;
+const factIconPaths = {
+  calendar: '<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4m8-4v4M4 10h16m-11 4h2m3 0h2m-7 3h2"/>',
+  pin: '<path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/>',
+  education: '<path d="m2 9 10-5 10 5-10 5L2 9Zm4 2v6c3 3 9 3 12 0v-6m4-2v8"/>',
+  flag: '<path d="M5 21V3m0 1c6-4 8 4 15 0v10c-7 4-9-4-15 0"/>',
+  users: '<circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3m1-16a3 3 0 0 1 0 6m2 3c3 1 4 3 4 7"/>',
+  language: '<path d="M3 5h11M8 3v2m-3 3c2 5 5 7 9 9m-3-12c0 7-3 11-8 14m11 2 4-11 4 11m-6-4h4"/>',
+  phone: '<path d="m7 3 3 5-3 3c2 3 3 4 6 6l3-3 5 3c-1 4-3 5-6 4C8 19 5 16 3 9 2 6 3 4 7 3Z"/>',
+  mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/>',
+  compass: '<circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5 5-3Z"/>'
+};
+const renderFactIcon = name => `<svg class="fact-icon fact-${name}" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${factIconPaths[name] || factIconPaths.compass}</svg>`;
 
 function renderHeader(prefix) {
   const nav = [['publications', b('论文', 'Publications')], ['work', b('项目', 'Projects')], ['student-work', b('学生工作', 'Student Leadership')], ['contact', b('联系', 'Contact')]];
@@ -63,7 +75,9 @@ function renderMedia(media = {}, prefix, className = '', eager = false, card = f
 }
 
 function projectCard(project, index, prefix = './') {
-  return `<article class="project-card" id="project-${esc(project.id)}" data-category="${esc(project.categoryKey || '')}"><div class="project-copy"><p class="project-category">${bi(project.category)}${project.year ? ` · ${esc(project.year)}` : ''}</p><h3><a href="${projectPath(project, prefix)}">${bi(project.title)}</a></h3><p class="project-summary">${bi(project.summary)}</p>${project.period || project.organization ? `<p class="project-context">${project.period ? bi(project.period) : ''}${project.period && project.organization ? ' · ' : ''}${project.organization ? bi(project.organization) : ''}</p>` : ''}${project.previewCaption ? `<p class="project-preview-caption">${bi(project.previewCaption)}</p>` : ''}<div class="project-card-footer"><a class="project-details" href="${projectPath(project, prefix)}">${bi(b('详情 →', 'Details →'))}</a></div></div>${renderMedia(project.media, prefix, 'project-media', index < 2, true)}</article>`;
+  const period = project.period ? bi(project.period) : project.year ? esc(project.year) : '';
+  const meta = [bi(project.category), period ? `<span class="project-period">${period}</span>` : '', project.organization ? bi(project.organization) : ''].filter(Boolean).join('<span class="meta-separator" aria-hidden="true">·</span>');
+  return `<article class="project-card" id="project-${esc(project.id)}" data-category="${esc(project.categoryKey || '')}"><div class="project-copy"><p class="project-category">${meta}</p><h3><a href="${projectPath(project, prefix)}">${bi(project.title)}</a></h3><p class="project-summary">${bi(project.summary)} <a class="project-details" href="${projectPath(project, prefix)}">${bi(b('详情 →', 'Details →'))}</a></p>${project.previewCaption ? `<p class="project-preview-caption">${bi(project.previewCaption)}</p>` : ''}</div>${renderMedia(project.media, prefix, 'project-media', index < 2, true)}</article>`;
 }
 
 function paperLinks(paper, prefix = './', overview = true) {
@@ -77,7 +91,8 @@ function paperCard(paper, prefix = './') {
 function renderHome() {
   const filters = [['all', b('全部', 'All')], ['navigation', b('导航', 'Navigation')], ['manipulation', b('机器人操作', 'Manipulation')], ['exploration', b('探索与原型', 'Explorations')]].map(([key, label]) => `<button type="button" data-project-filter="${key}" aria-pressed="${key === 'all'}">${bi(label)}</button>`).join('');
   const education = site.educationDescription;
-  const personalInfo = site.personalInfo.map(item => `<div><dt>${bi(item.label)}</dt><dd>${bi(item.value)}</dd></div>`).join('');
+  const factTypes = { '出生年月':'calendar', '籍贯':'pin', '学历':'education', '政治面貌':'flag', '学生工作':'users', '六级成绩':'language' };
+  const personalInfo = site.personalInfo.map(item => `<div><dt>${renderFactIcon(factTypes[tr(item.label)])}${bi(item.label)}</dt><dd>${bi(item.value)}</dd></div>`).join('');
   const studentWork = site.studentWork.map(item => `<article class="student-work-entry"><div class="student-work-header"><div><h3>${bi(item.institution)}</h3><p class="student-work-role">${bi(item.role)}</p></div><span class="student-work-period">${bi(item.period)}</span></div><ul>${item.points.map(point => `<li>${bi(point)}</li>`).join('')}</ul></article>`).join('');
   const projectGroups = [
     { id: 'primary', label: b('主要研发', 'Research & Development'), icon: 'layers' },
@@ -85,16 +100,16 @@ function renderHome() {
   ].map(group => `<div class="project-group" data-project-group="${group.id}"><h3 class="project-group-heading">${renderIcon(group.icon)}${bi(group.label)}</h3><div class="project-grid">${site.projects.filter(p => p.group === group.id).map((p,i) => projectCard(p,i)).join('')}</div></div>`).join('');
   return `<div class="home wrap">
     <section class="profile" id="intro">
-      <div class="profile-ornament" aria-hidden="true"><svg viewBox="0 0 1040 42" fill="none" preserveAspectRatio="xMidYMid slice"><path d="M0 22h142l16-12h150l17 18h204l18-15h175l20 14h298" stroke="#d9e4ec"/><path d="M0 30h98l20-12h160l19 17h240l20-15h158l17 15h308" stroke="#e9dccc" stroke-dasharray="3 5"/><circle cx="159" cy="10" r="4" fill="#90bbcb"/><circle cx="325" cy="28" r="4" fill="#e4b48c"/><circle cx="547" cy="13" r="4" fill="#b5aace"/><circle cx="742" cy="27" r="4" fill="#a2c7b8"/><rect x="861" y="9" width="24" height="23" rx="7" fill="#eef5f6"/><path d="M869 20h9m-9 4h9m-6-9v12" stroke="#88afb8" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      <div class="profile-eyebrow"><span>${renderFactIcon('compass')}${bi(b('个人学术主页','Academic Profile'))}</span><span class="profile-rule" aria-hidden="true"></span><svg class="profile-route" width="130" height="28" viewBox="0 0 130 28" fill="none" aria-hidden="true"><path d="M3 20h29l11-12h34l12 12h38" stroke="#111" stroke-width="1.1"/><path d="M3 24h31L45 12h30l12 12h40" stroke="#af8765" stroke-dasharray="2 4"/><circle cx="32" cy="20" r="3" fill="#43685a"/><circle cx="77" cy="8" r="3" fill="#8b2d34"/><circle cx="89" cy="20" r="3" fill="#af8765"/></svg></div>
       <div class="profile-layout">
         <div class="profile-copy">
           <div class="profile-heading"><div class="profile-name-row"><h1>${bi(site.name)}</h1><p class="profile-affiliation">${bi(site.location)}</p></div><p class="profile-role">${bi(site.role)}</p></div>
-          <dl class="profile-facts">${personalInfo}<div><dt>${bi(b('电话', 'Phone'))}</dt><dd><a href="tel:${esc(site.phone)}">${esc(site.phone)}</a></dd></div><div><dt>${bi(b('邮箱', 'Email'))}</dt><dd><a href="mailto:${esc(site.email)}">${esc(site.email)}</a></dd></div></dl>
+          <dl class="profile-facts">${personalInfo}<div><dt>${renderFactIcon('phone')}${bi(b('电话', 'Phone'))}</dt><dd><a href="tel:${esc(site.phone)}">${esc(site.phone)}</a></dd></div><div><dt>${renderFactIcon('mail')}${bi(b('邮箱', 'Email'))}</dt><dd><a href="mailto:${esc(site.email)}">${esc(site.email)}</a></dd></div></dl>
           <p class="education-description" id="about">${bi(education)}</p>
           <p class="research-line"><strong>${bi(b('研究方向：', 'Research interests: '))}</strong>${site.interests.map(it => bi(it.title)).join(' · ')}</p>
           <div class="hobbies-line"><span class="hobbies-label">${bi(b('业余爱好：', 'Hobbies: '))}</span>${site.hobbies.map(hobby => `<span class="hobby-item">${renderIcon(hobby.id, 'hobby-icon')}${bi(hobby.title)}</span>`).join('')}</div>
         </div>
-        <figure class="profile-photo">${renderImage(site.portrait.src, site.portrait.alt, './', { eager: true })}</figure>
+        <figure class="profile-photo">${renderImage(site.portrait.src, site.portrait.alt, './', { eager: true })}<span class="portrait-badge" aria-hidden="true">${renderIcon('robot')}</span></figure>
       </div>
     </section>
     <section class="home-section" id="publications">${sectionHeading('publication', b('论文成果', 'Publications'))}<div class="paper-list">${site.papers.map(p => paperCard(p)).join('')}</div></section>
