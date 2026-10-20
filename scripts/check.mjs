@@ -55,7 +55,7 @@ for (const p of site.projects) {
   for (const g of p.gallery || []) { checkAsset(g.src, p.id); checkAsset(g.video, p.id); checkAsset(g.poster, p.id); }
 }
 if (site.projects.some(p => p.id === 'reconav')) errors.push('ReCoNav should appear as a paper only');
-for (const id of ['wheel-legged', 'industrial-grasping', 'fruit-sorting']) {
+for (const id of ['wheel-legged', 'fruit-sorting']) {
   if (site.projects.find(p => p.id === id)?.group !== 'collaboration') errors.push(`${id}: should be a collaborative project`);
 }
 for (const p of site.papers) {

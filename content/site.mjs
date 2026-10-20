@@ -202,12 +202,13 @@ export const site = {
       },
       "points": [
         {
-          "zh": "统筹社团日常运营与年度公益活动，协调成员分工、宣传、物资筹备及现场执行。",
-          "en": "Managed daily operations and annual volunteer activities, coordinating member responsibilities, publicity, supplies, and on-site delivery."
+          "zh": "统筹社团日常运营与年度公益活动，招募百余位社员，协调成员分工、宣传、物资筹备及现场执行。",
+          "en": "Managed daily operations and annual volunteer activities, recruited more than 100 members, and coordinated responsibilities, publicity, supplies, and on-site delivery."
         },
         {
-          "zh": "策划健康知识宣传活动，组织养老院慰问陪伴、生活协助等志愿服务。",
-          "en": "Organized health education activities and nursing-home volunteering, including companionship and assistance with daily activities."
+          "zh": "策划健康知识宣传活动，组织养老院慰问陪伴、生活协助等志愿服务，获得“五星社团”称号。",
+          "en": "Organized health education activities and nursing-home volunteering, including companionship and daily-life assistance; the association received a Five-star Student Association distinction.",
+          "emphasis": {"zh":"获得“五星社团”称号","en":"Five-star Student Association"}
         }
       ]
     },
@@ -230,8 +231,8 @@ export const site = {
           "en": "Helped plan and deliver volunteer activities, including the “Mengzhiyi” teaching program in Shanghe, providing tutoring and enrichment activities."
         },
         {
-          "zh": "参与生源地迎新志愿服务，为新生提供报到引导、校园咨询和入学帮助。",
-          "en": "Volunteered in new-student welcome activities, providing registration guidance, campus information, and enrollment assistance."
+          "zh": "奔赴潍坊、济南等地参与生源地迎新志愿服务，为新生提前提供入学帮助。",
+          "en": "Traveled to Weifang, Jinan, and other locations to welcome incoming students in their home regions and provide support before enrollment."
         }
       ]
     }
