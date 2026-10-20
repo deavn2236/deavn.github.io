@@ -1,7 +1,8 @@
 """Compress media using content/media-policy.json; back up outside the public repo.
 
-Requires Python/Pillow and FFmpeg. Normal Node builds do not need either tool.
-python scripts/optimize-media.py --ffmpeg /path/to/ffmpeg --backup /outside/repo
+Defaults to images only; add --videos explicitly to re-encode videos.
+Requires Python/Pillow, plus FFmpeg only for --videos. Normal builds use Node.
+python scripts/optimize-media.py --backup /outside/repo
 """
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
@@ -51,11 +52,12 @@ def settings(policy, kind, rel):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--ffmpeg', default=shutil.which('ffmpeg'))
+    parser.add_argument('--videos', action='store_true', help='Explicitly enable video re-encoding; otherwise preserve all MP4 files')
     parser.add_argument('--backup', type=Path, required=True)
     parser.add_argument('--jobs', type=int, default=2)
     parser.add_argument('--policy', type=Path, default=ROOT/'content/media-policy.json')
     args = parser.parse_args()
-    if not args.ffmpeg:
+    if args.videos and not args.ffmpeg:
         parser.error('ffmpeg not found; provide --ffmpeg')
     if args.jobs < 1:
         parser.error('--jobs must be positive')
@@ -81,7 +83,7 @@ def main():
 
     # Identical clips share an encode while retaining their existing public URLs.
     groups = {}
-    for src in sorted((ROOT/'assets').rglob('*.mp4')):
+    for src in sorted((ROOT/'assets').rglob('*.mp4')) if args.videos else []:
         rel = src.relative_to(ROOT).as_posix()
         config = settings(policy, 'video', rel)
         original = preserve(src)

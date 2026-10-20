@@ -41,11 +41,11 @@ GitHub Pages 使用 `main / (root)` 发布方式。推送到 `main` 后由 GitHu
 | `content/projects.mjs` | 14个机器人项目的顺序、研发/参与分组、名称、时间、单位、角色、分节文字和媒体 |
 | `content/systems.mjs` | 3个智能系统项目的中英文简介、技术说明和演示素材，首页位于机器人项目之前 |
 | `content/media.mjs` | 图片尺寸、响应式缩略图和首页短预览索引 |
-| `content/media-policy.json` | 普通视频、快速动作、可视化录屏与缩略图的压缩参数 |
+| `content/media-policy.json` | 图像及缩略图压缩参数，另保留需显式启用的视频压缩配置 |
 | `scripts/build.mjs` | 页面生成器，首页教育文字位于研究方向上方 |
 | `scripts/figure-layout.mjs` | 按媒体比例和配置分组，生成等宽双列与独立通栏 |
 | `scripts/check.mjs` | 内容与资源完整性检查 |
-| `scripts/optimize-media.py` | 可选媒体压缩工具，需要 Pillow 与 FFmpeg；备份必须放在仓库外 |
+| `scripts/optimize-media.py` | 默认仅处理图片；视频压缩需显式启用，备份必须放在仓库外 |
 | `src/styles.css` | 白底学术风格、双列项目卡片与手机适配 |
 | `src/client.js` | 中英切换、项目筛选、延迟加载与视频控制 |
 | `assets/` | 压缩图片、无音轨视频、可公开论文PDF |
@@ -61,7 +61,7 @@ GitHub Pages 使用 `main / (root)` 发布方式。推送到 `main` 后由 GitHu
 ## 媒体与内容
 
 - 图像保留原始比例，提供320/480/640/960像素缩略图与原图；主设备图缩小显示；并列素材等宽，超宽或不适合配对的素材独占一行。点击图片可查看原图。
-- 首页使用不超过10秒的短预览，按压缩策略降低到12帧/秒；详情页保留演示时长。视口外不下载视频。
+- 首页使用不超过10秒的短预览，合计约1.88 MiB；上次二次视频压缩已撤销，83个MP4恢复为此前文件，原分辨率、帧率和画质均保留。详情页保留演示时长，视口外不下载视频。
 - 视频均为 H.264/yuv420p、无音轨，使用 faststart；可见时静音自动循环播放，默认1.5倍速，离开视口或进入后台暂停。访问者仍可手动暂停。
 - 论文详情包含任务说明、主要贡献、方法架构、实验结果。表格直接采用论文或原材料的完整截图，图片可以点击查看大图；已移除重复的网页表格与指标卡片。
 - Kangaroo 首页展示室外实机场景，从原片145.7秒开始，已跳过场景说明动画。大厅运输与末端导航、方法说明、母车走廊运输与轮椅交接视频已删除；论文中的 IF-Planner 和设备图缩小展示。
@@ -77,15 +77,15 @@ GitHub Pages 使用 `main / (root)` 发布方式。推送到 `main` 后由 GitHu
 
 ### 可选：再次压缩素材
 
-正常构建无需执行。已有素材已压缩；后续添加较大资源时，可用 Python/Pillow 和本机 FFmpeg 运行。压缩参数维护于 `content/media-policy.json`：普通演示最多640×480、15帧/秒；抓取、挥拍等快速动作保留18帧/秒；地图、识别界面等录屏保留较高分辨率；首页短预览最多420×280、12帧/秒。所有上限都保留原比例且不放大。
+正常构建无需执行。上次视频二次压缩已按本人要求撤销，当前工具默认只处理图片，保留全部MP4及其索引。图像参数维护于 `content/media-policy.json`。
 
 ```powershell
-python scripts/optimize-media.py --ffmpeg 'C:\tools\ffmpeg\bin\ffmpeg.exe' --backup 'D:\site-media-backup'
+python scripts/optimize-media.py --backup 'D:\site-media-backup'
 npm run check
 npm run build
 ```
 
-请把 FFmpeg 路径改为本机实际路径。工具保留原始比例和视频时长，删除音轨，使用H.264/yuv420p与faststart，只有编码后文件更小时才替换。论文表格、方法图采用较高图像质量，照片与视频封面单独压缩，生成四档WebP缩略图。工具刷新尺寸索引并在仓库外保存修改前素材与 `compression-report.json`。重复处理同一批素材时复用同一备份目录，以免多次有损压缩。图片、封面和视频URL带内容摘要，更新素材后可自动刷新浏览器缓存。
+论文表格、方法图采用较高图像质量，照片与视频封面单独压缩，生成四档WebP缩略图。工具刷新图像索引并在仓库外保存修改前素材与 `compression-report.json`。重复处理同一批素材时复用同一备份目录，以免多次有损压缩。仅在确定需要重新压缩视频时，才额外提供 `--videos --ffmpeg 'C:\tools\ffmpeg\bin\ffmpeg.exe'`；这会按保留的紧凑策略重新编码视频。图片、封面和视频URL带内容摘要，更新素材后可自动刷新浏览器缓存。
 
 ### 媒体排版配置
 

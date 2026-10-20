@@ -4189,607 +4189,523 @@ export const media = {
   },
   "videos": {
     "assets/projects/agva/demo.mp4": {
-      "duration": 61.6,
-      "width": 268,
-      "height": 480,
-      "bytes": 884741,
-      "preview": "assets/projects/agva/demo.preview.mp4",
-      "fps": 15.0
+      "duration": 61.67,
+      "width": 302,
+      "height": 540,
+      "bytes": 1344883,
+      "preview": "assets/projects/agva/demo.preview.mp4"
     },
     "assets/projects/agva/demo.preview.mp4": {
-      "duration": 9.92,
+      "duration": 10,
       "width": 152,
       "height": 270,
-      "bytes": 50942,
-      "fps": 12.0
+      "bytes": 81100
     },
     "assets/projects/agva/ppt-09.mp4": {
-      "duration": 28.0,
-      "width": 270,
-      "height": 480,
-      "bytes": 246407,
-      "fps": 15.0
+      "duration": 28.06,
+      "width": 304,
+      "height": 540,
+      "bytes": 390378
     },
     "assets/projects/agva/ppt-10.mp4": {
-      "duration": 7.2,
-      "width": 640,
-      "height": 360,
-      "bytes": 99454,
-      "fps": 15.0
+      "duration": 7.22,
+      "width": 720,
+      "height": 406,
+      "bytes": 145120
     },
     "assets/projects/agva/ppt-11.mp4": {
-      "duration": 23.4,
-      "width": 270,
-      "height": 480,
-      "bytes": 235442,
-      "preview": "assets/projects/agva/workbench.preview.mp4",
-      "fps": 15.0
+      "duration": 23.44,
+      "width": 304,
+      "height": 540,
+      "bytes": 356088,
+      "preview": "assets/projects/agva/workbench.preview.mp4"
     },
     "assets/projects/aloha/demo.mp4": {
-      "duration": 29.72,
-      "width": 640,
-      "height": 360,
-      "bytes": 560949,
-      "preview": "assets/projects/aloha/demo.preview.mp4",
-      "fps": 18.0
-    },
-    "assets/projects/aloha/demo.preview.mp4": {
-      "duration": 9.92,
-      "width": 420,
-      "height": 236,
-      "bytes": 79803,
-      "fps": 12.0
-    },
-    "assets/projects/aloha/ppt-29.mp4": {
-      "duration": 7.89,
-      "width": 640,
-      "height": 160,
-      "bytes": 59268,
-      "fps": 18.0
-    },
-    "assets/projects/aloha/ppt-30.mp4": {
-      "duration": 14.83,
-      "width": 640,
-      "height": 360,
-      "bytes": 240325,
-      "fps": 18.0
-    },
-    "assets/projects/aloha/ppt-31.mp4": {
-      "duration": 30.33,
-      "width": 640,
-      "height": 360,
-      "bytes": 619138,
-      "fps": 18.0
-    },
-    "assets/projects/aloha/ppt-32.mp4": {
-      "duration": 12.5,
-      "width": 640,
-      "height": 360,
-      "bytes": 231146,
-      "preview": "assets/projects/aloha/ppt-32.preview.mp4",
-      "fps": 18.0
-    },
-    "assets/projects/aloha/ppt-32.preview.mp4": {
-      "duration": 9.92,
-      "width": 420,
-      "height": 238,
-      "bytes": 75549,
-      "fps": 12.0
-    },
-    "assets/projects/aloha/ppt-33.mp4": {
-      "duration": 21.94,
-      "width": 640,
-      "height": 360,
-      "bytes": 291188,
-      "fps": 18.0
-    },
-    "assets/projects/aloha/ppt-34.mp4": {
-      "duration": 41.44,
-      "width": 640,
-      "height": 360,
-      "bytes": 490154,
-      "fps": 18.0
-    },
-    "assets/projects/aloha/ppt-35.mp4": {
-      "duration": 13.06,
-      "width": 640,
-      "height": 360,
-      "bytes": 178210,
-      "fps": 18.0
-    },
-    "assets/projects/aloha/ppt-37.mp4": {
-      "duration": 14.83,
-      "width": 640,
-      "height": 360,
-      "bytes": 240959,
-      "fps": 18.0
-    },
-    "assets/projects/fruit-sorting/demo.mp4": {
-      "duration": 23.2,
-      "width": 640,
-      "height": 360,
-      "bytes": 559979,
-      "preview": "assets/projects/fruit-sorting/demo.preview.mp4",
-      "fps": 15.0
-    },
-    "assets/projects/fruit-sorting/demo.preview.mp4": {
-      "duration": 9.92,
-      "width": 420,
-      "height": 236,
-      "bytes": 108957,
-      "fps": 12.0
-    },
-    "assets/projects/image-goal/demo.mp4": {
-      "duration": 49.13,
+      "duration": 29.78,
       "width": 720,
       "height": 404,
-      "bytes": 1425763,
-      "preview": "assets/projects/image-goal/demo.preview.mp4",
-      "fps": 15.0
+      "bytes": 715371,
+      "preview": "assets/projects/aloha/demo.preview.mp4"
+    },
+    "assets/projects/aloha/demo.preview.mp4": {
+      "duration": 10,
+      "width": 480,
+      "height": 270,
+      "bytes": 140829
+    },
+    "assets/projects/aloha/ppt-29.mp4": {
+      "duration": 7.94,
+      "width": 720,
+      "height": 180,
+      "bytes": 71820
+    },
+    "assets/projects/aloha/ppt-30.mp4": {
+      "duration": 14.89,
+      "width": 720,
+      "height": 406,
+      "bytes": 314619
+    },
+    "assets/projects/aloha/ppt-31.mp4": {
+      "duration": 30.39,
+      "width": 720,
+      "height": 406,
+      "bytes": 813177
+    },
+    "assets/projects/aloha/ppt-32.mp4": {
+      "duration": 12.56,
+      "width": 720,
+      "height": 406,
+      "bytes": 306541,
+      "preview": "assets/projects/aloha/ppt-32.preview.mp4"
+    },
+    "assets/projects/aloha/ppt-32.preview.mp4": {
+      "duration": 10,
+      "width": 478,
+      "height": 270,
+      "bytes": 135664
+    },
+    "assets/projects/aloha/ppt-33.mp4": {
+      "duration": 22,
+      "width": 720,
+      "height": 406,
+      "bytes": 377959
+    },
+    "assets/projects/aloha/ppt-34.mp4": {
+      "duration": 41.5,
+      "width": 720,
+      "height": 406,
+      "bytes": 634184
+    },
+    "assets/projects/aloha/ppt-35.mp4": {
+      "duration": 13.11,
+      "width": 720,
+      "height": 406,
+      "bytes": 231480
+    },
+    "assets/projects/aloha/ppt-37.mp4": {
+      "duration": 14.89,
+      "width": 720,
+      "height": 406,
+      "bytes": 315621
+    },
+    "assets/projects/fruit-sorting/demo.mp4": {
+      "duration": 23.28,
+      "width": 720,
+      "height": 404,
+      "bytes": 843024,
+      "preview": "assets/projects/fruit-sorting/demo.preview.mp4"
+    },
+    "assets/projects/fruit-sorting/demo.preview.mp4": {
+      "duration": 10,
+      "width": 480,
+      "height": 270,
+      "bytes": 197417
+    },
+    "assets/projects/image-goal/demo.mp4": {
+      "duration": 49.17,
+      "width": 720,
+      "height": 404,
+      "bytes": 1578452,
+      "preview": "assets/projects/image-goal/demo.preview.mp4"
     },
     "assets/projects/image-goal/demo.preview.mp4": {
-      "duration": 9.92,
-      "width": 420,
-      "height": 236,
-      "bytes": 54358,
-      "fps": 12.0
+      "duration": 10,
+      "width": 480,
+      "height": 270,
+      "bytes": 107953
     },
     "assets/projects/image-goal/indoor.mp4": {
-      "duration": 53.47,
-      "width": 640,
-      "height": 360,
-      "bytes": 642268,
-      "fps": 15.0
+      "duration": 53.5,
+      "width": 718,
+      "height": 404,
+      "bytes": 978188
     },
     "assets/projects/image-goal/ppt-03.mp4": {
-      "duration": 10.73,
-      "width": 640,
-      "height": 360,
-      "bytes": 109931,
-      "fps": 15.0
+      "duration": 10.78,
+      "width": 720,
+      "height": 406,
+      "bytes": 156297
     },
     "assets/projects/image-goal/web-all1.mp4": {
-      "duration": 24.8,
-      "width": 640,
-      "height": 134,
-      "bytes": 183260,
-      "fps": 15.0
+      "duration": 24.83,
+      "width": 720,
+      "height": 150,
+      "bytes": 266599
     },
     "assets/projects/image-goal/web-corridor_1.mp4": {
-      "duration": 59.2,
-      "width": 640,
-      "height": 360,
-      "bytes": 682683,
-      "fps": 15.0
+      "duration": 59.28,
+      "width": 720,
+      "height": 406,
+      "bytes": 1054771
     },
     "assets/projects/image-goal/web-corridor_3.mp4": {
-      "duration": 105.8,
-      "width": 640,
-      "height": 360,
-      "bytes": 1782903,
-      "fps": 15.0
+      "duration": 105.83,
+      "width": 720,
+      "height": 406,
+      "bytes": 2704724
     },
     "assets/projects/image-goal/web-fail_collision_vint.mp4": {
-      "duration": 54.2,
-      "width": 640,
-      "height": 360,
-      "bytes": 664861,
-      "fps": 15.0
+      "duration": 54.22,
+      "width": 720,
+      "height": 406,
+      "bytes": 1005487
     },
     "assets/projects/image-goal/web-fail_predict_flownav.mp4": {
-      "duration": 32.93,
-      "width": 640,
-      "height": 360,
-      "bytes": 354217,
-      "fps": 15.0
+      "duration": 33,
+      "width": 720,
+      "height": 406,
+      "bytes": 527225
     },
     "assets/projects/image-goal/web-indoor_1.mp4": {
-      "duration": 25.73,
-      "width": 640,
-      "height": 360,
-      "bytes": 500450,
-      "preview": "assets/projects/image-goal/web-indoor_1.preview.mp4",
-      "fps": 15.0
+      "duration": 25.78,
+      "width": 720,
+      "height": 406,
+      "bytes": 730560,
+      "preview": "assets/projects/image-goal/web-indoor_1.preview.mp4"
     },
     "assets/projects/image-goal/web-indoor_1.preview.mp4": {
-      "duration": 9.92,
-      "width": 420,
-      "height": 238,
-      "bytes": 106666,
-      "fps": 12.0
+      "duration": 10,
+      "width": 478,
+      "height": 270,
+      "bytes": 190216
     },
     "assets/projects/image-goal/web-indoor_2.mp4": {
-      "duration": 23.93,
-      "width": 640,
-      "height": 360,
-      "bytes": 517936,
-      "fps": 15.0
+      "duration": 24,
+      "width": 720,
+      "height": 406,
+      "bytes": 789574
     },
     "assets/projects/image-goal/web-indoor_3.mp4": {
-      "duration": 36.47,
-      "width": 640,
-      "height": 360,
-      "bytes": 639556,
-      "fps": 15.0
+      "duration": 36.5,
+      "width": 720,
+      "height": 406,
+      "bytes": 931409
     },
     "assets/projects/image-goal/web-method.mp4": {
-      "duration": 21.87,
-      "width": 640,
-      "height": 360,
-      "bytes": 258785,
-      "fps": 15.0
+      "duration": 21.89,
+      "width": 720,
+      "height": 406,
+      "bytes": 359694
     },
     "assets/projects/image-goal/web-outdoor_1.mp4": {
-      "duration": 65.13,
-      "width": 640,
-      "height": 360,
-      "bytes": 1462866,
-      "fps": 15.0
+      "duration": 65.17,
+      "width": 720,
+      "height": 406,
+      "bytes": 2332230
     },
     "assets/projects/image-goal/web-outdoor_2.mp4": {
-      "duration": 159.73,
-      "width": 640,
-      "height": 360,
-      "bytes": 3770271,
-      "fps": 15.0
+      "duration": 159.78,
+      "width": 720,
+      "height": 404,
+      "bytes": 5817560
     },
     "assets/projects/image-goal/web-outdoor_3.mp4": {
-      "duration": 72.73,
-      "width": 640,
-      "height": 360,
-      "bytes": 1327252,
-      "fps": 15.0
+      "duration": 72.78,
+      "width": 720,
+      "height": 406,
+      "bytes": 2059126
     },
     "assets/projects/industrial-grasping/demo.mp4": {
-      "duration": 18.93,
+      "duration": 19,
       "width": 640,
       "height": 368,
-      "bytes": 533936,
-      "preview": "assets/projects/industrial-grasping/demo.preview.mp4",
-      "fps": 15.0
+      "bytes": 653390,
+      "preview": "assets/projects/industrial-grasping/demo.preview.mp4"
     },
     "assets/projects/industrial-grasping/demo.preview.mp4": {
-      "duration": 9.92,
-      "width": 420,
-      "height": 242,
-      "bytes": 125478,
-      "fps": 12.0
+      "duration": 10,
+      "width": 470,
+      "height": 270,
+      "bytes": 227808
     },
     "assets/projects/industrial-grasping/ppt-41.mp4": {
-      "duration": 99.0,
+      "duration": 99.06,
       "width": 640,
       "height": 368,
-      "bytes": 2442430,
-      "fps": 15.0
+      "bytes": 2999966
     },
     "assets/projects/industrial-grasping/ppt-42.mp4": {
-      "duration": 102.8,
+      "duration": 102.83,
       "width": 640,
       "height": 368,
-      "bytes": 2442783,
-      "fps": 15.0
+      "bytes": 3001562
     },
     "assets/projects/industrial-grasping/ppt-43.mp4": {
-      "duration": 167.07,
+      "duration": 167.11,
       "width": 640,
       "height": 368,
-      "bytes": 4127526,
-      "fps": 15.0
+      "bytes": 5190969
     },
     "assets/projects/industrial-grasping/ppt-44.mp4": {
-      "duration": 12.87,
-      "width": 640,
-      "height": 360,
-      "bytes": 357893,
-      "fps": 15.0
+      "duration": 12.89,
+      "width": 720,
+      "height": 406,
+      "bytes": 547448
     },
     "assets/projects/industrial-grasping/tendon.mp4": {
-      "duration": 10.2,
+      "duration": 10.28,
       "width": 640,
       "height": 368,
-      "bytes": 302390,
-      "fps": 15.0
+      "bytes": 369684
     },
     "assets/projects/kangaroo/demo.mp4": {
-      "duration": 119.87,
-      "width": 640,
-      "height": 360,
-      "bytes": 2435860,
-      "preview": "assets/projects/kangaroo/demo.preview.mp4",
-      "fps": 15.0
+      "duration": 119.89,
+      "width": 720,
+      "height": 404,
+      "bytes": 3623846,
+      "preview": "assets/projects/kangaroo/demo.preview.mp4"
     },
     "assets/projects/kangaroo/demo.preview.mp4": {
-      "duration": 9.92,
-      "width": 420,
-      "height": 236,
-      "bytes": 73210,
-      "fps": 12.0
+      "duration": 10,
+      "width": 480,
+      "height": 270,
+      "bytes": 136027
     },
     "assets/projects/kangaroo/outdoor.mp4": {
-      "duration": 40.07,
-      "width": 640,
-      "height": 360,
-      "bytes": 1427670,
-      "preview": "assets/projects/kangaroo/outdoor.preview.mp4",
-      "fps": 15.0
+      "duration": 40.11,
+      "width": 720,
+      "height": 406,
+      "bytes": 2135689,
+      "preview": "assets/projects/kangaroo/outdoor.preview.mp4"
     },
     "assets/projects/kangaroo/ppt-06.mp4": {
-      "duration": 357.87,
-      "width": 640,
-      "height": 360,
-      "bytes": 5152654,
-      "fps": 15.0
+      "duration": 357.94,
+      "width": 720,
+      "height": 406,
+      "bytes": 7785268
     },
     "assets/projects/library-robot/demo.mp4": {
-      "duration": 70.27,
-      "width": 268,
-      "height": 480,
-      "bytes": 804653,
-      "preview": "assets/projects/library-robot/demo.preview.mp4",
-      "fps": 15.0
+      "duration": 70.33,
+      "width": 302,
+      "height": 540,
+      "bytes": 1199540,
+      "preview": "assets/projects/library-robot/demo.preview.mp4"
     },
     "assets/projects/library-robot/demo.preview.mp4": {
-      "duration": 9.92,
+      "duration": 10,
       "width": 152,
       "height": 270,
-      "bytes": 40645,
-      "fps": 12.0
+      "bytes": 59221
     },
     "assets/projects/library-robot/ppt-12.mp4": {
-      "duration": 36.8,
-      "width": 640,
-      "height": 360,
-      "bytes": 351916,
-      "fps": 15.0
+      "duration": 36.83,
+      "width": 654,
+      "height": 368,
+      "bytes": 418614
     },
     "assets/projects/library-robot/ppt-14.mp4": {
-      "duration": 103.13,
-      "width": 270,
-      "height": 480,
-      "bytes": 1041054,
-      "fps": 15.0
+      "duration": 103.17,
+      "width": 304,
+      "height": 540,
+      "bytes": 1612515
     },
     "assets/projects/library-robot/ppt-15.mp4": {
-      "duration": 69.2,
-      "width": 640,
-      "height": 360,
-      "bytes": 1296364,
-      "fps": 15.0
+      "duration": 69.28,
+      "width": 720,
+      "height": 404,
+      "bytes": 1974823
     },
     "assets/projects/library-robot/ppt-16.mp4": {
-      "duration": 33.0,
-      "width": 270,
-      "height": 480,
-      "bytes": 318853,
-      "fps": 15.0
+      "duration": 33.06,
+      "width": 304,
+      "height": 540,
+      "bytes": 473769
     },
     "assets/projects/library-robot/ppt-18.mp4": {
-      "duration": 105.53,
-      "width": 270,
-      "height": 480,
-      "bytes": 1261735,
-      "fps": 15.0
+      "duration": 105.61,
+      "width": 304,
+      "height": 540,
+      "bytes": 1982616
     },
     "assets/projects/lidar-3d/demo.mp4": {
-      "duration": 16.53,
-      "width": 640,
-      "height": 360,
-      "bytes": 321690,
-      "preview": "assets/projects/lidar-3d/demo.preview.mp4",
-      "fps": 15.0
+      "duration": 16.61,
+      "width": 720,
+      "height": 404,
+      "bytes": 489053,
+      "preview": "assets/projects/lidar-3d/demo.preview.mp4"
     },
     "assets/projects/lidar-3d/demo.preview.mp4": {
-      "duration": 9.92,
-      "width": 420,
-      "height": 236,
-      "bytes": 71794,
-      "fps": 12.0
+      "duration": 10,
+      "width": 480,
+      "height": 270,
+      "bytes": 135410
     },
     "assets/projects/lidar-3d/ppt-25.mp4": {
-      "duration": 207.67,
-      "width": 272,
-      "height": 480,
-      "bytes": 2843491,
-      "fps": 15.0
+      "duration": 207.72,
+      "width": 306,
+      "height": 540,
+      "bytes": 4747577
     },
     "assets/projects/lidar-3d/ppt-27.mp4": {
-      "duration": 58.93,
-      "width": 640,
-      "height": 360,
-      "bytes": 1174849,
-      "preview": "assets/projects/lidar-3d/ppt-27.preview.mp4",
-      "fps": 15.0
+      "duration": 59,
+      "width": 720,
+      "height": 406,
+      "bytes": 1758745,
+      "preview": "assets/projects/lidar-3d/ppt-27.preview.mp4"
     },
     "assets/projects/patrol-inspection/demo.mp4": {
-      "duration": 99.73,
-      "width": 268,
-      "height": 480,
-      "bytes": 1394426,
-      "preview": "assets/projects/patrol-inspection/demo.preview.mp4",
-      "fps": 15.0
+      "duration": 99.78,
+      "width": 302,
+      "height": 540,
+      "bytes": 2104749,
+      "preview": "assets/projects/patrol-inspection/demo.preview.mp4"
     },
     "assets/projects/patrol-inspection/demo.preview.mp4": {
-      "duration": 9.92,
+      "duration": 10,
       "width": 152,
       "height": 270,
-      "bytes": 57040,
-      "fps": 12.0
+      "bytes": 88832
     },
     "assets/projects/rtk-navigation/demo.mp4": {
-      "duration": 29.93,
-      "width": 640,
-      "height": 360,
-      "bytes": 492406,
-      "preview": "assets/projects/rtk-navigation/demo.preview.mp4",
-      "fps": 15.0
+      "duration": 30,
+      "width": 720,
+      "height": 404,
+      "bytes": 778392,
+      "preview": "assets/projects/rtk-navigation/demo.preview.mp4"
     },
     "assets/projects/rtk-navigation/demo.preview.mp4": {
-      "duration": 9.92,
-      "width": 420,
-      "height": 236,
-      "bytes": 69830,
-      "fps": 12.0
+      "duration": 10,
+      "width": 480,
+      "height": 270,
+      "bytes": 137650
     },
     "assets/projects/rtk-navigation/ppt-22.mp4": {
-      "duration": 56.93,
-      "width": 272,
-      "height": 480,
-      "bytes": 1311387,
-      "fps": 15.0
+      "duration": 57,
+      "width": 306,
+      "height": 540,
+      "bytes": 2454249
     },
     "assets/projects/rtk-navigation/ppt-24.mp4": {
-      "duration": 91.07,
-      "width": 272,
-      "height": 480,
-      "bytes": 1579270,
-      "fps": 15.0
+      "duration": 91.11,
+      "width": 306,
+      "height": 540,
+      "bytes": 2773719
     },
     "assets/projects/shuttlecock-grasping/demo.mp4": {
-      "duration": 23.33,
-      "width": 268,
-      "height": 480,
-      "bytes": 385383,
-      "preview": "assets/projects/shuttlecock-grasping/demo.preview.mp4",
-      "fps": 18.0
+      "duration": 23.39,
+      "width": 302,
+      "height": 540,
+      "bytes": 515019,
+      "preview": "assets/projects/shuttlecock-grasping/demo.preview.mp4"
     },
     "assets/projects/shuttlecock-grasping/demo.preview.mp4": {
-      "duration": 9.92,
+      "duration": 10,
       "width": 152,
       "height": 270,
-      "bytes": 47556,
-      "fps": 12.0
+      "bytes": 68038
     },
     "assets/projects/sports-robot/badminton.mp4": {
-      "duration": 7.72,
-      "width": 640,
-      "height": 362,
-      "bytes": 152294,
-      "fps": 18.0
+      "duration": 7.78,
+      "width": 652,
+      "height": 368,
+      "bytes": 212150
     },
     "assets/projects/sports-robot/demo.mp4": {
-      "duration": 35.78,
-      "width": 640,
-      "height": 362,
-      "bytes": 618339,
-      "preview": "assets/projects/sports-robot/demo.preview.mp4",
-      "fps": 18.0
+      "duration": 35.83,
+      "width": 652,
+      "height": 368,
+      "bytes": 859249,
+      "preview": "assets/projects/sports-robot/demo.preview.mp4"
     },
     "assets/projects/sports-robot/demo.preview.mp4": {
-      "duration": 9.92,
-      "width": 420,
-      "height": 238,
-      "bytes": 84292,
-      "fps": 12.0
+      "duration": 10,
+      "width": 478,
+      "height": 270,
+      "bytes": 149172
     },
     "assets/projects/sports-robot/table-tennis.mp4": {
-      "duration": 17.22,
-      "width": 640,
-      "height": 362,
-      "bytes": 338299,
-      "fps": 18.0
+      "duration": 17.28,
+      "width": 652,
+      "height": 368,
+      "bytes": 470495
     },
     "assets/projects/sports-robot/tennis.mp4": {
-      "duration": 10.72,
-      "width": 640,
-      "height": 362,
-      "bytes": 126210,
-      "fps": 18.0
+      "duration": 10.78,
+      "width": 652,
+      "height": 368,
+      "bytes": 177510
     },
     "assets/projects/wheel-leg/ppt-45.mp4": {
-      "duration": 3.22,
-      "width": 640,
-      "height": 360,
-      "bytes": 64937,
-      "preview": "assets/projects/wheel-leg/ppt-45.preview.mp4",
-      "fps": 18.0
+      "duration": 3.28,
+      "width": 720,
+      "height": 406,
+      "bytes": 92649,
+      "preview": "assets/projects/wheel-leg/ppt-45.preview.mp4"
     },
     "assets/projects/wheel-leg/ppt-45.preview.mp4": {
-      "duration": 3.17,
-      "width": 420,
-      "height": 238,
-      "bytes": 24843,
-      "fps": 12.0
+      "duration": 3.2,
+      "width": 478,
+      "height": 270,
+      "bytes": 46887
     },
     "assets/projects/chess-grasping/demo.mp4": {
       "width": 480,
       "height": 360,
-      "duration": 28.5,
-      "bytes": 402852,
-      "preview": "assets/projects/chess-grasping/demo.preview.mp4",
-      "fps": 18.0
+      "duration": 28.56,
+      "bytes": 439890,
+      "preview": "assets/projects/chess-grasping/demo.preview.mp4"
     },
     "assets/projects/chess-grasping/demo.preview.mp4": {
-      "width": 374,
-      "height": 280,
-      "duration": 9.92,
-      "bytes": 78527,
-      "fps": 12.0
+      "width": 480,
+      "height": 360,
+      "duration": 10,
+      "bytes": 113215
     },
     "assets/projects/agva/workbench.preview.mp4": {
-      "width": 158,
-      "height": 280,
-      "duration": 9.92,
-      "fps": 12.0,
-      "bytes": 44572
+      "width": 270,
+      "height": 480,
+      "duration": 10
     },
     "assets/projects/lidar-3d/ppt-27.preview.mp4": {
-      "duration": 9.92,
-      "width": 420,
-      "height": 236,
-      "bytes": 99617,
-      "fps": 12.0
+      "duration": 10,
+      "width": 480,
+      "height": 270,
+      "bytes": 134394
     },
     "assets/projects/kangaroo/outdoor.preview.mp4": {
-      "duration": 9.92,
-      "width": 420,
-      "height": 238,
-      "bytes": 113500,
-      "fps": 12.0
+      "duration": 10,
+      "width": 480,
+      "height": 270,
+      "bytes": 158531
     },
     "assets/projects/lidar-3d/ppt-26.mp4": {
-      "duration": 199.33,
+      "duration": 199.39,
       "width": 654,
       "height": 368,
-      "bytes": 4580177,
-      "preview": "assets/projects/lidar-3d/ppt-26.preview.mp4",
-      "fps": 15.0
+      "bytes": 5106097,
+      "preview": "assets/projects/lidar-3d/ppt-26.preview.mp4"
     },
     "assets/projects/lidar-3d/ppt-26.preview.mp4": {
-      "duration": 9.92,
-      "width": 420,
-      "height": 236,
-      "bytes": 73596,
-      "fps": 12.0
+      "duration": 10,
+      "width": 480,
+      "height": 270,
+      "bytes": 124077
     },
     "assets/projects/thermal-safety/detection.mp4": {
-      "duration": 37.27,
+      "duration": 37.3,
       "width": 960,
       "height": 540,
-      "bytes": 1447893,
-      "preview": "assets/projects/thermal-safety/detection.preview.mp4",
-      "fps": 15.0
+      "bytes": 3293610,
+      "preview": "assets/projects/thermal-safety/detection.preview.mp4"
     },
     "assets/projects/thermal-safety/detection.preview.mp4": {
-      "duration": 10.0,
-      "width": 420,
-      "height": 236,
-      "bytes": 56862,
-      "fps": 12.0
+      "duration": 10,
+      "width": 480,
+      "height": 270,
+      "bytes": 118451
     },
     "assets/projects/personnel-tracking/fusion.mp4": {
-      "duration": 5.67,
-      "width": 960,
-      "height": 380,
-      "bytes": 72385,
-      "preview": "assets/projects/personnel-tracking/fusion.preview.mp4",
-      "fps": 15.0
+      "duration": 5.69,
+      "width": 1290,
+      "height": 510,
+      "bytes": 118229,
+      "preview": "assets/projects/personnel-tracking/fusion.preview.mp4"
     },
     "assets/projects/personnel-tracking/fusion.preview.mp4": {
-      "duration": 5.67,
-      "width": 420,
-      "height": 166,
-      "bytes": 21175,
-      "fps": 12.0
+      "duration": 5.69,
+      "width": 640,
+      "height": 254,
+      "bytes": 35612
     }
   }
 };
