@@ -6,7 +6,7 @@ export const papers = [
       "zh": "Kangaroo: Demand-Driven Cross-Environment Navigation for Macro-Micro Vehicles Enhanced by Large Language Models",
       "en": "Kangaroo: Demand-Driven Cross-Environment Navigation for Macro-Micro Vehicles Enhanced by Large Language Models"
     },
-    "authors": "Wendong Guo, Yanwei Zheng, Junyi Wang, Mengbai Xiao, Xiao Zhang, Liang Ma, Dongxiao Yu",
+    "authors": "Wendong Guo, Yanwei Zheng*, Junyi Wang, Mengbai Xiao, Xiao Zhang, Liang Ma, Dongxiao Yu",
     "year": "",
     "venue": {
       "zh": "Engineering Applications of Artificial Intelligence",
@@ -49,8 +49,8 @@ export const papers = [
       {
         "id": "contributions",
         "title": {
-          "zh": "贡献",
-          "en": "Contributions"
+          "zh": "主要贡献",
+          "en": "Main Contributions"
         },
         "paragraphs": [],
         "points": [
@@ -177,7 +177,7 @@ export const papers = [
       "zh": "SCTNav: Scene-Constrained Monocular Navigation with Ternary Spatio-Temporal Waypoint Prediction",
       "en": "SCTNav: Scene-Constrained Monocular Navigation with Ternary Spatio-Temporal Waypoint Prediction"
     },
-    "authors": "Wendong Guo et al.",
+    "authors": "Wendong Guo, Junyi Wang, Yanwei Zheng*, Xiao Zhang, Xingyu Zhang, Dongxiao Yu",
     "year": "",
     "venue": {
       "zh": "IEEE Robotics and Automation Letters",
@@ -220,8 +220,8 @@ export const papers = [
       {
         "id": "contributions",
         "title": {
-          "zh": "贡献",
-          "en": "Contributions"
+          "zh": "主要贡献",
+          "en": "Main Contributions"
         },
         "paragraphs": [],
         "points": [
@@ -356,7 +356,7 @@ export const papers = [
       "zh": "ReCoNav: Composed Instance Navigation",
       "en": "ReCoNav: Composed Instance Navigation"
     },
-    "authors": "Wendong Guo",
+    "authors": "Wendong Guo, Junyi Wang, Yanwei Zheng*, Xiao Zhang, Xingyu Zhang, Dongxiao Yu",
     "year": "",
     "venue": {
       "zh": "IEEE International Conference on Multimedia and Expo",
@@ -399,8 +399,8 @@ export const papers = [
       {
         "id": "contributions",
         "title": {
-          "zh": "贡献",
-          "en": "Contributions"
+          "zh": "主要贡献",
+          "en": "Main Contributions"
         },
         "paragraphs": [],
         "points": [
@@ -525,7 +525,7 @@ export const papers = [
       "zh": "Boundary-aware Multimodal Alignment Network for Video Temporal Grounding",
       "en": "Boundary-aware Multimodal Alignment Network for Video Temporal Grounding"
     },
-    "authors": "Wendong Guo et al.",
+    "authors": "Wendong Guo, Junyi Wang, Yanwei Zheng*, Xiao Zhang, Xingyu Zhang, Dongxiao Yu",
     "year": "",
     "venue": {
       "zh": "ACM Transactions on Multimedia Computing, Communications, and Applications",
@@ -568,8 +568,8 @@ export const papers = [
       {
         "id": "contributions",
         "title": {
-          "zh": "贡献",
-          "en": "Contributions"
+          "zh": "主要贡献",
+          "en": "Main Contributions"
         },
         "paragraphs": [],
         "points": [
@@ -730,8 +730,8 @@ export const papers = [
       {
         "id": "contributions",
         "title": {
-          "zh": "贡献",
-          "en": "Contributions"
+          "zh": "主要贡献",
+          "en": "Main Contributions"
         },
         "paragraphs": [],
         "points": [
@@ -865,7 +865,7 @@ export const papers = [
       "zh": "Learning Dual-task Descriptors using Unidirectional Feature Fusion for RGB based Category-level Object Pose Estimation",
       "en": "Learning Dual-task Descriptors using Unidirectional Feature Fusion for RGB based Category-level Object Pose Estimation"
     },
-    "authors": "Wendong Guo et al.",
+    "authors": "Wendong Guo, Junyi Wang, Yanwei Zheng*, Xiao Zhang, Xingyu Zhang, Dongxiao Yu",
     "year": "",
     "venue": {
       "zh": "Neural Networks",
@@ -908,8 +908,8 @@ export const papers = [
       {
         "id": "contributions",
         "title": {
-          "zh": "贡献",
-          "en": "Contributions"
+          "zh": "主要贡献",
+          "en": "Main Contributions"
         },
         "paragraphs": [],
         "points": [

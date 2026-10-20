@@ -114,3 +114,9 @@ Kangaroo首页和室内演示从原片49.7秒开始，到139.7秒结束；室外
 - 依据本人最新补充，首页邮箱下方加入导师郑艳伟、于东晓、宣东，英文依次为Yanwei Zheng、Dongxiao Yu、Dong Xuan；不额外添加职称或院校信息。
 - 人员识别定位与轨迹回放项目归属南瑞（NARI）；投标文件识别项目归属山东电网（State Grid Shandong），与设计文档的编制单位区分，首页和详情均更新。
 - 按本人要求，个人资料“曾任党支部书记”改为“党支部书记”，英文对应移除Former。六篇论文详情的章节名统一为“贡献 / Contributions”和“方法架构 / Method Architecture”。
+
+## 论文作者与主要贡献标题补充（2026-10-20）
+
+- 依据本人提供的作者名单，SCTNav、ReCoNav、BMANet、DDPoseNet补全为Wendong Guo、Junyi Wang、Yanwei Zheng*、Xiao Zhang、Xingyu Zhang、Dongxiao Yu；仅展示姓名，不展示作者编号。
+- Kangaroo保留原有作者顺序，并为Yanwei Zheng添加本人指定的通讯作者星号；UWB作者名单保持原文。星号以上标显示，提示文字为“通讯作者 / Corresponding author”。
+- 六篇论文详情的“贡献”改为“主要贡献 / Main Contributions”，方法架构及原有章节锚点保持。

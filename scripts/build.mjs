@@ -24,7 +24,9 @@ const bi = v => {
   return `<span data-lang="zh" lang="${zhLanguage}">${marked(zh, 'zh')}</span><span data-lang="en" lang="en">${marked(en, 'en')}</span>`;
 };
 const b = (zh, en) => ({ zh, en });
-const authors = value => esc(value || '').replaceAll('Wendong Guo', '<strong>Wendong Guo</strong>');
+const authors = value => esc(value || '')
+  .replaceAll('Wendong Guo', '<strong>Wendong Guo</strong>')
+  .replaceAll('Yanwei Zheng*', 'Yanwei Zheng<sup title="通讯作者 / Corresponding author" aria-label="通讯作者 / Corresponding author">*</sup>');
 const alt = value => `alt="${esc(tr(value))}" data-alt-zh="${esc(tr(value))}" data-alt-en="${esc(tr(value, 'en'))}"`;
 const paperPath = (paper, prefix) => `${prefix}papers/${esc(paper.id)}/index.html`;
 const projectPath = (project, prefix) => `${prefix}projects/${esc(project.id)}/index.html`;
