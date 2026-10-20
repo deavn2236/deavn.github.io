@@ -2651,48 +2651,34 @@ export const projects = [
     ]
   },
   {
-    "id": "chess-grasping",
-    "group": "collaboration",
-    "categoryKey": "manipulation",
-    "category": {
-      "zh": "视觉操作",
-      "en": "Visual manipulation"
-    },
+    "id": "fruit-sorting",
     "title": {
-      "zh": "机械臂棋子视觉抓取",
-      "en": "Robotic visual grasping of game pieces"
+      "zh": "果蔬干分拣产线项目",
+      "en": "Dried-fruit sorting pilot line"
     },
     "summary": {
-      "zh": "面向棋盘上小尺寸棋子抓取，以 YOLO 识别目标、MoveIt 规划机械臂运动；实机展示棋子定位、夹持和搬移。",
-      "en": "For small game-piece pickup, YOLO detects targets and MoveIt plans arm motion; real demonstrations show localization, gripping, and transfer."
-    },
-    "media": {
-      "video": "assets/projects/chess-grasping/demo.mp4",
-      "poster": "assets/projects/chess-grasping/demo.poster.webp",
-      "alt": {
-        "zh": "机械臂在棋盘上执行棋子抓取",
-        "en": "Robot-arm piece pickup on a game board"
-      }
+      "zh": "面向果蔬干产线的识别、分拣与计数，结合视觉定位、四自由度机械臂抓放和产线协同控制；完成产线联调及预研验收。",
+      "en": "For dried-fruit and vegetable sorting and counting, visual localization, a four-degree-of-freedom arm, and line coordination are integrated; the pilot line completed commissioning and acceptance."
     },
     "facts": [
       {
         "label": {
-          "zh": "参与类型",
-          "en": "Involvement"
+          "zh": "合作单位",
+          "en": "Partner"
         },
         "value": {
-          "zh": "参与项目",
-          "en": "Collaborative project"
+          "zh": "安徽安粮控股股份公司",
+          "en": "Anhui ANLIANG Holdings"
         }
       },
       {
         "label": {
-          "zh": "操作对象",
-          "en": "Objects"
+          "zh": "本人职责",
+          "en": "Role"
         },
         "value": {
-          "zh": "棋盘与棋子",
-          "en": "Game board and pieces"
+          "zh": "识别定位、机械臂抓放与计数等核心模块",
+          "en": "Core perception, arm pick-and-place, and counting modules"
         }
       }
     ],
@@ -2705,10 +2691,15 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "棋子尺寸小、形状相近，棋盘纹理与夹爪接近方向都会影响视觉定位和抓取。任务需要把相机观察到的目标位置转换为机械臂可执行的动作，并处理夹爪与棋盘之间的空间关系。",
-            "en": "Small, similarly shaped pieces and a patterned board challenge visual localization and grasp approach. The task connects camera-observed targets with executable arm motion while accounting for the gripper’s clearance above the board."
+            "zh": "预研产线需要把视觉识别结果转化为可执行的分拣动作，并与输送和其他机械结构按顺序协作。",
+            "en": "The pilot line requires visual detections to drive sorting actions in coordination with conveyors and other mechanisms."
+          },
+          {
+            "zh": "产线运行要求感知、机械臂和输送设备按顺序配合：目标位置变化、抓取时机与设备状态不一致都会影响作业连续性。项目重点是把视觉分拣流程与现场硬件逻辑连通。",
+            "en": "Line operation requires coordinated sensing, robot motion, and conveying: target movement, picking timing, and equipment state affect continuity. The focus is integrating visual sorting with the pilot line’s hardware logic."
           }
         ],
+        "points": [],
         "figures": []
       },
       {
@@ -2719,34 +2710,31 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "在棋盘区域选定并定位目标棋子，使夹爪从合适方向接近、夹住并抬离棋盘，随后移动到指定位置。任务重点是小目标抓取和棋盘上方的安全操作。",
-            "en": "Select and localize a target piece, approach from a suitable direction, grasp and lift it from the board, and transfer it to a destination. The task focuses on small-object pickup and safe motion above the board."
+            "zh": "识别并定位果蔬干，控制机械臂抓取后放置到指定区域，记录处理数量并与产线硬件逻辑交互。",
+            "en": "Detect and localize dried fruit, pick and place items in target areas, count processed items, and coordinate with line logic."
+          },
+          {
+            "zh": "围绕目标识别定位、机械臂取放、处理计数和设备联动完成流程调试，在现场预研平台检查各环节的输入输出与执行顺序。",
+            "en": "Detection and localization, arm pick-and-place, processing counts, and equipment coordination are commissioned together on the pilot platform, checking data interfaces and execution order."
           }
         ],
+        "points": [],
         "figures": []
       },
       {
         "id": "equipment",
         "title": {
           "zh": "设备说明",
-          "en": "Hardware"
+          "en": "Robot hardware"
         },
         "paragraphs": [
           {
-            "zh": "实机包含协作机械臂、末端夹爪和棋盘工作台。视频从近距离观察夹爪与棋子的相对位置及接触过程。",
-            "en": "The setup comprises a collaborative arm, an end-effector gripper, and a board workspace. A close view documents the relative positions and contact between the gripper and piece."
+            "zh": "系统采用四自由度机械臂、视觉采集与计算单元及配套产线机械。",
+            "en": "The system uses a four-degree-of-freedom arm, vision/computing hardware, and the associated line mechanisms."
           }
         ],
-        "figures": [
-          {
-            "src": "assets/projects/chess-grasping/demo.poster.webp",
-            "role": "main",
-            "caption": {
-              "zh": "协作机械臂与棋盘抓取工作区。",
-              "en": "Collaborative arm and board-grasping workspace."
-            }
-          }
-        ]
+        "points": [],
+        "figures": []
       },
       {
         "id": "system",
@@ -2756,51 +2744,41 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "视觉模块负责识别目标，MoveIt 负责将抓取目标转成机械臂运动，夹爪控制完成实际夹持。",
-            "en": "Vision identifies the target, MoveIt converts the grasp goal into arm motion, and gripper control executes the physical pickup."
+            "zh": "以视觉目标位置和设备状态为接口，连接四自由度机械臂取放、计数与产线机构联动。",
+            "en": "Visual target positions and device states connect four-DoF pick-and-place with counting and production-line coordination."
           }
         ],
-        "figures": [],
         "points": [],
+        "figures": [],
         "techniques": [
           {
             "name": {
-              "zh": "YOLO 棋子目标检测",
-              "en": "YOLO game-piece detection"
+              "zh": "视觉识别定位与坐标对应",
+              "en": "Visual localization and coordinate mapping"
             },
             "description": {
-              "zh": "从相机画面中识别棋子并获得目标位置，将小尺寸目标与棋盘背景区分，为抓取位姿计算提供视觉输入。",
-              "en": "Detect pieces in camera images and obtain target positions, separating small objects from the board background for grasp-pose computation."
+              "zh": "识别产线上的果蔬干目标，将图像位置对应到机械臂可操作的位置，给出取放动作的目标输入。",
+              "en": "Recognize dried-fruit targets on the line and map image locations to reachable arm positions for pick-and-place."
             }
           },
           {
             "name": {
-              "zh": "坐标变换与抓取位姿",
-              "en": "Coordinate transformation and grasp poses"
+              "zh": "四自由度机械臂取放控制",
+              "en": "Four-DoF arm pick-and-place"
             },
             "description": {
-              "zh": "将视觉定位结果转换到机械臂坐标系，结合棋子高度、夹爪开口与接近方向确定末端目标位姿。",
-              "en": "Transform visual target positions into the arm frame and determine end-effector goals from piece height, gripper opening, and approach direction."
+              "zh": "根据目标位置求解机械臂姿态，按接近、抓取、搬运和放置组织运动，衔接夹爪与关节动作。",
+              "en": "Compute arm poses from target locations and sequence approach, grasp, transfer, and placement with coordinated gripper and joint motion."
             }
           },
           {
             "name": {
-              "zh": "MoveIt 逆运动学与运动规划",
-              "en": "MoveIt inverse kinematics and motion planning"
+              "zh": "计数逻辑与产线状态联动",
+              "en": "Counting logic and line-state coordination"
             },
             "description": {
-              "zh": "根据末端目标求解关节运动并规划轨迹，结合碰撞检查组织接近和抬升路径，处理夹爪与棋盘的空间约束。",
-              "en": "Solve joint motion for end-effector goals and plan trajectories, using collision checks to organize approach and lifting around board-clearance constraints."
-            }
-          },
-          {
-            "name": {
-              "zh": "机械臂与夹爪动作衔接",
-              "en": "Arm–gripper sequencing"
-            },
-            "description": {
-              "zh": "按预抓取、接近、夹紧、抬升和搬移分段执行，协调轨迹到位与夹爪开闭，使识别结果连接到完整取放动作。",
-              "en": "Sequence pre-grasp, approach, closure, lifting, and transfer, coordinating arm arrival with gripper actuation to complete the pick-and-place action."
+              "zh": "在取放流程中记录处理数量，根据机械臂和其他机构状态切换执行阶段，联调设备间的等待、动作及完成关系。",
+              "en": "Count processed objects within the pick-and-place workflow and transition execution from arm and mechanism states, coordinating waits, actions, and completion across devices."
             }
           }
         ]
@@ -2809,26 +2787,59 @@ export const projects = [
         "id": "demo",
         "title": {
           "zh": "演示与结果",
-          "en": "Demonstration"
+          "en": "Demonstrations and results"
         },
         "paragraphs": [
           {
-            "zh": "实机演示展示棋子视觉抓取过程，包括夹爪对准、接近、夹持和抬升，连接目标定位与机械臂取放动作。",
-            "en": "The physical demonstration shows visually guided piece pickup, including alignment, approach, gripping, and lifting, connecting target localization with arm manipulation."
+            "zh": "该预研产线已通过验收，现场视频展示机械臂与产线协同。",
+            "en": "The slides record acceptance of the pilot line, with on-site footage showing the arm and equipment."
           }
         ],
+        "points": [],
         "figures": [
           {
-            "video": "assets/projects/chess-grasping/demo.mp4",
-            "poster": "assets/projects/chess-grasping/demo.poster.webp",
+            "src": "assets/projects/fruit-sorting/ppt/summary-image123.webp",
             "caption": {
-              "zh": "棋子视觉定位与机械臂抓取实机演示。",
-              "en": "Physical demonstration of visual piece localization and robot-arm grasping."
+              "zh": "预研产线现场展示",
+              "en": "On-site pilot-line demonstration"
+            }
+          },
+          {
+            "video": "assets/projects/fruit-sorting/demo.mp4",
+            "poster": "assets/projects/fruit-sorting/poster.webp",
+            "caption": {
+              "zh": "果蔬干预研产线现场演示",
+              "en": "On-site demonstration of the dried-fruit pilot line"
+            }
+          },
+          {
+            "src": "assets/projects/fruit-sorting/ppt/summary-image122.webp",
+            "caption": {
+              "zh": "果蔬干目标识别与定位画面",
+              "en": "Dried-fruit detection and localization"
             }
           }
         ]
       }
-    ]
+    ],
+    "categoryKey": "manipulation",
+    "category": {
+      "zh": "工业分拣",
+      "en": "Industrial sorting"
+    },
+    "media": {
+      "video": "assets/projects/fruit-sorting/demo.mp4",
+      "poster": "assets/projects/fruit-sorting/poster.webp",
+      "alt": {
+        "zh": "果蔬干分拣产线现场演示",
+        "en": "Dried-fruit sorting line demonstration"
+      }
+    },
+    "organization": {
+      "zh": "安徽安粮控股股份公司",
+      "en": "Anhui ANLIANG Holdings"
+    },
+    "group": "collaboration"
   },
   {
     "id": "wheel-legged",
@@ -3192,34 +3203,48 @@ export const projects = [
     "group": "primary"
   },
   {
-    "id": "fruit-sorting",
+    "id": "chess-grasping",
+    "group": "collaboration",
+    "categoryKey": "manipulation",
+    "category": {
+      "zh": "视觉操作",
+      "en": "Visual manipulation"
+    },
     "title": {
-      "zh": "果蔬干分拣产线项目",
-      "en": "Dried-fruit sorting pilot line"
+      "zh": "机械臂棋子视觉抓取",
+      "en": "Robotic visual grasping of game pieces"
     },
     "summary": {
-      "zh": "面向果蔬干产线的识别、分拣与计数，结合视觉定位、四自由度机械臂抓放和产线协同控制；完成产线联调及预研验收。",
-      "en": "For dried-fruit and vegetable sorting and counting, visual localization, a four-degree-of-freedom arm, and line coordination are integrated; the pilot line completed commissioning and acceptance."
+      "zh": "面向棋盘上小尺寸棋子抓取，以 YOLO 识别目标、MoveIt 规划机械臂运动；实机展示棋子定位、夹持和搬移。",
+      "en": "For small game-piece pickup, YOLO detects targets and MoveIt plans arm motion; real demonstrations show localization, gripping, and transfer."
+    },
+    "media": {
+      "video": "assets/projects/chess-grasping/demo.mp4",
+      "poster": "assets/projects/chess-grasping/demo.poster.webp",
+      "alt": {
+        "zh": "机械臂在棋盘上执行棋子抓取",
+        "en": "Robot-arm piece pickup on a game board"
+      }
     },
     "facts": [
       {
         "label": {
-          "zh": "合作单位",
-          "en": "Partner"
+          "zh": "参与类型",
+          "en": "Involvement"
         },
         "value": {
-          "zh": "安徽安粮控股股份公司",
-          "en": "Anhui ANLIANG Holdings"
+          "zh": "参与项目",
+          "en": "Collaborative project"
         }
       },
       {
         "label": {
-          "zh": "本人职责",
-          "en": "Role"
+          "zh": "操作对象",
+          "en": "Objects"
         },
         "value": {
-          "zh": "识别定位、机械臂抓放与计数等核心模块",
-          "en": "Core perception, arm pick-and-place, and counting modules"
+          "zh": "棋盘与棋子",
+          "en": "Game board and pieces"
         }
       }
     ],
@@ -3232,15 +3257,10 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "预研产线需要把视觉识别结果转化为可执行的分拣动作，并与输送和其他机械结构按顺序协作。",
-            "en": "The pilot line requires visual detections to drive sorting actions in coordination with conveyors and other mechanisms."
-          },
-          {
-            "zh": "产线运行要求感知、机械臂和输送设备按顺序配合：目标位置变化、抓取时机与设备状态不一致都会影响作业连续性。项目重点是把视觉分拣流程与现场硬件逻辑连通。",
-            "en": "Line operation requires coordinated sensing, robot motion, and conveying: target movement, picking timing, and equipment state affect continuity. The focus is integrating visual sorting with the pilot line’s hardware logic."
+            "zh": "棋子尺寸小、形状相近，棋盘纹理与夹爪接近方向都会影响视觉定位和抓取。任务需要把相机观察到的目标位置转换为机械臂可执行的动作，并处理夹爪与棋盘之间的空间关系。",
+            "en": "Small, similarly shaped pieces and a patterned board challenge visual localization and grasp approach. The task connects camera-observed targets with executable arm motion while accounting for the gripper’s clearance above the board."
           }
         ],
-        "points": [],
         "figures": []
       },
       {
@@ -3251,31 +3271,34 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "识别并定位果蔬干，控制机械臂抓取后放置到指定区域，记录处理数量并与产线硬件逻辑交互。",
-            "en": "Detect and localize dried fruit, pick and place items in target areas, count processed items, and coordinate with line logic."
-          },
-          {
-            "zh": "围绕目标识别定位、机械臂取放、处理计数和设备联动完成流程调试，在现场预研平台检查各环节的输入输出与执行顺序。",
-            "en": "Detection and localization, arm pick-and-place, processing counts, and equipment coordination are commissioned together on the pilot platform, checking data interfaces and execution order."
+            "zh": "在棋盘区域选定并定位目标棋子，使夹爪从合适方向接近、夹住并抬离棋盘，随后移动到指定位置。任务重点是小目标抓取和棋盘上方的安全操作。",
+            "en": "Select and localize a target piece, approach from a suitable direction, grasp and lift it from the board, and transfer it to a destination. The task focuses on small-object pickup and safe motion above the board."
           }
         ],
-        "points": [],
         "figures": []
       },
       {
         "id": "equipment",
         "title": {
           "zh": "设备说明",
-          "en": "Robot hardware"
+          "en": "Hardware"
         },
         "paragraphs": [
           {
-            "zh": "系统采用四自由度机械臂、视觉采集与计算单元及配套产线机械。",
-            "en": "The system uses a four-degree-of-freedom arm, vision/computing hardware, and the associated line mechanisms."
+            "zh": "实机包含协作机械臂、末端夹爪和棋盘工作台。视频从近距离观察夹爪与棋子的相对位置及接触过程。",
+            "en": "The setup comprises a collaborative arm, an end-effector gripper, and a board workspace. A close view documents the relative positions and contact between the gripper and piece."
           }
         ],
-        "points": [],
-        "figures": []
+        "figures": [
+          {
+            "src": "assets/projects/chess-grasping/demo.poster.webp",
+            "role": "main",
+            "caption": {
+              "zh": "协作机械臂与棋盘抓取工作区。",
+              "en": "Collaborative arm and board-grasping workspace."
+            }
+          }
+        ]
       },
       {
         "id": "system",
@@ -3285,41 +3308,51 @@ export const projects = [
         },
         "paragraphs": [
           {
-            "zh": "以视觉目标位置和设备状态为接口，连接四自由度机械臂取放、计数与产线机构联动。",
-            "en": "Visual target positions and device states connect four-DoF pick-and-place with counting and production-line coordination."
+            "zh": "视觉模块负责识别目标，MoveIt 负责将抓取目标转成机械臂运动，夹爪控制完成实际夹持。",
+            "en": "Vision identifies the target, MoveIt converts the grasp goal into arm motion, and gripper control executes the physical pickup."
           }
         ],
-        "points": [],
         "figures": [],
+        "points": [],
         "techniques": [
           {
             "name": {
-              "zh": "视觉识别定位与坐标对应",
-              "en": "Visual localization and coordinate mapping"
+              "zh": "YOLO 棋子目标检测",
+              "en": "YOLO game-piece detection"
             },
             "description": {
-              "zh": "识别产线上的果蔬干目标，将图像位置对应到机械臂可操作的位置，给出取放动作的目标输入。",
-              "en": "Recognize dried-fruit targets on the line and map image locations to reachable arm positions for pick-and-place."
+              "zh": "从相机画面中识别棋子并获得目标位置，将小尺寸目标与棋盘背景区分，为抓取位姿计算提供视觉输入。",
+              "en": "Detect pieces in camera images and obtain target positions, separating small objects from the board background for grasp-pose computation."
             }
           },
           {
             "name": {
-              "zh": "四自由度机械臂取放控制",
-              "en": "Four-DoF arm pick-and-place"
+              "zh": "坐标变换与抓取位姿",
+              "en": "Coordinate transformation and grasp poses"
             },
             "description": {
-              "zh": "根据目标位置求解机械臂姿态，按接近、抓取、搬运和放置组织运动，衔接夹爪与关节动作。",
-              "en": "Compute arm poses from target locations and sequence approach, grasp, transfer, and placement with coordinated gripper and joint motion."
+              "zh": "将视觉定位结果转换到机械臂坐标系，结合棋子高度、夹爪开口与接近方向确定末端目标位姿。",
+              "en": "Transform visual target positions into the arm frame and determine end-effector goals from piece height, gripper opening, and approach direction."
             }
           },
           {
             "name": {
-              "zh": "计数逻辑与产线状态联动",
-              "en": "Counting logic and line-state coordination"
+              "zh": "MoveIt 逆运动学与运动规划",
+              "en": "MoveIt inverse kinematics and motion planning"
             },
             "description": {
-              "zh": "在取放流程中记录处理数量，根据机械臂和其他机构状态切换执行阶段，联调设备间的等待、动作及完成关系。",
-              "en": "Count processed objects within the pick-and-place workflow and transition execution from arm and mechanism states, coordinating waits, actions, and completion across devices."
+              "zh": "根据末端目标求解关节运动并规划轨迹，结合碰撞检查组织接近和抬升路径，处理夹爪与棋盘的空间约束。",
+              "en": "Solve joint motion for end-effector goals and plan trajectories, using collision checks to organize approach and lifting around board-clearance constraints."
+            }
+          },
+          {
+            "name": {
+              "zh": "机械臂与夹爪动作衔接",
+              "en": "Arm–gripper sequencing"
+            },
+            "description": {
+              "zh": "按预抓取、接近、夹紧、抬升和搬移分段执行，协调轨迹到位与夹爪开闭，使识别结果连接到完整取放动作。",
+              "en": "Sequence pre-grasp, approach, closure, lifting, and transfer, coordinating arm arrival with gripper actuation to complete the pick-and-place action."
             }
           }
         ]
@@ -3328,58 +3361,25 @@ export const projects = [
         "id": "demo",
         "title": {
           "zh": "演示与结果",
-          "en": "Demonstrations and results"
+          "en": "Demonstration"
         },
         "paragraphs": [
           {
-            "zh": "该预研产线已通过验收，现场视频展示机械臂与产线协同。",
-            "en": "The slides record acceptance of the pilot line, with on-site footage showing the arm and equipment."
+            "zh": "实机演示展示棋子视觉抓取过程，包括夹爪对准、接近、夹持和抬升，连接目标定位与机械臂取放动作。",
+            "en": "The physical demonstration shows visually guided piece pickup, including alignment, approach, gripping, and lifting, connecting target localization with arm manipulation."
           }
         ],
-        "points": [],
         "figures": [
           {
-            "src": "assets/projects/fruit-sorting/ppt/summary-image123.webp",
+            "video": "assets/projects/chess-grasping/demo.mp4",
+            "poster": "assets/projects/chess-grasping/demo.poster.webp",
             "caption": {
-              "zh": "预研产线现场展示",
-              "en": "On-site pilot-line demonstration"
-            }
-          },
-          {
-            "video": "assets/projects/fruit-sorting/demo.mp4",
-            "poster": "assets/projects/fruit-sorting/poster.webp",
-            "caption": {
-              "zh": "果蔬干预研产线现场演示",
-              "en": "On-site demonstration of the dried-fruit pilot line"
-            }
-          },
-          {
-            "src": "assets/projects/fruit-sorting/ppt/summary-image122.webp",
-            "caption": {
-              "zh": "果蔬干目标识别与定位画面",
-              "en": "Dried-fruit detection and localization"
+              "zh": "棋子视觉定位与机械臂抓取实机演示。",
+              "en": "Physical demonstration of visual piece localization and robot-arm grasping."
             }
           }
         ]
       }
-    ],
-    "categoryKey": "manipulation",
-    "category": {
-      "zh": "工业分拣",
-      "en": "Industrial sorting"
-    },
-    "media": {
-      "video": "assets/projects/fruit-sorting/demo.mp4",
-      "poster": "assets/projects/fruit-sorting/poster.webp",
-      "alt": {
-        "zh": "果蔬干分拣产线现场演示",
-        "en": "Dried-fruit sorting line demonstration"
-      }
-    },
-    "organization": {
-      "zh": "安徽安粮控股股份公司",
-      "en": "Anhui ANLIANG Holdings"
-    },
-    "group": "collaboration"
+    ]
   }
 ];
