@@ -252,6 +252,7 @@ a:hover,.brand:hover,.nav a:hover,.paper-copy h3 a:hover,.paper-links>a:hover,.f
 .profile-route{width:130px;height:28px;flex:none}
 .profile-route path[stroke-dasharray]{animation:circuit-travel 14s linear infinite}
 .profile-layout{grid-template-columns:minmax(0,1fr) 165px;gap:35px}
+.profile-copy{grid-column:1;grid-row:1}
 .profile-name-row{gap:8px 24px;margin-bottom:9px}
 .profile-name-row h1{font-size:38px;font-weight:700;letter-spacing:.04em}
 .profile-affiliation{padding-left:22px;border-left:1px solid #000;font-size:19px;color:#000}
@@ -267,7 +268,7 @@ html[data-lang="en"] .profile-facts{--fact-label-width:144px}
 .fact-education,.fact-users,.fact-mail{color:#8b2d34}
 .fact-flag,.fact-language{color:#796132}
 .fact-compass{color:#000}
-.profile-photo{position:relative;margin-top:4px}
+.profile-photo{position:relative;grid-column:2;grid-row:1;margin-top:4px}
 .profile-photo img{border:0;border-radius:2px;background:#fff;padding:0;box-shadow:none}
 .portrait-badge{display:grid;place-items:center;position:absolute;right:-9px;bottom:-12px;width:43px;height:43px;border:0;background:transparent}
 .portrait-badge .section-icon{width:29px;height:29px}
@@ -298,17 +299,19 @@ html[data-lang="en"] .profile-facts{--fact-label-width:144px}
  .profile-eyebrow{gap:10px;margin-bottom:23px;font-size:13px}
  .profile-route{width:83px;height:24px}
  .profile-layout{display:block}
- .profile-photo{position:absolute;right:0;top:0}
- .profile-heading{padding-right:112px;min-height:155px}
+ /* Let each facts row use the space beside the portrait, then the full width. */
+ .profile-photo{position:relative;float:right;right:auto;top:auto;margin:4px 0 12px 16px}
+ .profile-heading{padding-right:0;min-height:0}
  .profile-heading h1{font-size:31px}
  .profile-affiliation{font-size:16px;padding-left:0;border:0}
- .profile-heading .profile-role{font-size:14px}
+ .profile-heading .profile-role{font-size:14px;margin-bottom:0}
  .profile-photo img{width:96px}
  .portrait-badge{width:34px;height:34px;right:-5px;bottom:-10px}
  .portrait-badge .section-icon{width:24px;height:24px}
- .profile-facts{gap:10px}
+ .profile-facts{display:block;margin:10px 0 16px}
  .profile-facts dt,.profile-facts dd{font-size:15px}
- .profile-facts>div{gap:10px}
+ .profile-facts>div{gap:10px;margin-bottom:6px}
+ .profile-facts>div:last-child{margin-bottom:0}
  .fact-icon{width:18px;height:18px}
  .education-description,.profile .research-line{font-size:15px}
  .hobbies-line,.hobbies-label{font-size:14px}

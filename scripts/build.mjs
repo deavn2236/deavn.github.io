@@ -112,6 +112,7 @@ function renderHome() {
     <section class="profile" id="intro">
       <div class="profile-eyebrow"><span>${renderFactIcon('compass')}${bi(b('个人主页','Personal Homepage'))}</span><span class="profile-rule" aria-hidden="true"></span><svg class="profile-route" width="130" height="28" viewBox="0 0 130 28" fill="none" aria-hidden="true"><path d="M3 20h29l11-12h34l12 12h38" stroke="#111" stroke-width="1.1"/><path d="M3 24h31L45 12h30l12 12h40" stroke="#af8765" stroke-dasharray="2 4"/><circle cx="32" cy="20" r="3" fill="#43685a"/><circle cx="77" cy="8" r="3" fill="#8b2d34"/><circle cx="89" cy="20" r="3" fill="#af8765"/></svg></div>
       <div class="profile-layout">
+        <figure class="profile-photo">${renderImage(site.portrait.src, site.portrait.alt, './', { eager: true })}<span class="portrait-badge" aria-hidden="true">${renderIcon('robot')}</span></figure>
         <div class="profile-copy">
           <div class="profile-heading"><div class="profile-name-row"><h1>${bi(site.name)}</h1><p class="profile-affiliation">${bi(site.location)}</p></div><p class="profile-role">${bi(site.role)}</p></div>
           <dl class="profile-facts">${personalInfo}<div><dt>${renderFactIcon('phone')}${bi(b('电话', 'Phone'))}</dt><dd><a href="tel:${esc(site.phone)}">${esc(site.phone)}</a></dd></div><div><dt>${renderFactIcon('mail')}${bi(b('邮箱', 'Email'))}</dt><dd><a href="mailto:${esc(site.email)}">${esc(site.email)}</a></dd></div></dl>
@@ -119,7 +120,6 @@ function renderHome() {
           <p class="research-line"><strong>${bi(b('研究方向：', 'Research interests: '))}</strong>${site.interests.map(it => bi(it.title)).join(' · ')}</p>
           <div class="hobbies-line"><span class="hobbies-label">${bi(b('业余爱好：', 'Hobbies: '))}</span>${site.hobbies.map(hobby => `<span class="hobby-item">${renderIcon(hobby.id, 'hobby-icon')}${bi(hobby.title)}</span>`).join('')}</div>
         </div>
-        <figure class="profile-photo">${renderImage(site.portrait.src, site.portrait.alt, './', { eager: true })}<span class="portrait-badge" aria-hidden="true">${renderIcon('robot')}</span></figure>
       </div>
     </section>
     <section class="home-section" id="publications">${sectionHeading('publication', b('论文成果', 'Publications'))}<div class="paper-list">${site.papers.map(p => paperCard(p)).join('')}</div></section>
