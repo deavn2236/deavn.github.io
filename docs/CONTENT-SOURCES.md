@@ -120,3 +120,9 @@ Kangaroo首页和室内演示从原片49.7秒开始，到139.7秒结束；室外
 - 依据本人提供的作者名单，SCTNav、ReCoNav、BMANet、DDPoseNet补全为Wendong Guo、Junyi Wang、Yanwei Zheng*、Xiao Zhang、Xingyu Zhang、Dongxiao Yu；仅展示姓名，不展示作者编号。
 - Kangaroo保留原有作者顺序，并为Yanwei Zheng添加本人指定的通讯作者星号；UWB作者名单保持原文。星号以上标显示，提示文字为“通讯作者 / Corresponding author”。
 - 六篇论文详情的“贡献”改为“主要贡献 / Main Contributions”，方法架构及原有章节锚点保持。
+
+## 媒体二次压缩（2026-10-20）
+
+- 本次仅优化既有公开图像和视频的编码、尺寸、帧率及缩略图，不新增项目材料或变更研究内容。压缩前文件与统计保存在公开仓库外。
+- `content/media-policy.json` 区分普通演示、快速动作、导航/界面可视化、首页预览、论文图表和照片；`scripts/optimize-media.py` 读取策略，保留比例和时长，较小编码才替换，并输出统计报告。
+- 新增320/640像素WebP变体供浏览器按需选择；原尺寸论文图仍可点开。正常构建只需要Node，不增加浏览器外部资源依赖。

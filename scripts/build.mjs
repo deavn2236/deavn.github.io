@@ -10,6 +10,11 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 // This repository publishes its root. Rebuild generated pages in place; preserve Git and assets.
 const out = root;
 const assetVersions = Object.fromEntries([['styles','styles.css'],['client','client.js']].map(([key,file]) => [key, createHash('sha256').update(fs.readFileSync(path.join(root,'src',file))).digest('hex').slice(0,10)]));
+const mediaVersions = new Map();
+const mediaUrl = (src, prefix) => {
+  if (!mediaVersions.has(src)) mediaVersions.set(src, createHash('sha256').update(fs.readFileSync(path.join(root, src))).digest('hex').slice(0,10));
+  return `${prefix}${src}?v=${mediaVersions.get(src)}`;
+};
 
 const esc = (v = '') => String(v).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
 const tr = (v, lang = 'zh') => typeof v === 'object' && v !== null ? (v[lang] || v.zh || v.en || '') : (v || '');
@@ -73,14 +78,14 @@ function renderImage(src, label, prefix, { card = false, eager = false, sizes = 
   const info = mediaAssets.images[src] || {};
   const variants = card && info.variants?.length ? [...info.variants, { src, width: info.width, height: info.height }] : [];
   const selected = variants[0] || { src, ...info };
-  return `<img src="${esc(prefix + selected.src)}" ${alt(label)}${selected.width ? ` width="${selected.width}" height="${selected.height}"` : ''}${variants.length ? ` srcset="${variants.map(v => `${esc(prefix + v.src)} ${v.width}w`).join(', ')}" sizes="${esc(sizes)}"` : ''} decoding="async" loading="${eager ? 'eager' : 'lazy'}"${eager ? ' fetchpriority="high"' : ''}>`;
+  return `<img src="${esc(mediaUrl(selected.src, prefix))}" ${alt(label)}${selected.width ? ` width="${selected.width}" height="${selected.height}"` : ''}${variants.length ? ` srcset="${variants.map(v => `${esc(mediaUrl(v.src, prefix))} ${v.width}w`).join(', ')}" sizes="${esc(sizes)}"` : ''} decoding="async" loading="${eager ? 'eager' : 'lazy'}"${eager ? ' fetchpriority="high"' : ''}>`;
 }
 
 function renderMedia(media = {}, prefix, className = '', eager = false, card = false) {
   const label = media.alt || b('项目演示视频', 'Project demonstration video');
   const video = card ? mediaAssets.videos[media.video]?.preview || media.video : media.video;
   const info = mediaAssets.videos[video] || mediaAssets.videos[media.video] || {};
-  if (video) return `<div class="media ${className}${info.height > info.width ? ' is-portrait' : ''}"${info.width ? ` style="--media-ratio:${info.width}/${info.height}"` : ''}><video class="autoplay-video" ${info.width ? `width="${info.width}" height="${info.height}"` : ''} ${media.poster ? `data-poster="${esc(prefix + media.poster)}"` : ''} data-playback-rate="1.5" muted autoplay loop playsinline webkit-playsinline preload="none" aria-label="${esc(tr(label))}" data-label-zh="${esc(tr(label))}" data-label-en="${esc(tr(label, 'en'))}"><source data-src="${esc(prefix + video)}" type="video/mp4"></video><span class="video-speed" aria-hidden="true">1.5×</span><button class="video-control is-paused" type="button" data-video-toggle aria-label="播放视频"><span class="pause-icon" aria-hidden="true">Ⅱ</span><span class="play-icon" aria-hidden="true">▶</span></button></div>`;
+  if (video) return `<div class="media ${className}${info.height > info.width ? ' is-portrait' : ''}"${info.width ? ` style="--media-ratio:${info.width}/${info.height}"` : ''}><video class="autoplay-video" ${info.width ? `width="${info.width}" height="${info.height}"` : ''} ${media.poster ? `data-poster="${esc(mediaUrl(media.poster, prefix))}"` : ''} data-playback-rate="1.5" muted autoplay loop playsinline webkit-playsinline preload="none" aria-label="${esc(tr(label))}" data-label-zh="${esc(tr(label))}" data-label-en="${esc(tr(label, 'en'))}"><source data-src="${esc(mediaUrl(video, prefix))}" type="video/mp4"></video><span class="video-speed" aria-hidden="true">1.5×</span><button class="video-control is-paused" type="button" data-video-toggle aria-label="播放视频"><span class="pause-icon" aria-hidden="true">Ⅱ</span><span class="play-icon" aria-hidden="true">▶</span></button></div>`;
   const src = media.image || media.poster;
   return src ? `<div class="media ${className}">${renderImage(src, media.alt || '', prefix, { card, eager, sizes: '(max-width:560px) calc(100vw - 40px), (max-width:760px) calc((100vw - 58px) / 2), (min-width:1400px) 527px, 507px' })}</div>` : '';
 }
@@ -150,7 +155,7 @@ function renderFigure(figure, prefix, paired = false) {
   const sizes = paired ? '(max-width:760px) calc(100vw - 40px), (min-width:1400px) 528px, 508px' : `(max-width:760px) calc(100vw - 40px), ${width}px`;
   const kind = figure.video ? b('视频','Video') : figure.kind === 'table' ? b('实验表格','Results table') : b('图示','Figure');
   const symbol = figure.video ? '<circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m8 6 6 4-6 4Z" fill="currentColor"/>' : '<rect x="2" y="3" width="16" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m4 14 4-4 3 3 2-2 3 3" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="13" cy="7" r="1.5" fill="currentColor"/>';
-  return `<figure class="section-figure${width ? ' figure-bounded' : ''}${['main','sensor'].includes(figure.role) ? ` figure-${figure.role}` : ''}${figure.kind === 'table' ? ' figure-table' : ''}${figure.video && ratio < .75 ? ' figure-portrait-video' : ''}" style="--figure-ratio:${ratio};${width ? `--figure-width:${width}px` : ''}">${figure.video ? renderMedia({ video: figure.video, poster: figure.poster, alt: label }, prefix, 'section-video') : `<a class="figure-expand" href="${esc(prefix + (figure.src || figure.image))}" target="_blank" rel="noopener noreferrer" aria-label="查看大图" data-aria-zh="查看大图" data-aria-en="Open full-size image">${renderImage(figure.src || figure.image, label, prefix, { card: true, sizes })}</a>`}<figcaption><span class="figure-caption-kind"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">${symbol}</svg>${bi(kind)}</span><span class="figure-caption-text">${bi(label)}</span></figcaption></figure>`;
+  return `<figure class="section-figure${width ? ' figure-bounded' : ''}${['main','sensor'].includes(figure.role) ? ` figure-${figure.role}` : ''}${figure.kind === 'table' ? ' figure-table' : ''}${figure.video && ratio < .75 ? ' figure-portrait-video' : ''}" style="--figure-ratio:${ratio};${width ? `--figure-width:${width}px` : ''}">${figure.video ? renderMedia({ video: figure.video, poster: figure.poster, alt: label }, prefix, 'section-video') : `<a class="figure-expand" href="${esc(mediaUrl(figure.src || figure.image, prefix))}" target="_blank" rel="noopener noreferrer" aria-label="查看大图" data-aria-zh="查看大图" data-aria-en="Open full-size image">${renderImage(figure.src || figure.image, label, prefix, { card: true, sizes })}</a>`}<figcaption><span class="figure-caption-kind"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">${symbol}</svg>${bi(kind)}</span><span class="figure-caption-text">${bi(label)}</span></figcaption></figure>`;
 }
 
 function renderFigures(section, prefix) {
