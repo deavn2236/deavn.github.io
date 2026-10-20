@@ -60,6 +60,7 @@ export const intelligentSystems = [
   {
     id: 'personnel-tracking', group: 'systems', categoryKey: 'systems',
     category: b('多模态感知 · 人员定位', 'Multimodal perception · Personnel localization'),
+    organization: b('南瑞', 'NARI'),
     title: b('人员识别定位与轨迹回放系统', 'Personnel identification, localization, and trajectory playback'),
     summary: b('面向人员身份与位置追踪，融合视频检测、重识别与雷达定位，实现同步监控、轨迹回放，并完成双路相机试运行。', 'For identity and location tracking, video detection, re-identification, and radar localization enable synchronized monitoring and trajectory playback, with two-camera trial operation.'),
     facts: [
@@ -110,7 +111,7 @@ export const intelligentSystems = [
   {
     id: 'tender-analysis', group: 'systems', categoryKey: 'systems',
     category: b('文档智能 · 系统设计', 'Document intelligence · System design'),
-    year: '2024', organization: b('山东大学', 'Shandong University'),
+    year: '2024', organization: b('山东电网', 'State Grid Shandong'),
     title: b('投标文件识别系统', 'Bid document recognition and analysis system'),
     summary: b('面向投标文件审阅，设计 OCR 与语义分析流程，涵盖结构化解读、内容归类、疑似异常核查及原文定位。', 'For bid-document review, an OCR and semantic-analysis workflow is designed for structured interpretation, classification, potential-anomaly review, and source-page navigation.'),
     facts: [{ label: b('工作内容', 'Scope'), value: b('需求分析、系统设计与界面原型', 'Requirements, system design, and interface prototypes') }],

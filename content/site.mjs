@@ -16,6 +16,11 @@ export const site = {
     "en": "Shandong University"
   },
   "email": "wendongguo@outlook.com",
+  "advisors": [
+    { "zh": "郑艳伟", "en": "Yanwei Zheng" },
+    { "zh": "于东晓", "en": "Dongxiao Yu" },
+    { "zh": "宣东", "en": "Dong Xuan" }
+  ],
   "phone": "15163452236",
   "portrait": {
     "src": "assets/profile/portrait.webp",
@@ -71,8 +76,8 @@ export const site = {
         "en": "Student leadership"
       },
       "value": {
-        "zh": "曾任党支部书记",
-        "en": "Former Party Branch Secretary"
+        "zh": "党支部书记",
+        "en": "Party Branch Secretary"
       }
     },
     {

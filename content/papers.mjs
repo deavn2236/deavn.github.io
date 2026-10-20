@@ -49,8 +49,8 @@ export const papers = [
       {
         "id": "contributions",
         "title": {
-          "zh": "主要方法和贡献",
-          "en": "Approach and Contributions"
+          "zh": "贡献",
+          "en": "Contributions"
         },
         "paragraphs": [],
         "points": [
@@ -81,8 +81,8 @@ export const papers = [
       {
         "id": "method",
         "title": {
-          "zh": "主要方法",
-          "en": "Method"
+          "zh": "方法架构",
+          "en": "Method Architecture"
         },
         "paragraphs": [
           {
@@ -220,8 +220,8 @@ export const papers = [
       {
         "id": "contributions",
         "title": {
-          "zh": "主要方法和贡献",
-          "en": "Approach and Contributions"
+          "zh": "贡献",
+          "en": "Contributions"
         },
         "paragraphs": [],
         "points": [
@@ -253,8 +253,8 @@ export const papers = [
       {
         "id": "method",
         "title": {
-          "zh": "主要方法",
-          "en": "Method"
+          "zh": "方法架构",
+          "en": "Method Architecture"
         },
         "paragraphs": [
           {
@@ -399,8 +399,8 @@ export const papers = [
       {
         "id": "contributions",
         "title": {
-          "zh": "主要方法和贡献",
-          "en": "Approach and Contributions"
+          "zh": "贡献",
+          "en": "Contributions"
         },
         "paragraphs": [],
         "points": [
@@ -431,8 +431,8 @@ export const papers = [
       {
         "id": "method",
         "title": {
-          "zh": "主要方法",
-          "en": "Method"
+          "zh": "方法架构",
+          "en": "Method Architecture"
         },
         "paragraphs": [
           {
@@ -568,8 +568,8 @@ export const papers = [
       {
         "id": "contributions",
         "title": {
-          "zh": "主要方法和贡献",
-          "en": "Approach and Contributions"
+          "zh": "贡献",
+          "en": "Contributions"
         },
         "paragraphs": [],
         "points": [
@@ -600,8 +600,8 @@ export const papers = [
       {
         "id": "method",
         "title": {
-          "zh": "主要方法",
-          "en": "Method"
+          "zh": "方法架构",
+          "en": "Method Architecture"
         },
         "paragraphs": [
           {
@@ -730,8 +730,8 @@ export const papers = [
       {
         "id": "contributions",
         "title": {
-          "zh": "主要方法和贡献",
-          "en": "Approach and Contributions"
+          "zh": "贡献",
+          "en": "Contributions"
         },
         "paragraphs": [],
         "points": [
@@ -762,8 +762,8 @@ export const papers = [
       {
         "id": "method",
         "title": {
-          "zh": "主要方法",
-          "en": "Method"
+          "zh": "方法架构",
+          "en": "Method Architecture"
         },
         "paragraphs": [
           {
@@ -908,8 +908,8 @@ export const papers = [
       {
         "id": "contributions",
         "title": {
-          "zh": "主要方法和贡献",
-          "en": "Approach and Contributions"
+          "zh": "贡献",
+          "en": "Contributions"
         },
         "paragraphs": [],
         "points": [
@@ -940,8 +940,8 @@ export const papers = [
       {
         "id": "method",
         "title": {
-          "zh": "主要方法",
-          "en": "Method"
+          "zh": "方法架构",
+          "en": "Method Architecture"
         },
         "paragraphs": [
           {

@@ -102,6 +102,7 @@ function renderHome() {
   const education = site.educationDescription;
   const factTypes = { '出生年月':'calendar', '籍贯':'pin', '学历':'education', '政治面貌':'flag', '学生工作':'users', '六级成绩':'language' };
   const personalInfo = site.personalInfo.map(item => `<div><dt>${renderFactIcon(factTypes[tr(item.label)])}${bi(item.label)}</dt><dd>${bi(item.value)}</dd></div>`).join('');
+  const advisors = site.advisors?.length ? `<div class="profile-advisors"><dt>${renderFactIcon('education')}${bi(b('导师', 'Advisors'))}</dt><dd>${site.advisors.map(advisor => `<span class="advisor-name">${bi(advisor)}</span>`).join('')}</dd></div>` : '';
   const studentWork = site.studentWork.map(item => `<article class="student-work-entry"><div class="student-work-header"><div><h3>${bi(item.institution)}</h3><p class="student-work-role">${bi(item.role)}</p></div><span class="student-work-period">${bi(item.period)}</span></div><ul>${item.points.map(point => `<li>${bi(point)}</li>`).join('')}</ul></article>`).join('');
   const systems = site.projects.filter(project => project.group === 'systems').map((project, index) => projectCard(project, index)).join('');
   const projectGroups = [
@@ -115,7 +116,7 @@ function renderHome() {
         <figure class="profile-photo">${renderImage(site.portrait.src, site.portrait.alt, './', { eager: true })}<span class="portrait-badge" aria-hidden="true">${renderIcon('robot')}</span></figure>
         <div class="profile-copy">
           <div class="profile-heading"><div class="profile-name-row"><h1>${bi(site.name)}</h1><p class="profile-affiliation">${bi(site.location)}</p></div><p class="profile-role">${bi(site.role)}</p></div>
-          <dl class="profile-facts">${personalInfo}<div><dt>${renderFactIcon('phone')}${bi(b('电话', 'Phone'))}</dt><dd><a href="tel:${esc(site.phone)}">${esc(site.phone)}</a></dd></div><div><dt>${renderFactIcon('mail')}${bi(b('邮箱', 'Email'))}</dt><dd><a href="mailto:${esc(site.email)}">${esc(site.email)}</a></dd></div></dl>
+          <dl class="profile-facts">${personalInfo}<div><dt>${renderFactIcon('phone')}${bi(b('电话', 'Phone'))}</dt><dd><a href="tel:${esc(site.phone)}">${esc(site.phone)}</a></dd></div><div><dt>${renderFactIcon('mail')}${bi(b('邮箱', 'Email'))}</dt><dd><a href="mailto:${esc(site.email)}">${esc(site.email)}</a></dd></div>${advisors}</dl>
           <p class="education-description" id="about">${bi(education)}</p>
           <p class="research-line"><strong>${bi(b('研究方向：', 'Research interests: '))}</strong>${site.interests.map(it => bi(it.title)).join(' · ')}</p>
           <div class="hobbies-line"><span class="hobbies-label">${bi(b('业余爱好：', 'Hobbies: '))}</span>${site.hobbies.map(hobby => `<span class="hobby-item">${renderIcon(hobby.id, 'hobby-icon')}${bi(hobby.title)}</span>`).join('')}</div>

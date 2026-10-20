@@ -262,6 +262,9 @@ html[data-lang="en"] .profile-facts{--fact-label-width:144px}
 .profile-facts>div{grid-template-columns:var(--fact-label-width) minmax(0,1fr);align-items:start;gap:11px}
 .profile-facts dt{display:flex;align-items:center;gap:7px;white-space:nowrap;color:#000;font-size:15px;line-height:1.8}
 .profile-facts dd{display:flex;align-items:flex-start;min-width:0;color:#000;font-size:15px;line-height:1.8}
+.profile-facts>.profile-advisors{grid-column:1 / -1}
+.profile-advisors dd{flex-wrap:wrap;gap:3px 14px}
+.advisor-name{white-space:nowrap}
 .profile-facts dt>span,.profile-facts dd>span,.profile-facts dd>a{line-height:inherit}
 .fact-icon{display:inline-block;width:19px;height:19px;flex:none;vertical-align:middle;color:#5b3e2c}
 .fact-pin,.fact-phone{color:#43685a}
