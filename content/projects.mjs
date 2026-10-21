@@ -1233,30 +1233,6 @@ export const projects = [
             "rowWidth": 1080
           }
         ]
-      },
-      {
-        "id": "reference",
-        "title": {
-          "zh": "相关论文与图表来源",
-          "en": "Paper and figure sources"
-        },
-        "paragraphs": [
-          {
-            "zh": "Zhesheng Zhang、Long Chen，A Low-Cost Environment-Interactive Patrol Inspection System With Navigation Based on Sensor-Fusion and Robotic Arm Contact Pose Feedback，IEEE Access，2025，13：54547–54560。上文新增图表取自该文并保留原图号与图注。",
-            "en": "Zhesheng Zhang and Long Chen, “A Low-Cost Environment-Interactive Patrol Inspection System With Navigation Based on Sensor-Fusion and Robotic Arm Contact Pose Feedback,” IEEE Access, vol. 13, pp. 54547–54560, 2025. The added figures and tables retain their original numbering and captions."
-          },
-          {
-            "zh": "原文图表署名：© 2025 The Authors，CC BY-NC-ND 4.0。",
-            "en": "Original figure/table credit: © 2025 The Authors, CC BY-NC-ND 4.0."
-          }
-        ],
-        "source": {
-          "url": "https://doi.org/10.1109/ACCESS.2025.3553521",
-          "label": {
-            "zh": "论文页面（DOI）",
-            "en": "Paper page (DOI)"
-          }
-        }
       }
     ],
     "categoryKey": "manipulation",
